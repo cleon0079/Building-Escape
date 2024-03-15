@@ -7,46 +7,31 @@ using UnityEngine.UI;
 public class Inventories : MonoBehaviour
 {
     [SerializeField] List<Item> Inventory = new List<Item>();
-    [SerializeField] bool showIMGUIInventory = true;
     [NonSerialized] public Item selectedItem = null;
 
     [SerializeField] Button buttonPrefab;
     [SerializeField] GameObject inventoryGameObject;
     [SerializeField] GameObject inventoryContent;
-    [SerializeField] GameObject FilterContent;
+    [SerializeField] GameObject zoomInGameObject;
 
-    Vector2 scrollPosition;
-    string sortType = "All";
+    [SerializeField] Camera camera;
+    [SerializeField] GameManager gameManager;
 
-    [Header("Selected Item Display")]
-    [SerializeField] RawImage itemImage;
-    [SerializeField] Text itemName;
-    [SerializeField] Text itemDescription;
+    [SerializeField] Button dropButton;
+    [SerializeField] Button closeButton;
 
-    private void Start()
-    {
-        DisplayFilterCanvas();
-    }
+    [SerializeField] DropPickUpItem dropPickUpItem;
 
     public void AddItem(Item _item)
     {
-        AddItem(_item, _item.Amount);
-    }
-
-    public void AddItem(Item _item, int _count)
-    {
-        Item foundItem = Inventory.Find((x) => x.Name == _item.Name);
-
-        if (foundItem == null)
+        if (Inventory.Count >= 8)
         {
-            Inventory.Add(_item);
+            return;
         }
         else
         {
-            foundItem.Amount += _count;
+            Inventory.Add(_item);
         }
-        DisplayItemsCanvas();
-        DisplaySelectedItemOnCanvas(selectedItem);
     }
 
     public void RemoveItem(Item _item)
@@ -55,55 +40,25 @@ public class Inventories : MonoBehaviour
         {
             Inventory.Remove(_item);
         }
-
-        DisplayItemsCanvas();
-        DisplaySelectedItemOnCanvas(selectedItem);
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.I))
+        if (Input.GetKeyDown(KeyCode.I) && gameManager.GetZoom() == false)
         {
 
             if (inventoryGameObject.activeSelf)
             {
-                Cursor.lockState = CursorLockMode.Locked;
-                Cursor.visible = false;
+                gameManager.CursorLock(true);
                 inventoryGameObject.SetActive(false);
             }
             else
             {
-                Cursor.lockState = CursorLockMode.Confined;
-                Cursor.visible = true;
+                gameManager.CursorLock(false);
                 inventoryGameObject.SetActive(true);
                 DisplayItemsCanvas();
             }
         }
-    }
-
-    void DisplayFilterCanvas()
-    {
-        List<string> itemTypes = new List<string>(Enum.GetNames(typeof(Item.ItemType)));
-        itemTypes.Insert(0, "All");
-
-        for (int i = 0; i < itemTypes.Count; i++)
-        {
-            Button buttonGO = Instantiate<Button>(buttonPrefab, FilterContent.transform);
-            Text buttonText = buttonGO.GetComponentInChildren<Text>();
-            buttonGO.name = itemTypes[i] + " Filter";
-            buttonText.text = itemTypes[i];
-            buttonText.fontSize = 20;
-
-            string itemType = itemTypes[i];
-            buttonGO.onClick.AddListener(() => { ChangeFilter(itemType); });
-            //buttonGO.onClick.AddListener(delegate { ChangeFilter(itemTypes[x]); });
-        }
-    }
-
-    void ChangeFilter(string _itemType)
-    {
-        sortType = _itemType;
-        DisplayItemsCanvas();
     }
 
     void DestroyAllChildren(Transform _parent)
@@ -119,96 +74,46 @@ public class Inventories : MonoBehaviour
         DestroyAllChildren(inventoryContent.transform);
         for (int i = 0; i < Inventory.Count; i++)
         {
-            if (Inventory[i].Type.ToString() == sortType || sortType == "All")
-            {
-                Button buttonGO = Instantiate<Button>(buttonPrefab, inventoryContent.transform);
-                Text buttonText = buttonGO.GetComponentInChildren<Text>();
-                buttonGO.name = Inventory[i].Name + " Button";
-                buttonText.text = Inventory[i].Name;
-                buttonText.fontSize = 20;
-
-                Item item = Inventory[i];
-                buttonGO.onClick.AddListener(() => { DisplaySelectedItemOnCanvas(item); });
-            }
+            Button buttonGO = Instantiate<Button>(buttonPrefab, inventoryContent.transform);
+            buttonGO.name = Inventory[i].Name + " Button";
+            RawImage itemImage = buttonGO.GetComponent<RawImage>();
+            
+            Item item = Inventory[i];
+            itemImage.texture = item.Icon;
+            buttonGO.onClick.AddListener(() => { DisplaySelectedItemOnCanvas(item); });
         }
     }
 
     void DisplaySelectedItemOnCanvas(Item _item)
     {
         selectedItem = _item;
-
-        itemImage.texture = selectedItem.Icon;
-        itemName.text = selectedItem.Name;
-        itemDescription.text = selectedItem.Description +
-            "\nValue: " + selectedItem.Value +
-            "\nAmount: " + selectedItem.Amount;
-    }
-
-    private void OnGUI()
-    {
-        if (showIMGUIInventory)
+        inventoryGameObject.SetActive(false);
+        zoomInGameObject.SetActive(true);
+        camera.orthographic = true;
+        camera.orthographicSize = 1.5f;
+        GameObject mesh = selectedItem.Mesh;
+        if (mesh != null)
         {
-            GUI.Box(new Rect(0, 0, Screen.width, Screen.height), "");
-
-            List<string> itemTypes = new List<string>(Enum.GetNames(typeof(Item.ItemType)));
-            itemTypes.Insert(0, "All");
-
-            for (int i = 0; i < itemTypes.Count; i++)
-            {
-                if (GUI.Button(new Rect(
-                    (Screen.width / itemTypes.Count) * i,
-                    10,
-                    Screen.width / itemTypes.Count,
-                    20), itemTypes[i]))
-                {
-                    sortType = itemTypes[i];
-                }
-            }
-
-            Display();
-            if (selectedItem != null)
-            {
-                DisplaySelecterItem();
-            }
+            GameObject spawnedMesh = Instantiate(mesh, camera.transform);
+            spawnedMesh.transform.position = new Vector3(camera.transform.position.x, camera.transform.position.y, camera.transform.position.z + 1);
+            gameManager.IsZoom(true);
         }
+        closeButton.onClick.AddListener(() => { CloseSelectedItemCanvas(); });
+        dropButton.onClick.AddListener(() => { DropSelectedItem(); });
+        
     }
 
-    void DisplaySelecterItem()
-    {
-        GUI.Box(new Rect(Screen.width / 4, Screen.height / 3,
-            Screen.width / 5, Screen.height / 5),
-            selectedItem.Icon);
-
-        GUI.Box(new Rect(Screen.width / 4, (Screen.height / 3) + (Screen.height / 5),
-            Screen.width / 7, Screen.height / 15),
-            selectedItem.Name);
-
-        GUI.Box(new Rect(Screen.width / 4, (Screen.height / 3) + (Screen.height / 3),
-            Screen.width / 5, Screen.height / 5), selectedItem.Description +
-            "\nValue: " + selectedItem.Value +
-            "\nAmount: " + selectedItem.Amount);
+    void CloseSelectedItemCanvas() {
+        camera.orthographic = false;
+        camera.fieldOfView = 60f;
+        zoomInGameObject.SetActive(false);
+        gameManager.IsZoom(false);
+        gameManager.CursorLock(true);
+        DestroyAllChildren(camera.transform);
     }
 
-    void Display()
-    {
-        scrollPosition = GUI.BeginScrollView(new Rect(0, 40, Screen.width, Screen.height - 40),
-            scrollPosition,
-            new Rect(0, 0, 0, Inventory.Count * 30),
-            false,
-            true);
-        int count = 0;
-        for (int i = 0; i < Inventory.Count; i++)
-        {
-            if (Inventory[i].Type.ToString() == sortType || sortType == "All")
-            {
-                if (GUI.Button(new Rect(30, 0 + (count * 30), 200, 30), Inventory[i].Name))
-                {
-                    selectedItem = Inventory[i];
-                    selectedItem.OnClicked();
-                }
-                count++;
-            }
-        }
-        GUI.EndScrollView();
+    void DropSelectedItem() {
+        CloseSelectedItemCanvas();
+        dropPickUpItem.DropItem();
     }
 }

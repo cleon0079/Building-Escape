@@ -5,12 +5,12 @@ using UnityEngine;
 public class DropPickUpItem : MonoBehaviour
 {
     [SerializeField] Inventories inventory;
-    [SerializeField] Transform dropPoint;
     [SerializeField] Camera camera;
+    [SerializeField] GameManager gameManager;
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.F))
+        if (Input.GetKeyDown(KeyCode.F) && gameManager.GetZoom() == false)
         {
             Ray ray = camera.ViewportPointToRay(new Vector3(.5f, .5f, 0));
             RaycastHit hitInfo;
@@ -40,21 +40,17 @@ public class DropPickUpItem : MonoBehaviour
         {
             GameObject spawnedMesh = Instantiate(mesh, null);
 
-            spawnedMesh.transform.position = dropPoint.position;
+            spawnedMesh.transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z + 2);
 
             DropItem dropedItem = mesh.GetComponent<DropItem>();
 
             if (dropedItem != null)
             {
-                dropedItem.item = new Item(inventory.selectedItem, 1);
+                dropedItem.item = new Item(inventory.selectedItem);
             }
         }
 
-        inventory.selectedItem.Amount--;
-        if (inventory.selectedItem.Amount <= 0)
-        {
-            inventory.RemoveItem(inventory.selectedItem);
-            inventory.selectedItem = null;
-        }
+        inventory.RemoveItem(inventory.selectedItem);
+        inventory.selectedItem = null;
     }
 }

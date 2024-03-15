@@ -5,4 +5,26 @@ using UnityEngine;
 public class DropItem : MonoBehaviour
 {
     public Item item;
+    private GameManager gameManager;
+    Rigidbody rigidbody;
+
+    private void Start()
+    {
+        gameManager = FindObjectOfType<GameManager>();
+        rigidbody = GetComponent<Rigidbody>();
+    }
+
+    private void Update()
+    {
+        if (gameManager.isZoom)
+        {
+            rigidbody.useGravity = false;
+            if (Input.GetMouseButton(0))
+            {
+                transform.Rotate(Vector3.up, -Input.GetAxis("Mouse X") * 10, Space.Self);
+                transform.Rotate(Vector3.right, Input.GetAxis("Mouse Y") * 10, Space.Self);
+            }
+        }
+        
+    }
 }
