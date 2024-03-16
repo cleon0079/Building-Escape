@@ -6,21 +6,29 @@ using UnityEngine.UI;
 
 public class Inventories : MonoBehaviour
 {
+    [Header("Inventory")]
     [SerializeField] List<Item> Inventory = new List<Item>();
     [NonSerialized] public Item selectedItem = null;
 
+    [Header("Inventory UI Element")]
     [SerializeField] Button buttonPrefab;
     [SerializeField] GameObject inventoryGameObject;
     [SerializeField] GameObject inventoryContent;
+    
+
+    private Camera camera;
+    private GameManager gameManager;
+
+    [Header("ZoomIn UI Element")]
     [SerializeField] GameObject zoomInGameObject;
-
-    [SerializeField] Camera camera;
-    [SerializeField] GameManager gameManager;
-
     [SerializeField] Button dropButton;
     [SerializeField] Button closeButton;
 
-    [SerializeField] DropPickUpItem dropPickUpItem;
+    private void Start()
+    {
+        camera = Camera.main;
+        gameManager = FindAnyObjectByType<GameManager>();
+    }
 
     public void AddItem(Item _item)
     {
@@ -95,7 +103,7 @@ public class Inventories : MonoBehaviour
         if (mesh != null)
         {
             GameObject spawnedMesh = Instantiate(mesh, camera.transform);
-            spawnedMesh.transform.position = new Vector3(camera.transform.position.x, camera.transform.position.y, camera.transform.position.z + 1);
+            spawnedMesh.transform.localPosition = new Vector3(0, 0, 1);
             gameManager.IsZoom(true);
         }
         closeButton.onClick.AddListener(() => { CloseSelectedItemCanvas(); });
@@ -114,6 +122,6 @@ public class Inventories : MonoBehaviour
 
     void DropSelectedItem() {
         CloseSelectedItemCanvas();
-        dropPickUpItem.DropItem();
+        gameManager.dropPickUpItem.DropItem();
     }
 }

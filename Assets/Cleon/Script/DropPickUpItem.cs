@@ -4,9 +4,14 @@ using UnityEngine;
 
 public class DropPickUpItem : MonoBehaviour
 {
-    [SerializeField] Inventories inventory;
-    [SerializeField] Camera camera;
-    [SerializeField] GameManager gameManager;
+    private Camera camera;
+    private GameManager gameManager;
+
+    private void Start()
+    {
+        gameManager = FindObjectOfType<GameManager>();
+        camera = Camera.main;
+    }
 
     private void Update()
     {
@@ -20,7 +25,7 @@ public class DropPickUpItem : MonoBehaviour
                 DropItem dropedItem = hitInfo.collider.gameObject.GetComponent<DropItem>();
                 if (dropedItem != null)
                 {
-                    inventory.AddItem(dropedItem.item);
+                    gameManager.inventories.AddItem(dropedItem.item);
                     Destroy(hitInfo.collider.gameObject);
                 }
             }
@@ -30,12 +35,12 @@ public class DropPickUpItem : MonoBehaviour
 
     public void DropItem()
     {
-        if (inventory.selectedItem == null)
+        if (gameManager.inventories.selectedItem == null)
         {
             return;
         }
 
-        GameObject mesh = inventory.selectedItem.Mesh;
+        GameObject mesh = gameManager.inventories.selectedItem.Mesh;
         if (mesh != null)
         {
             GameObject spawnedMesh = Instantiate(mesh, null);
@@ -46,11 +51,11 @@ public class DropPickUpItem : MonoBehaviour
 
             if (dropedItem != null)
             {
-                dropedItem.item = new Item(inventory.selectedItem);
+                dropedItem.item = new Item(gameManager.inventories.selectedItem);
             }
         }
 
-        inventory.RemoveItem(inventory.selectedItem);
-        inventory.selectedItem = null;
+        gameManager.inventories.RemoveItem(gameManager.inventories.selectedItem);
+        gameManager.inventories.selectedItem = null;
     }
 }

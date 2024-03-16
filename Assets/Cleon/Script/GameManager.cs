@@ -1,11 +1,17 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public bool isZoom = false;
-    public bool isPause = false;
+    [NonSerialized] public bool isZoom = false;
+    [NonSerialized] public bool isPause = false;
+
+    [Header("Reference")]
+    public FPSController fpsController;
+    public Inventories inventories;
+    public DropPickUpItem dropPickUpItem;
 
     // Start is called before the first frame update
     void Start()
@@ -36,11 +42,13 @@ public class GameManager : MonoBehaviour
         {
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = !isLock;
+            fpsController.canMove = isLock;
         }
         else
         {
             Cursor.lockState = CursorLockMode.Confined;
             Cursor.visible = !isLock;
+            fpsController.canMove = isLock;
         }
     }
 }
