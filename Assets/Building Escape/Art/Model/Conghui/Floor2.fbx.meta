@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 5d85ab5508c568e448fa912e4a246da9
+guid: 769f6dc74a9747b48bf6d91b1cb7bedc
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -7,18 +7,8 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: table1_Emmission
-    second: {fileID: 2100000, guid: 2bb5931af78736649ab625a38470fc74, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: table1_base_colour1
-    second: {fileID: 2100000, guid: 973b8cdc8434f3f4d83454c6e51c7b0c, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: table1_base_colour2
-    second: {fileID: 2100000, guid: 70f8a5967180b6c48b5fedc32fb55c6a, type: 2}
+      name: Floor2_base_colour
+    second: {fileID: 2100000, guid: e0da5d176a0d3654b81a0867171d98ec, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
