@@ -7,8 +7,8 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Wall1_base_Colour
-    second: {fileID: 2100000, guid: 9115ed83de1a21d4fa91bc2b0d697a19, type: 2}
+      name: Wall1_base_Color
+    second: {fileID: 2100000, guid: 86b8d30d2d877a2459ddff52a41c2923, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
