@@ -10,68 +10,108 @@ public class Puzzle : MonoBehaviour
 
     public Sprite[] sprites;
 
-
+    private int emptyIndex = 16;
 
     // Start is called before the first frame update
     void Start()
     {
         Init();
+        Shuffle();
     }
 
     void Init()
-    {   
-        int n=0;
-        for(int y =3; y>= 0; y--){
-            for(int x=0; x<4; x++){
-                NumBox box =Instantiate(boxPrefab, new Vector2(x,y),Quaternion.identity);
-                box.Init(x,y, n+1, sprites[n],ClickToSwap);
-                boxes[x,y] = box;
+    {
+        int n = 0;
+        for (int y = 3; y >= 0; y--)
+        {
+            for (int x = 0; x < 4; x++)
+            {
+                NumBox box = Instantiate(boxPrefab, new Vector2(x, y), Quaternion.identity);
+                box.Init(x, y, n + 1, sprites[n], ClickToSwap);
+                boxes[x, y] = box;
                 n++;
             }
         }
     }
 
-    void ClickToSwap(int x, int y){
-        int dx =getDx(x,  y);
-        int dy =getDy(x,  y);
+    void ClickToSwap(int x, int y)
+    {
+        int dx = GetDx(x, y);
+        int dy = GetDy(x, y);
 
-        var SelectTarget = boxes[x,y];
-        var chargeTarget = boxes[x+dx,y+dy];
+        var selectTarget = boxes[x, y];
+        var chargeTarget = boxes[x + dx, y + dy];
 
-        //swap this 2 boxes
-        boxes[x,y] = chargeTarget;
-        boxes[x+dx,y+dy] = SelectTarget;
+        // Swap the boxes
+        boxes[x, y] = chargeTarget;
+        boxes[x + dx, y + dy] = selectTarget;
 
-        SelectTarget.UpdatePos(x+ dx,y+dy);
-        chargeTarget.UpdatePos(x,y);
+        selectTarget.UpdatePos(x + dx, y + dy);
+        chargeTarget.UpdatePos(x, y);
+
+        CheckComplete(); // Check for completion after each swap
     }
-    
-    //check is oudside the
-    int getDx(int x, int y){
-        //check right side is empty
-        if(x< 3 && boxes[x +1,y].IsEmpty() ){
+
+    int GetDx(int x, int y)
+    {
+        if (x < 3 && boxes[x + 1, y].IsEmpty())
+        {
             return 1;
         }
-        //check Left side is empty
-        if(x>0 && boxes[x -1,y].IsEmpty() ){
+        if (x > 0 && boxes[x - 1, y].IsEmpty())
+        {
             return -1;
         }
-        else{
+        else
+        {
             return 0;
         }
     }
 
-    int getDy(int x, int y){
-        //check top side is empty
-        if(y< 3 && boxes[x,y +1].IsEmpty() ){
+    int GetDy(int x, int y)
+    {
+        if (y < 3 && boxes[x, y + 1].IsEmpty())
+        {
             return 1;
         }
-        //check bottom side is empty
-        if(y>0 && boxes[x,y -1].IsEmpty() ){
+        if (y > 0 && boxes[x, y - 1].IsEmpty())
+        {
             return -1;
         }
-        else{
+        else
+        {
             return 0;
         }
+    }
+
+    // Shuffle the puzzle
+    void Shuffle()
+    {
+        for (int i = 0; i < 100; i++)
+        {
+            int randomX = Random.Range(0, 4);
+            int randomY = Random.Range(0, 4);
+            if (!boxes[randomX, randomY].IsEmpty())
+            {
+                ClickToSwap(randomX, randomY);
+            }
+        }
+    }
+
+    // Check if the puzzle is completed
+    void CheckComplete()
+    {
+        for (int y = 0; y < 4; y++)
+        {
+            for (int x = 0; x < 4; x++)
+            {
+                if (boxes[x, y].originalX != x || boxes[x, y].originalY != y)
+                {
+                    Debug.Log("Puzzle is not complete yet!");
+                    return;
+                }
+            }
+        }
+        Debug.Log("Puzzle is complete!");
     }
 }
