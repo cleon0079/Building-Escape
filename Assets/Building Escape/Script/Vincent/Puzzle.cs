@@ -23,6 +23,14 @@ public class Puzzle : MonoBehaviour{
         Shuffle();
     }
 
+    void update (){
+        if (Input.GetKeyDown(KeyCode.Escape)){
+
+        }
+
+    }
+
+
     void Init(){
         
         //get position in fornt of the camera
