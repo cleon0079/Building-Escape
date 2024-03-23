@@ -247,6 +247,68 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8927571247106271315, guid: c29ef549bac226742a9a52f0d7eeb47c, type: 3}
   m_PrefabInstance: {fileID: 4907570984006459960}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &163815576
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 163815577}
+  - component: {fileID: 163815578}
+  m_Layer: 0
+  m_Name: Puzzle
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &163815577
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 163815576}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 4.93}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1473801950}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &163815578
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 163815576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be0d46ab94e5c714bb226ca4070b5fd3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boxPrefab: {fileID: 6714050527177110636, guid: e3dc6a916373eb04f92e6488d4aed1ef, type: 3}
+  sprites:
+  - {fileID: -1182758748, guid: c5873bee99528d3408c581819dd6c6a5, type: 3}
+  - {fileID: 1852973380, guid: c5873bee99528d3408c581819dd6c6a5, type: 3}
+  - {fileID: 587631083, guid: c5873bee99528d3408c581819dd6c6a5, type: 3}
+  - {fileID: 1070231436, guid: c5873bee99528d3408c581819dd6c6a5, type: 3}
+  - {fileID: 926551955, guid: c5873bee99528d3408c581819dd6c6a5, type: 3}
+  - {fileID: -1672077645, guid: c5873bee99528d3408c581819dd6c6a5, type: 3}
+  - {fileID: -688179353, guid: c5873bee99528d3408c581819dd6c6a5, type: 3}
+  - {fileID: 1851576690, guid: c5873bee99528d3408c581819dd6c6a5, type: 3}
+  - {fileID: 380351198, guid: c5873bee99528d3408c581819dd6c6a5, type: 3}
+  - {fileID: -492695835, guid: c5873bee99528d3408c581819dd6c6a5, type: 3}
+  - {fileID: 538054491, guid: c5873bee99528d3408c581819dd6c6a5, type: 3}
+  - {fileID: 1479773563, guid: c5873bee99528d3408c581819dd6c6a5, type: 3}
+  - {fileID: 1741053275, guid: c5873bee99528d3408c581819dd6c6a5, type: 3}
+  - {fileID: 210825438, guid: c5873bee99528d3408c581819dd6c6a5, type: 3}
+  - {fileID: -1287651612, guid: c5873bee99528d3408c581819dd6c6a5, type: 3}
+  - {fileID: 0}
 --- !u!1001 &227691050
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -513,6 +575,7 @@ Transform:
   m_Children:
   - {fileID: 769162636}
   - {fileID: 45541549}
+  - {fileID: 1473801950}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &545833177
@@ -2016,7 +2079,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1473801950}
   - component: {fileID: 1473801949}
-  - component: {fileID: 1473801948}
   m_Layer: 0
   m_Name: LockCamera
   m_TagString: Untagged
@@ -2024,14 +2086,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &1473801948
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1473801947}
-  m_Enabled: 1
 --- !u!20 &1473801949
 Camera:
   m_ObjectHideFlags: 0
@@ -2091,12 +2145,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1473801947}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 40.73, y: 4.28, z: 28.2}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
+  m_Children:
+  - {fileID: 163815577}
+  m_Father: {fileID: 509383176}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1535238543
 PrefabInstance:
@@ -5558,5 +5613,4 @@ SceneRoots:
   - {fileID: 956879060}
   - {fileID: 2040509269}
   - {fileID: 1589499471}
-  - {fileID: 1473801950}
   - {fileID: 509383176}
