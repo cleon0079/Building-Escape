@@ -88,11 +88,14 @@ public class Inventories : MonoBehaviour
             
             Item item = Inventory[i];
             itemImage.texture = item.Icon;
-            buttonGO.onClick.AddListener(() => { DisplaySelectedItemOnCanvas(item); });
+
+            buttonGO.onClick.AddListener(() => {  DisplaySelectedItemOnCanvas(item); });
+            
         }
     }
 
-    void DisplaySelectedItemOnCanvas(Item _item)
+
+    public void DisplaySelectedItemOnCanvas(Item _item)
     {
         selectedItem = _item;
         inventoryGameObject.SetActive(false);
@@ -102,8 +105,9 @@ public class Inventories : MonoBehaviour
         GameObject mesh = selectedItem.Mesh;
         if (mesh != null)
         {
-            GameObject spawnedMesh = Instantiate(mesh, camera.transform);
-            spawnedMesh.transform.localPosition = new Vector3(0, 0, 1);
+            mesh.GetComponentInChildren<MeshRenderer>().enabled = true;
+            mesh.transform.parent = camera.transform;
+            mesh.transform.localPosition = new Vector3(0, 0, 1);
             gameManager.IsZoom(true);
         }
         closeButton.onClick.AddListener(() => { CloseSelectedItemCanvas(); });
@@ -117,7 +121,8 @@ public class Inventories : MonoBehaviour
         zoomInGameObject.SetActive(false);
         gameManager.IsZoom(false);
         gameManager.CursorLock(true);
-        DestroyAllChildren(camera.transform);
+        GameObject mesh = camera.transform.GetChild(0).gameObject;
+        mesh.GetComponentInChildren<MeshRenderer>().enabled = false;
     }
 
     void DropSelectedItem() {

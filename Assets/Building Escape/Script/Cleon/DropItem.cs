@@ -14,6 +14,7 @@ public class DropItem : MonoBehaviour
         gameManager = FindObjectOfType<GameManager>();
         rigidbody = GetComponent<Rigidbody>();
         rigidbody.useGravity = false;
+        rigidbody.isKinematic = true;
     }
 
     private void Update()
@@ -27,5 +28,15 @@ public class DropItem : MonoBehaviour
             }
         }
         
+    }
+
+    public void GetItem() {
+        rigidbody.isKinematic = true;
+        rigidbody.useGravity = false;
+    }
+
+    public void Drop() {
+        rigidbody.isKinematic = false;
+        rigidbody.useGravity = true;
     }
 }

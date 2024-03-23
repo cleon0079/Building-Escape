@@ -26,7 +26,8 @@ public class DropPickUpItem : MonoBehaviour
                 if (dropedItem != null)
                 {
                     gameManager.inventories.AddItem(dropedItem.item);
-                    Destroy(hitInfo.collider.gameObject);
+                    hitInfo.collider.gameObject.GetComponentInChildren<MeshRenderer>().enabled = false;
+                    dropedItem.GetItem();
                 }
             }
 
@@ -43,12 +44,13 @@ public class DropPickUpItem : MonoBehaviour
         GameObject mesh = gameManager.inventories.selectedItem.Mesh;
         if (mesh != null)
         {
-            GameObject spawnedMesh = Instantiate(mesh, null);
-
-            spawnedMesh.transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z + 2);
+            mesh.GetComponentInChildren<MeshRenderer>().enabled = true;
+            mesh.transform.parent = null;
+            mesh.transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z + 2);
+            
 
             DropItem dropedItem = mesh.GetComponent<DropItem>();
-
+            dropedItem.Drop();
             if (dropedItem != null)
             {
                 dropedItem.item = new Item(gameManager.inventories.selectedItem);
