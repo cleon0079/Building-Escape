@@ -13,9 +13,14 @@ public class Puzzle : MonoBehaviour{
 
     public float distance =5f;  // distance between camera and puzzle
     [SerializeField] private Camera LockCamera; // Reference to the camera
+    [SerializeField] private GameObject Doors; 
 
+    public float moveSpeed = 2f;
 
     private bool ShuffleComplete = false;
+
+    private bool puzzleComplete = false;
+    private bool doorFullyOpened =false;
 
     // Start is called before the first frame update
     void Start(){
@@ -23,11 +28,8 @@ public class Puzzle : MonoBehaviour{
         Shuffle();
     }
 
-    void update (){
-        if (Input.GetKeyDown(KeyCode.Escape)){
-
-        }
-
+    void Update (){
+        openDoor();
     }
 
 
@@ -47,8 +49,8 @@ public class Puzzle : MonoBehaviour{
 
         Vector3 puzzleCenter = new Vector3((puzzleWidth - 1) * cellSize / 2f, (puzzleHeight - 1) * cellSize / 2f, 0f);
 
-    // Offset the puzzle object to center it in the camera view
-    puzzleObject.transform.position -= puzzleCenter;
+        // Offset the puzzle object to center it in the camera view
+        puzzleObject.transform.position -= puzzleCenter;
 
         int n = 0;
         for (int y = 3; y >= 0; y--){
@@ -115,7 +117,7 @@ public class Puzzle : MonoBehaviour{
             }
         }
         
-        Debug.Log("Puzzle is Shuffled");
+        //Debug.Log("Puzzle is Shuffled");
         ShuffleComplete = true;
     }
 
@@ -124,11 +126,24 @@ public class Puzzle : MonoBehaviour{
         for (int y = 0; y < 4; y++){
             for (int x = 0; x < 4; x++){
                 if (boxes[x, y].originalX != x || boxes[x, y].originalY != y){
-                    Debug.Log("Puzzle is not complete yet!");
+                    //Debug.Log("Puzzle is not complete yet!");
                     return;
                 }
             }
         }
-        Debug.Log("Puzzle is complete!");
+        Debug.Log("Puzzle is complete!"); 
+        puzzleComplete =true;
+    }
+
+    private void openDoor(){
+        if(puzzleComplete == true){
+            //check door is fully open or not
+            if(doorFullyOpened == false){
+                Doors.transform.Translate(Vector3.right * moveSpeed * Time.deltaTime);
+                if( Doors.transform.position.z <=11.69){
+                    doorFullyOpened = true;
+                }
+            }
+        }
     }
 }

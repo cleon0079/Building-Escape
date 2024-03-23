@@ -23,11 +23,13 @@ public class TriggerLock : MonoBehaviour
             mainCamera.enabled = false;
             // Enable the Lock camera
             LockCamera.enabled = true;
+            Cursor.visible = true;
         }
         if (Input.GetKeyDown(KeyCode.Escape)){
              mainCamera.enabled = true;
             // Enable the Lock camera
             LockCamera.enabled = false;
+            Cursor.visible = false;
         }
     }
 
