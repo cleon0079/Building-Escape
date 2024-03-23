@@ -262,6 +262,8 @@ MonoBehaviour:
   - {fileID: 210825438, guid: c5873bee99528d3408c581819dd6c6a5, type: 3}
   - {fileID: -1287651612, guid: c5873bee99528d3408c581819dd6c6a5, type: 3}
   - {fileID: 0}
+  distance: 5
+  LockCamera: {fileID: 1464896817}
 --- !u!4 &1612520489
 Transform:
   m_ObjectHideFlags: 0
