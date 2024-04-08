@@ -11,6 +11,11 @@ public class CameraFollow : MonoBehaviour
 
     private float rotationX = 0f;
 
+    void Start()
+    {
+        // Lock the cursor
+        Cursor.lockState = CursorLockMode.Locked;
+    }
     void LateUpdate()
     {
         // Get the mouse input for camera rotation
