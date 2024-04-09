@@ -6,24 +6,40 @@ using UnityEngine;
 
 public class Crate : MonoBehaviour
 {
-    Animator CrateAnimator;
+    private Animator crateAnimator;
+
     // Start is called before the first frame update
     void Start()
     {
-        CrateAnimator = GetComponent<Animator>();
+        crateAnimator = GetComponent<Animator>();
     }
 
-    // Update is called once per frame
-    void Update()
+    // Method to open the crate
+    public void Open()
     {
-        
-    }
-    
-     public void Open(){
-        CrateAnimator.SetBool("Crate open",true);
+        crateAnimator.SetBool("Crate open", true);
     }
 
-    public void Close(){
-        CrateAnimator.SetBool("Crate open",false);
+    // Method to close the crate
+    public void Close()
+    {
+        crateAnimator.SetBool("Crate open", false);
+    }
+
+    // Check if the crate animation has reached a specific state (e.g., fully open)
+    public bool IsAnimationComplete()
+    {
+        // Check if the crate animator exists
+        if (crateAnimator == null)
+        {
+            Debug.LogWarning("Crate animator is not set.");
+            return false;
+        }
+
+        // Check if the crate animation has reached a specific state
+        // Here, you can define your own logic to determine when the animation is considered complete
+        // For example, if "Crate open" is fully open and not in transition, return true
+        return crateAnimator.GetCurrentAnimatorStateInfo(0).IsName("Crate_Open") &&
+               !crateAnimator.IsInTransition(0);
     }
 }
