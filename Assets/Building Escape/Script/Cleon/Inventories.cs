@@ -121,8 +121,13 @@ public class Inventories : MonoBehaviour
         zoomInGameObject.SetActive(false);
         gameManager.IsZoom(false);
         gameManager.CursorLock(true);
-        GameObject mesh = camera.transform.GetChild(0).gameObject;
-        mesh.GetComponentInChildren<MeshRenderer>().enabled = false;
+        for (int i = 0; i < camera.transform.childCount; i++)
+        {
+            GameObject mesh = camera.transform.GetChild(i).gameObject;
+            mesh.GetComponent<BoxCollider>().enabled = false;
+            mesh.GetComponentInChildren<MeshRenderer>().enabled = false;
+        }
+        
     }
 
     void DropSelectedItem() {
