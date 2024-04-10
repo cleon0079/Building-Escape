@@ -26,9 +26,19 @@ public class DropPickUpItem : MonoBehaviour
                 if (dropedItem != null)
                 {
                     gameManager.inventories.AddItem(dropedItem.item);
-                    for (int i = 0; i < hitInfo.collider.transform.childCount; i++)
+                    hitInfo.transform.gameObject.GetComponent<BoxCollider>().enabled = false;
+
+                    if (hitInfo.transform.childCount == 0)
                     {
-                        hitInfo.collider.transform.GetChild(i).gameObject.GetComponentInChildren<MeshRenderer>().enabled = false;
+                        hitInfo.transform.gameObject.GetComponent<MeshRenderer>().enabled = false;
+                        
+                    }
+                    else
+                    {
+                        for (int i = 0; i < hitInfo.collider.transform.childCount; i++)
+                        {
+                            hitInfo.collider.transform.GetChild(i).gameObject.GetComponentInChildren<MeshRenderer>().enabled = false;
+                        }
                     }
                     dropedItem.GetItem();
                 }

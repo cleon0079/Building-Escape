@@ -24,13 +24,14 @@ public class FPSController : MonoBehaviour
     public bool canMove = true;
     private bool IsTrigger =false;
 
-    
+    private GameManager gm;
 
     private CharacterController characterController;
     
     // Start is called before the first frame update
     void Start()
     {
+        gm = FindObjectOfType<GameManager>();
         characterController = GetComponent<CharacterController>();
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
@@ -55,14 +56,18 @@ public class FPSController : MonoBehaviour
 
     Vector3 movement = forward * moveX + right * moveZ;
 
-    // Handles Rotation
-    rotationX += -Input.GetAxis("Mouse Y") * lookSpeed;
-    rotationX = Mathf.Clamp(rotationX, -lookXLimit, lookXLimit);
-    PlayerCamera.transform.localRotation = Quaternion.Euler(rotationX, 0, 0);
-    transform.rotation *= Quaternion.Euler(0, Input.GetAxis("Mouse X") * lookSpeed, 0);
+        if (gm.GetZoom() == false)
+        {
+            // Handles Rotation
+            rotationX += -Input.GetAxis("Mouse Y") * lookSpeed;
+            rotationX = Mathf.Clamp(rotationX, -lookXLimit, lookXLimit);
+            PlayerCamera.transform.localRotation = Quaternion.Euler(rotationX, 0, 0);
+            transform.rotation *= Quaternion.Euler(0, Input.GetAxis("Mouse X") * lookSpeed, 0);
 
-    // Apply gravity
-    if (characterController.isGrounded)
+        }
+
+        // Apply gravity
+        if (characterController.isGrounded)
     {
         moveDirection.y = 0f;
         onGround = true;

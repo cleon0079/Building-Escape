@@ -10,7 +10,7 @@ public class Item
         None,
         One,
         Two,
-        Three
+        KeyDoor
     }
 
     // Item's ID

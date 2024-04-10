@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     public FPSController fpsController;
     public Inventories inventories;
     public DropPickUpItem dropPickUpItem;
+    public KeyDoor keyDoor;
 
     // Start is called before the first frame update
     void Start()
@@ -22,7 +23,22 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            OpenKeyDoor();
+            Debug.Log("111");
+        }
+    }
+
+    void OpenKeyDoor() {
+        foreach (Item item in inventories.getInventory())
+        {
+            if (item.Type == Item.Index.KeyDoor)
+            {
+                Debug.Log(222);
+                keyDoor.DoorOpen();
+            }
+        }
     }
 
     public void IsZoom(bool _isZoom) {

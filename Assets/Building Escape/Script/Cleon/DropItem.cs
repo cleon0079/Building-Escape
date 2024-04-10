@@ -7,6 +7,7 @@ public class DropItem : MonoBehaviour
     public Item item;
     private GameManager gameManager;
     Rigidbody rigidbody;
+    private bool isView;
     
 
     private void Start()
@@ -19,7 +20,7 @@ public class DropItem : MonoBehaviour
 
     private void Update()
     {
-        if (gameManager.isZoom)
+        if (gameManager.isZoom && isView)
         {
             if (Input.GetMouseButton(0))
             {
@@ -28,6 +29,10 @@ public class DropItem : MonoBehaviour
             }
         }
         
+    }
+
+    public void SetView(bool view) {
+        this.isView = view;
     }
 
     public void GetItem() {

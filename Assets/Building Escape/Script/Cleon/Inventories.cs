@@ -108,6 +108,7 @@ public class Inventories : MonoBehaviour
             mesh.GetComponentInChildren<MeshRenderer>().enabled = true;
             mesh.transform.parent = camera.transform;
             mesh.transform.localPosition = new Vector3(0, 0, 1);
+            mesh.GetComponent<DropItem>().SetView(true);
             gameManager.IsZoom(true);
         }
         closeButton.onClick.AddListener(() => { CloseSelectedItemCanvas(); });
@@ -126,6 +127,7 @@ public class Inventories : MonoBehaviour
             GameObject mesh = camera.transform.GetChild(i).gameObject;
             mesh.GetComponent<BoxCollider>().enabled = false;
             mesh.GetComponentInChildren<MeshRenderer>().enabled = false;
+            mesh.GetComponent<DropItem>().SetView(false);
         }
         
     }
@@ -133,5 +135,9 @@ public class Inventories : MonoBehaviour
     void DropSelectedItem() {
         CloseSelectedItemCanvas();
         gameManager.dropPickUpItem.DropItem();
+    }
+
+    public List<Item> getInventory() {
+        return Inventory;
     }
 }
