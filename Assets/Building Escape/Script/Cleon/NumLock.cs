@@ -6,6 +6,8 @@ using TMPro;
 
 public class NumLock : MonoBehaviour
 {
+    [SerializeField] GameObject UI;
+
     private bool right = false;
     private int id = 0;
     [SerializeField] Button[] buttons;
@@ -23,6 +25,14 @@ public class NumLock : MonoBehaviour
         setButton();
         delete.onClick.AddListener(() => { Delete(); });
         check.onClick.AddListener(() => { Check(); });
+    }
+
+    public void OpenNumLock(){
+        UI.SetActive(true);
+    }
+
+    public void CloseNumLock() {
+        UI.SetActive(false);
     }
 
     void setButton() {

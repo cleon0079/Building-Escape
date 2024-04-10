@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     public Inventories inventories;
     public DropPickUpItem dropPickUpItem;
     public KeyDoor keyDoor;
+    public NumLock numLock;
 
     // Start is called before the first frame update
     void Start()

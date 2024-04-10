@@ -9,6 +9,7 @@ public class FPSController : MonoBehaviour
     //camera
     [SerializeField] private Camera PlayerCamera;
     [SerializeField] private Camera LockCamera;
+
     public float walkSpeed =6f;
     public float runSpeed = 12f;
 
@@ -25,6 +26,8 @@ public class FPSController : MonoBehaviour
     private bool IsTrigger =false;
 
     private GameManager gm;
+    [SerializeField] private Camera numLockCamera;
+    private bool isNumLock = false;
 
     private CharacterController characterController;
     
@@ -37,6 +40,7 @@ public class FPSController : MonoBehaviour
         Cursor.visible = false;
         //
         LockCamera.enabled = false;
+        numLockCamera.enabled = false;
     }
 
     // Update is called once per frame
@@ -111,22 +115,50 @@ public class FPSController : MonoBehaviour
             PlayerCamera.enabled = true;
             // Enable the Lock camera
             LockCamera.enabled = false;
+            numLockCamera.enabled = false;
+
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
-        }   
+
+
+            gm.numLock.CloseNumLock();
+        }
+
+        if (isNumLock && Input.GetKeyDown(KeyCode.E))
+        {
+            // Disable the main camera
+            PlayerCamera.enabled = false;
+            // Enable the Lock camera
+            numLockCamera.enabled = true;
+
+            gm.numLock.OpenNumLock();
+
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        }
     }
     void OnTriggerEnter(Collider  other){
         if (other.CompareTag("Lock")){
             Debug.Log("Player entered the trigger!");
             IsTrigger =true;
-        } 
+        }
+
+        if (other.CompareTag("NumLock"))
+        {
+            isNumLock = true;
+        }
     }
 
     void OnTriggerExit(Collider  other){
         if (other.CompareTag("Lock")){
             Debug.Log("Player exited the trigger!");
             IsTrigger =false;
-        } 
+        }
+
+        if (other.CompareTag("NumLock"))
+        {
+            isNumLock = false;
+        }
     }
 
 
