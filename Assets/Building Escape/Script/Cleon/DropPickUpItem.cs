@@ -58,6 +58,7 @@ public class DropPickUpItem : MonoBehaviour
         if (mesh != null)
         {
             mesh.GetComponentInChildren<MeshRenderer>().enabled = true;
+            mesh.GetComponentInChildren<BoxCollider>().enabled = true;
             mesh.transform.parent = null;
             mesh.transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z + 2);
             
