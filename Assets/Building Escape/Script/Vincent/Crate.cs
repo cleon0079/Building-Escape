@@ -37,8 +37,6 @@ public class Crate : MonoBehaviour
         }
 
         // Check if the crate animation has reached a specific state
-        // Here, you can define your own logic to determine when the animation is considered complete
-        // For example, if "Crate open" is fully open and not in transition, return true
         return crateAnimator.GetCurrentAnimatorStateInfo(0).IsName("Crate_Open") &&
                !crateAnimator.IsInTransition(0);
     }
