@@ -31,17 +31,11 @@ public class Interaction : MonoBehaviour
             
             if (Input.GetKeyDown(interactKey) && checkCrate ==true)
                 {
-            // Debug.Log("crate open");
-            // Check if the hit object is the target object
-            // if (hit.collider.gameObject == targetObject)
-            // {
+
                 Debug.Log("Player look target object.");
                 // Check if the player presses the 'F' key
-                   
-                    
                     // Start the interaction coroutine
                     StartCoroutine(InteractWithCrate());
-                // }
             }
         }
         else
