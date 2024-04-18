@@ -4,28 +4,23 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField]
-    private CharacterController controller;
+    [SerializeField] private CharacterController controller;
 
-    [SerializeField]
-    private Camera eyes;
+    [SerializeField] private Camera eyes;   //main camera
 
-    [SerializeField]
-    private float speed = 10f;
-    [SerializeField]
-    private float smooth =6f;
+    [SerializeField] private float speed = 10f;
+    [SerializeField] private float smooth =6f;
     float _smoothValx, _smoothValZ; // used in input smoothing
-    [SerializeField]
-    private float jumpHeight = 2f;
-    [SerializeField]
-    private float gravity = -9.81f;
+    [SerializeField] private float jumpHeight = 2f;
+    [SerializeField] private float gravity = -9.81f;
     private Vector3 playerVelocity;
     private bool grounded;
     float mRotationY = 0f;
-    [SerializeField]
-    private float lookSensitivity =1f;
+    [SerializeField] private float lookSensitivity =1f;
+   
+    [SerializeField] private TriggerLock triggerLock;
 
-
+    private GameManager gm;
 
     // Start is called before the first frame update
     void Start()
@@ -36,9 +31,14 @@ public class PlayerController : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
-        Movement();
+    {   
+        if (gm.GetZoom() == false){
+            Movement();
+        }
+        
         Camera();
+
+
     }
 
     public void Movement()
@@ -87,7 +87,6 @@ public class PlayerController : MonoBehaviour
 
     }
 
-
     public Vector2 SmoothedInput()
     {
         float dead = 0.001f;
@@ -107,6 +106,4 @@ public class PlayerController : MonoBehaviour
         return new Vector2(rX, ry);
     }
 
-
-    
 }

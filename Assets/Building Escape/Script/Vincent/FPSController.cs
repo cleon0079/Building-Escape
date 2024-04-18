@@ -47,7 +47,7 @@ public class FPSController : MonoBehaviour
     // Update is called once per frame
     void Update(){
         
-            // Handles Movement
+    // Handles Movement
     Vector3 forward = transform.TransformDirection(Vector3.forward);
     Vector3 right = transform.TransformDirection(Vector3.right);
 
@@ -115,7 +115,7 @@ public class FPSController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape)){
             PlayerCamera.enabled = true;
             // Enable the Lock camera
-            LockCamera.enabled = false;
+            numLockCamera.enabled = false;
             numLockCamera.enabled = false;
 
             Cursor.lockState = CursorLockMode.Locked;
@@ -140,7 +140,7 @@ public class FPSController : MonoBehaviour
     }
     public void OnTriggerEnter(Collider  other){
         
-        if (other.CompareTag("Lock")){
+        if (other.CompareTag("SlideLock")){
             Debug.Log("Player trigger Enter" + other);
             IsTrigger =true;
         }
@@ -150,9 +150,9 @@ public class FPSController : MonoBehaviour
             isNumLock = true;
         }
     }
-
+    
     public void OnTriggerExit(Collider  other){
-        if (other.CompareTag("Lock")){
+        if (other.CompareTag("SlideLock")){
             Debug.Log("Player exited " + other);
             IsTrigger =false;
         }

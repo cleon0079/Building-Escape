@@ -5,12 +5,11 @@ using UnityEngine;
 public class TriggerLock : MonoBehaviour
 {   
     [SerializeField] private PlayerController controller;
+    [SerializeField] private Camera PlayerCamera;
 
     [SerializeField] private KeyCode interactKey = KeyCode.E; // Key to interact
 
     [SerializeField] private KeyCode EscapeKey = KeyCode.Escape; // Key to interact
-
-    [SerializeField] private Camera PlayerCamera;
 
     [SerializeField] private Camera SlideLockCamera;
     [SerializeField] private Camera numLockCamera;
@@ -25,19 +24,17 @@ public class TriggerLock : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
         //Hide all other camera
         SlideLockCamera.enabled = false;
         numLockCamera.enabled = false;
     }
 
     // Update is called once per frame
-    void Update()
-    {
+    public void InteractWithLock()    {
         if(IsTrigger ==true && Input.GetKeyDown(interactKey) ){
-            // Disable the main camera
-            PlayerCamera.enabled = false;
-            
+            //swicth off the player camera
+            PlayerCamera.enabled =false;
+
             //Show the cursor
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
@@ -54,20 +51,24 @@ public class TriggerLock : MonoBehaviour
 
         //Excape the puzzle
         if (Input.GetKeyDown(EscapeKey)){
-            //show player camera 
+            //hide the cursor
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+
+
+            //switch back to player camera 
             PlayerCamera.enabled = true;
 
             //hide all other camera
             SlideLockCamera.enabled = false;
+
             numLockCamera.enabled = false;
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
+            gm.numLock.CloseNumLock();
         }
     }
 
     void NumSlidePuzzle(){
         SlideLockCamera.enabled = true;
-
     }
 
     void NumLockPuzzle(){
