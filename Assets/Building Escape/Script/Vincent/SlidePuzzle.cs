@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Puzzle : MonoBehaviour{   
+public class SlidePuzzle : MonoBehaviour{   
     public NumBox boxPrefab;
 
     public NumBox[,] boxes= new NumBox[4,4];

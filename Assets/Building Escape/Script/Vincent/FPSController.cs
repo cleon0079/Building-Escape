@@ -95,7 +95,7 @@ public class FPSController : MonoBehaviour
     // Move the character controller
     characterController.Move(movement + moveDirection * Time.deltaTime);
 
-        HandleTrigger();
+    HandleTrigger();
     }
 
     void HandleTrigger(){
@@ -137,9 +137,9 @@ public class FPSController : MonoBehaviour
             Cursor.visible = true;
         }
     }
-    void OnTriggerEnter(Collider  other){
+    public void OnTriggerEnter(Collider  other){
         if (other.CompareTag("Lock")){
-            Debug.Log("Player entered the trigger!");
+            Debug.Log("Player trigger Enter" + other);
             IsTrigger =true;
         }
 
@@ -149,9 +149,9 @@ public class FPSController : MonoBehaviour
         }
     }
 
-    void OnTriggerExit(Collider  other){
+    public void OnTriggerExit(Collider  other){
         if (other.CompareTag("Lock")){
-            Debug.Log("Player exited the trigger!");
+            Debug.Log("Player exited " + other);
             IsTrigger =false;
         }
 
