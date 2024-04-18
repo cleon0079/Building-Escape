@@ -5406,7 +5406,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2687401980275792226, guid: 5cb3aeb054059b14abb618f72a98950c, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2687401980275792226, guid: 5cb3aeb054059b14abb618f72a98950c, type: 3}
       propertyPath: LockCamera
@@ -5497,7 +5497,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 1624474857}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1624474860}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1bf4e29ca02929f48b0c06d21080f7a4, type: 3}
   m_Name: 
@@ -5553,7 +5553,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1624474860}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ab66e2df87de5534fb256ad620f37dc9, type: 3}
   m_Name: 
@@ -5583,7 +5583,6 @@ MonoBehaviour:
   jumpHeight: 2
   gravity: -9.81
   lookSensitivity: 1
-  triggerLock: {fileID: 0}
 --- !u!4 &1650445870 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3540715580589593388, guid: f5a1e91e9189e81488dd700d208056ca, type: 3}

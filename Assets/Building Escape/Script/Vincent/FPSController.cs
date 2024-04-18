@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering.VirtualTexturing;
 
 [RequireComponent(typeof(CharacterController))]
 
@@ -121,7 +123,6 @@ public class FPSController : MonoBehaviour
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
 
-
             gm.numLock.CloseNumLock();
         }
 
@@ -138,6 +139,12 @@ public class FPSController : MonoBehaviour
             Cursor.visible = true;
         }
     }
+
+    private void println()
+    {
+        throw new NotImplementedException();
+    }
+
     public void OnTriggerEnter(Collider  other){
         
         if (other.CompareTag("SlideLock")){
@@ -150,7 +157,7 @@ public class FPSController : MonoBehaviour
             isNumLock = true;
         }
     }
-    
+
     public void OnTriggerExit(Collider  other){
         if (other.CompareTag("SlideLock")){
             Debug.Log("Player exited " + other);

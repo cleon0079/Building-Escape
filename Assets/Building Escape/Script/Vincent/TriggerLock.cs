@@ -30,7 +30,7 @@ public class TriggerLock : MonoBehaviour
     }
 
     // Update is called once per frame
-    public void InteractWithLock()    {
+    public void Update()    {
         if(IsTrigger ==true && Input.GetKeyDown(interactKey) ){
             //swicth off the player camera
             PlayerCamera.enabled =false;

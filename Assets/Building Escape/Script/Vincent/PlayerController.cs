@@ -18,8 +18,6 @@ public class PlayerController : MonoBehaviour
     float mRotationY = 0f;
     [SerializeField] private float lookSensitivity =1f;
    
-    [SerializeField] private TriggerLock triggerLock;
-
     private GameManager gm;
 
     // Start is called before the first frame update
@@ -32,9 +30,9 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {   
-        if (gm.GetZoom() == false){
+        //if (gm.GetZoom() == false){
             Movement();
-        }
+        //}
         
         Camera();
 
