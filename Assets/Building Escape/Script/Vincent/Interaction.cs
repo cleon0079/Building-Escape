@@ -7,7 +7,7 @@ public class Interaction : MonoBehaviour
     [SerializeField] private GameObject targetObject;
     [SerializeField] private Crate crate;
     public float interactionDistance = 5f; // Distance for interaction
-    [SerializeField] private KeyCode interactKey = KeyCode.F; // Key to interact
+    [SerializeField] private KeyCode interactKey = KeyCode.E; // Key to interact
 
     private bool isInteracting = false;
     private bool checkCrate =false;
@@ -33,7 +33,7 @@ public class Interaction : MonoBehaviour
                 {
 
                 Debug.Log("Player look target object.");
-                // Check if the player presses the 'F' key
+                // Check if the player presses the key
                     // Start the interaction coroutine
                     StartCoroutine(InteractWithCrate());
             }

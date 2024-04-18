@@ -25,6 +25,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private float lookSensitivity =1f;
 
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -104,4 +106,7 @@ public class PlayerController : MonoBehaviour
 
         return new Vector2(rX, ry);
     }
+
+
+    
 }

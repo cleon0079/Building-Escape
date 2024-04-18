@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class FPSController : MonoBehaviour
 {   
+    [SerializeField] private KeyCode interactKey = KeyCode.E; // Key to interact
     //camera
     [SerializeField] private Camera PlayerCamera;
     [SerializeField] private Camera LockCamera;
@@ -100,7 +101,7 @@ public class FPSController : MonoBehaviour
 
     void HandleTrigger(){
         // Check trigger the puzzle
-        if (IsTrigger ==true  && Input.GetKeyDown(KeyCode.E)){
+        if (IsTrigger ==true  && Input.GetKeyDown(interactKey)){
             // Disable the main camera
             PlayerCamera.enabled = false;
             // Enable the Lock camera
@@ -124,7 +125,7 @@ public class FPSController : MonoBehaviour
             gm.numLock.CloseNumLock();
         }
 
-        if (isNumLock && Input.GetKeyDown(KeyCode.E))
+        if (isNumLock && Input.GetKeyDown(interactKey))
         {
             // Disable the main camera
             PlayerCamera.enabled = false;
@@ -138,6 +139,7 @@ public class FPSController : MonoBehaviour
         }
     }
     public void OnTriggerEnter(Collider  other){
+        
         if (other.CompareTag("Lock")){
             Debug.Log("Player trigger Enter" + other);
             IsTrigger =true;
@@ -161,5 +163,6 @@ public class FPSController : MonoBehaviour
         }
     }
 
+    
 
 }

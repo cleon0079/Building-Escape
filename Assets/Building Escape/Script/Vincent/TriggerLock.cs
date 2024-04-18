@@ -4,45 +4,84 @@ using UnityEngine;
 
 public class TriggerLock : MonoBehaviour
 {   
-    
-    [SerializeField] private PlayerPrefs player;
+    [SerializeField] private PlayerController controller;
+
+    [SerializeField] private KeyCode interactKey = KeyCode.E; // Key to interact
+
+    [SerializeField] private KeyCode EscapeKey = KeyCode.Escape; // Key to interact
 
     [SerializeField] private Camera PlayerCamera;
 
-    [SerializeField] private Camera NumSlideLockCamera;
+    [SerializeField] private Camera SlideLockCamera;
     [SerializeField] private Camera numLockCamera;
 
 
-
+    private bool IsTrigger;
+    private bool IsSlideLock =false;
     private bool isNumLock = false;
     private GameManager gm;
 
-    private bool IsTrigger =false;
+    
     // Start is called before the first frame update
     void Start()
     {
-        NumSlideLockCamera.enabled = false;
+
+        //Hide all other camera
+        SlideLockCamera.enabled = false;
+        numLockCamera.enabled = false;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if(IsTrigger ==true && Input.GetKeyDown(interactKey) ){
+            // Disable the main camera
+            PlayerCamera.enabled = false;
+            
+            //Show the cursor
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
 
+            
+            if(IsSlideLock ==true){
+                NumSlidePuzzle();
+            }
+
+            if(isNumLock == true){
+                NumLockPuzzle();
+            }
+        }
+
+        //Excape the puzzle
+        if (Input.GetKeyDown(EscapeKey)){
+            //show player camera 
+            PlayerCamera.enabled = true;
+
+            //hide all other camera
+            SlideLockCamera.enabled = false;
+            numLockCamera.enabled = false;
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+        }
     }
 
     void NumSlidePuzzle(){
-        
+        SlideLockCamera.enabled = true;
+
     }
 
     void NumLockPuzzle(){
-
+        numLockCamera.enabled = true;
+        gm.numLock.OpenNumLock();
     }
 
 
     void OnTriggerEnter(Collider  other){
-        if (other.CompareTag("Lock")){
+        IsTrigger = true;
+
+        if (other.CompareTag("SlideLock")){
             Debug.Log("Player entered the trigger!");
-            IsTrigger =true;
+            IsSlideLock =true;
         }
 
         if (other.CompareTag("NumLock")){
@@ -51,9 +90,10 @@ public class TriggerLock : MonoBehaviour
     }
 
     public void OnTriggerExit(Collider  other){
-        if (other.CompareTag("Lock")){
+        IsTrigger = false;
+        if (other.CompareTag("SlideLock")){
             Debug.Log("Player exited " + other);
-            IsTrigger =false;
+            IsSlideLock =false;
         }
 
         if (other.CompareTag("NumLock"))
