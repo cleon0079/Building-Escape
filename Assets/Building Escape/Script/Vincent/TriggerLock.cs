@@ -23,7 +23,8 @@ public class TriggerLock : MonoBehaviour
     
     // Start is called before the first frame update
     void Start()
-    {
+    {   
+        gm = FindObjectOfType<GameManager>();
         //Hide all other camera
         SlideLockCamera.enabled = false;
         numLockCamera.enabled = false;
