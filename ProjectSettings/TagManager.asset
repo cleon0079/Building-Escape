@@ -6,6 +6,8 @@ TagManager:
   tags:
   - NumLock
   - SlideLock
+  - Lock
+  - Door
   layers:
   - Default
   - TransparentFX
