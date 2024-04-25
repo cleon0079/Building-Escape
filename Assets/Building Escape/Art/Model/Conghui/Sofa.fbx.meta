@@ -3,7 +3,12 @@ guid: 94f22cc92f239e341a3752031e040bba
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Sofa
+    second: {fileID: 2100000, guid: 3b5a9052d0800254883e27f92382e91b, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
