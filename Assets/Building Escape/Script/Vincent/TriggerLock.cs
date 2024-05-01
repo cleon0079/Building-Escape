@@ -64,7 +64,7 @@ public class TriggerLock : MonoBehaviour
             SlideLockCamera.enabled = false;
 
             numLockCamera.enabled = false;
-            gm.numLock.CloseNumLock();
+            ///gm.numLock.CloseNumLock();
         }
     }
 
@@ -74,7 +74,7 @@ public class TriggerLock : MonoBehaviour
 
     void NumLockPuzzle(){
         numLockCamera.enabled = true;
-        gm.numLock.OpenNumLock();
+        //gm.numLock.OpenNumLock();
     }
 
 

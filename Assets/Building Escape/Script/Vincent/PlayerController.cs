@@ -20,21 +20,30 @@ public class PlayerController : MonoBehaviour
    
     private GameManager gm;
 
+    private bool canMove = false;
+
     // Start is called before the first frame update
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
         grounded = true;
+        CanMove(true);
     }
 
     // Update is called once per frame
     void Update()
     {   
         //if (gm.GetZoom() == false){
-            Movement();
+            
         //}
+
+        if (canMove)
+        {
+            Movement();
+            Camera();
+        }
+
         
-        Camera();
 
 
     }
@@ -72,6 +81,10 @@ public class PlayerController : MonoBehaviour
         playerVelocity.y += gravity * Time.deltaTime;
         controller.Move(playerVelocity * Time.deltaTime); //gravity
 
+    }
+
+    public void CanMove(bool canMove) {
+        this.canMove = canMove;
     }
 
     public void Camera()

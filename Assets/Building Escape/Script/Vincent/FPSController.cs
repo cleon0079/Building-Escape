@@ -123,7 +123,7 @@ public class FPSController : MonoBehaviour
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
 
-            gm.numLock.CloseNumLock();
+            //gm.numLock.CloseNumLock();
         }
 
         if (isNumLock && Input.GetKeyDown(interactKey))
@@ -133,7 +133,7 @@ public class FPSController : MonoBehaviour
             // Enable the Lock camera
             numLockCamera.enabled = true;
 
-            gm.numLock.OpenNumLock();
+            //gm.numLock.OpenNumLock();
 
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;

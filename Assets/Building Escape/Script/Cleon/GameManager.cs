@@ -7,28 +7,40 @@ public class GameManager : MonoBehaviour
 {
     [NonSerialized] public bool isZoom = false;
     [NonSerialized] public bool isPause = false;
+    private bool isLock = false;
+
+    [SerializeField] Animator am;
 
     [Header("Reference")]
-    public FPSController fpsController;
+    public PlayerController playerController;
     public Inventories inventories;
     public DropPickUpItem dropPickUpItem;
-    public KeyDoor keyDoor;
-    public NumLock numLock;
+    //public KeyDoor keyDoor;
+    //public NumLock numLock;
 
     // Start is called before the first frame update
     void Start()
     {
-        
     }
 
     // Update is called once per frame
     void Update()
     {
+        /*
         if (Input.GetKeyDown(KeyCode.Q))
         {
             OpenKeyDoor();
             Debug.Log("111");
+        }*/
+
+        if (isLock && Input.GetKeyDown(KeyCode.F))
+        {
+            am.SetBool("Open", true);
         }
+    }
+
+    public void IsLock(bool isClose) {
+        this.isLock = isClose;
     }
 
     void OpenKeyDoor() {
@@ -37,7 +49,7 @@ public class GameManager : MonoBehaviour
             if (item.Type == Item.Index.KeyDoor)
             {
                 Debug.Log(222);
-                keyDoor.DoorOpen();
+                //keyDoor.DoorOpen();
             }
         }
     }
@@ -59,13 +71,13 @@ public class GameManager : MonoBehaviour
         {
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = !isLock;
-            fpsController.canMove = isLock;
+            playerController.CanMove(false);
         }
         else
         {
             Cursor.lockState = CursorLockMode.Confined;
             Cursor.visible = !isLock;
-            fpsController.canMove = isLock;
+            playerController.CanMove(true);
         }
     }
 }
