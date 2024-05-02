@@ -13,14 +13,13 @@ public class SlidePuzzle : MonoBehaviour{
 
     public float distance =5f;  // distance between camera and puzzle
     [SerializeField] private Camera LockCamera; // Reference to the camera
-    [SerializeField] private KeyDoor keyDoor; 
+    [SerializeField] private KeyDoor keyDoor;
 
     public float moveSpeed = 2f;
 
     private bool ShuffleComplete = false;
 
-    private bool puzzleComplete = false;
-    private bool doorFullyOpened =false;
+    public bool puzzleComplete = false;
 
     // Start is called before the first frame update
     void Start(){
@@ -30,6 +29,10 @@ public class SlidePuzzle : MonoBehaviour{
 
     void Update (){
         //openDoor();
+        if (puzzleComplete ==true)
+        {
+            keyDoor.DoorOpen();
+        }
     }
 
 
@@ -132,7 +135,9 @@ public class SlidePuzzle : MonoBehaviour{
             }
         }
         Debug.Log("Puzzle is complete!");
-        keyDoor.DoorOpen();
+        puzzleComplete = true;
+        //keyDoor.DoorOpen();
+
     }
 
     /*

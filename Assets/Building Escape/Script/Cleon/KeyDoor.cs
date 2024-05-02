@@ -20,21 +20,20 @@ public class KeyDoor : MonoBehaviour
     }
 
     public void DoorOpen() {
-        animator.SetBool("Door_Open", true);
+        animator.SetBool("Open", true);
         animator.SetBool("Door_Close", false);
         animator.SetBool("DoorStayClose", false);
-        Debug.Log(13);
 
     }
 
     public void DoorClose() {
-        animator.SetBool("Door_Open", false);
+        animator.SetBool("Open", false);
         animator.SetBool("Door_Close", true);
         animator.SetBool("DoorStayClose", false);
     }
 
     public void DoorStayClose() {
-        animator.SetBool("Door_Open", false);
+        animator.SetBool("Open", false);
         animator.SetBool("Door_Close", false);
         animator.SetBool("DoorStayClose", true);
     }

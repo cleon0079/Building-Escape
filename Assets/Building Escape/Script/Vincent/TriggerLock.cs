@@ -12,6 +12,8 @@ public class TriggerLock : MonoBehaviour
     [SerializeField] private KeyCode EscapeKey = KeyCode.Escape; // Key to interact
 
     [SerializeField] private Camera SlideLockCamera;
+
+    [SerializeField] private SlidePuzzle slidePuzzle;
     //[SerializeField] private Camera numLockCamera;
 
 
@@ -32,7 +34,7 @@ public class TriggerLock : MonoBehaviour
 
     // Update is called once per frame
     public void Update()    {
-        if(IsTrigger == true && Input.GetKeyDown(interactKey) ){
+        if(IsTrigger == true && Input.GetKeyDown(interactKey) && IsSlideLock == true ){
             //swicth off the player camera
             PlayerCamera.enabled =false;
 
@@ -67,6 +69,19 @@ public class TriggerLock : MonoBehaviour
 
             //numLockCamera.enabled = false;
         }
+
+        else if (slidePuzzle.puzzleComplete == true)
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+
+
+            //switch back to player camera 
+            PlayerCamera.enabled = true;
+
+            //hide all other camera
+            SlideLockCamera.enabled = false;
+        }
     }
 
     void NumSlidePuzzle(){
@@ -84,28 +99,31 @@ public class TriggerLock : MonoBehaviour
         IsTrigger = true;
 
         if (other.CompareTag("SlideLock")){
-            Debug.Log("Player entered the trigger!");
+            Debug.Log("Player entered the SlideLock!");
             IsSlideLock =true;
         }
-
-
         /*
         if (other.CompareTag("NumLock")){
              isNumLock = true;
         }*/
+
+
+
     }
 
-    /*public void OnTriggerExit(Collider  other){
+    public void OnTriggerExit(Collider  other){
         IsTrigger = false;
         if (other.CompareTag("SlideLock")){
             Debug.Log("Player exited " + other);
             IsSlideLock =false;
         }
 
+       /*
         if (other.CompareTag("NumLock"))
         {
             isNumLock = false;
-        }
+        }        
+       */
     }
-    */
+    
 }
