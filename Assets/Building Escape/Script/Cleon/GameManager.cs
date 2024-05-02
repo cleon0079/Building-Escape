@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     [NonSerialized] public bool isZoom = false;
     [NonSerialized] public bool isPause = false;
     private bool isLock = false;
+    [SerializeField] private GameObject ui;
 
     [SerializeField] Animator am;
 
@@ -35,8 +36,16 @@ public class GameManager : MonoBehaviour
 
         if (isLock && Input.GetKeyDown(KeyCode.F))
         {
-            am.SetBool("Open", true);
+            ui.SetActive(true);
+            CursorLock(false);
+            //am.SetBool("Open", true);
         }
+    }
+
+    public void OpenGlassDoor() {
+        am.SetBool("Open", true);
+        ui.SetActive(false);
+        CursorLock(true);
     }
 
     public void IsLock(bool isClose) {
@@ -71,13 +80,13 @@ public class GameManager : MonoBehaviour
         {
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = !isLock;
-            playerController.CanMove(false);
+            playerController.CanMove(isLock);
         }
         else
         {
             Cursor.lockState = CursorLockMode.Confined;
             Cursor.visible = !isLock;
-            playerController.CanMove(true);
+            playerController.CanMove(isLock);
         }
     }
 }

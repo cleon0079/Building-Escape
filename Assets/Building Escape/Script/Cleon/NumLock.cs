@@ -6,7 +6,7 @@ using TMPro;
 
 public class NumLock : MonoBehaviour
 {
-    [SerializeField] GameObject UI;
+    GameManager gm;
 
     private bool right = false;
     private int id = 0;
@@ -16,23 +16,13 @@ public class NumLock : MonoBehaviour
     [SerializeField] Button check;
     [SerializeField] Button delete;
 
-    [SerializeField] GameObject tmpGo;
-    [SerializeField] TMP_Text pro;
-
     // Start is called before the first frame update
     void Start()
     {
+        gm = FindObjectOfType<GameManager>();
         setButton();
         delete.onClick.AddListener(() => { Delete(); });
         check.onClick.AddListener(() => { Check(); });
-    }
-
-    public void OpenNumLock(){
-        UI.SetActive(true);
-    }
-
-    public void CloseNumLock() {
-        UI.SetActive(false);
     }
 
     void setButton() {
@@ -91,30 +81,48 @@ public class NumLock : MonoBehaviour
             for (int i = 0; i < num.transform.childCount; i++)
             {
                 Destroy(num.transform.GetChild(i).gameObject);
-                tmpGo.SetActive(true);
-                pro.text = "Wrong";
                 id = 0;
             }
         }
 
         if (id == 4)
         {
+            int k = 0;
             for (int i = 0; i < num.transform.childCount; i++)
             {
                 Sprite checkImg = num.transform.GetChild(i).gameObject.GetComponent<Image>().sprite;
-                Sprite buttonImg = buttons[i].GetComponent<Image>().sprite;
+                if (i == 0)
+                {
+                    k = 1;
+                }
+                else if (i == 1) 
+                {
+                    k = 4;
+                }
+                else if (i == 2)
+                {
+                    k = 6;
+                }
+                else
+                {
+                    k = 8;
+                }
+                Sprite buttonImg = buttons[k].GetComponent<Image>().sprite;
 
                 if (checkImg == buttonImg)
                 {
                     right = true;
+                }
+                else
+                {
+                    right = false;
+                    break;
                 }
             }
         }
 
         if (right)
         {
-            tmpGo.SetActive(true);
-            pro.text = "Right";
             for (int i = 0; i < num.transform.childCount; i++)
             {
                 Destroy(num.transform.GetChild(i).gameObject);
@@ -122,6 +130,9 @@ public class NumLock : MonoBehaviour
             }
             right = false;
             setButton();
+            gm.OpenGlassDoor();
+
+
         }
     }
 }
