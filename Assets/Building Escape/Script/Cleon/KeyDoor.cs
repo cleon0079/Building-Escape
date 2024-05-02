@@ -23,6 +23,7 @@ public class KeyDoor : MonoBehaviour
         animator.SetBool("Door_Open", true);
         animator.SetBool("Door_Close", false);
         animator.SetBool("DoorStayClose", false);
+        Debug.Log(13);
 
     }
 

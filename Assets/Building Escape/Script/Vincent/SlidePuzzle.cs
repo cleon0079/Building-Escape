@@ -13,7 +13,7 @@ public class SlidePuzzle : MonoBehaviour{
 
     public float distance =5f;  // distance between camera and puzzle
     [SerializeField] private Camera LockCamera; // Reference to the camera
-    [SerializeField] private GameObject Doors; 
+    [SerializeField] private KeyDoor keyDoor; 
 
     public float moveSpeed = 2f;
 
@@ -29,7 +29,7 @@ public class SlidePuzzle : MonoBehaviour{
     }
 
     void Update (){
-        openDoor();
+        //openDoor();
     }
 
 
@@ -131,10 +131,11 @@ public class SlidePuzzle : MonoBehaviour{
                 }
             }
         }
-        Debug.Log("Puzzle is complete!"); 
-        puzzleComplete =true;
+        Debug.Log("Puzzle is complete!");
+        keyDoor.DoorOpen();
     }
 
+    /*
     private void openDoor(){
         if(puzzleComplete == true){
             //check door is fully open or not
@@ -146,4 +147,5 @@ public class SlidePuzzle : MonoBehaviour{
             }
         }
     }
+    */
 }
