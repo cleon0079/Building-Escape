@@ -4,13 +4,14 @@ using UnityEngine;
 public class Interaction : MonoBehaviour
 {
     [SerializeField] private Camera playerCamera; // Reference to the player's camera
-    [SerializeField] private GameObject targetObject;
-    [SerializeField] private Crate crate;
     public float interactionDistance = 5f; // Distance for interaction
     [SerializeField] private KeyCode interactKey = KeyCode.E; // Key to interact
 
     private bool isInteracting = false;
     private bool checkCrate =false;
+
+
+    private GameObject currentCrate = null;
     void Update()
     {
         // Check if already interacting or not
@@ -22,32 +23,32 @@ public class Interaction : MonoBehaviour
         RaycastHit hit;
 
         if (Physics.Raycast(ray, out hit, interactionDistance))
-        {   
-            if(hit.collider.gameObject == targetObject){
-                Debug.Log("Look crate");
-                checkCrate = true; 
-            }
+        {
+            GameObject hitObject = hit.collider.gameObject;
 
-            
-            if (Input.GetKeyDown(interactKey) && checkCrate ==true)
+            if (hitObject.CompareTag("Crate"))
+            {
+                Debug.Log("Looking at crate");
+                currentCrate = hitObject;
+
+                if (Input.GetKeyDown(interactKey))
                 {
-
-                Debug.Log("Player look target object.");
-                // Check if the player presses the key
+                    Debug.Log("Player look target object.");
                     // Start the interaction coroutine
-                    StartCoroutine(InteractWithCrate());
+                    StartCoroutine(InteractWithCrate(currentCrate.GetComponent<Crate>()));
+                }
             }
         }
         else
-        {   
-            checkCrate = false;
-            Debug.Log("crate false");
+        {
+            currentCrate = null;
+            Debug.Log("Not looking at crate");
             // Draw a debug line to visualize the raycast's direction when it doesn't hit anything
             Debug.DrawRay(ray.origin, ray.direction * interactionDistance, Color.red);
         }
     }
 
-    IEnumerator InteractWithCrate()
+    IEnumerator InteractWithCrate(Crate crate)
     {
         // Set interacting flag to true
         isInteracting = true;

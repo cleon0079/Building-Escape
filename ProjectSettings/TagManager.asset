@@ -8,6 +8,7 @@ TagManager:
   - SlideLock
   - Lock
   - Door
+  - Crate
   layers:
   - Default
   - TransparentFX
