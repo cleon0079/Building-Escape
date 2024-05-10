@@ -40,6 +40,11 @@ public class GameManager : MonoBehaviour
             CursorLock(false);
             //am.SetBool("Open", true);
         }
+        else if (ui.activeSelf && Input.GetKeyDown(KeyCode.Escape))
+        {
+            ui.SetActive(false);
+            CursorLock(true);
+        }
     }
 
     public void OpenGlassDoor() {

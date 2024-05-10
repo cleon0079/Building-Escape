@@ -52,7 +52,7 @@ public class Inventories : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.I) && gameManager.GetZoom() == false)
+        if (Input.GetKeyDown(KeyCode.B) && gameManager.GetZoom() == false)
         {
 
             if (inventoryGameObject.activeSelf)
