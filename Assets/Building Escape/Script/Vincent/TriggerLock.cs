@@ -14,19 +14,17 @@ public class TriggerLock : MonoBehaviour
     [SerializeField] private Camera SlideLockCamera;
 
     [SerializeField] private SlidePuzzle slidePuzzle;
-    //[SerializeField] private Camera numLockCamera;
+
+
 
 
     private bool IsTrigger;
     private bool IsSlideLock =false;
-    //private bool isNumLock = false;
-    //private GameManager gm;
-
+    private bool puzzleCompletedHandled = false;
     
     // Start is called before the first frame update
     void Start()
     {   
-        //gm = FindObjectOfType<GameManager>();
         //Hide all other camera
         SlideLockCamera.enabled = false;
         //numLockCamera.enabled = false;
@@ -47,10 +45,6 @@ public class TriggerLock : MonoBehaviour
                 NumSlidePuzzle();
             }
 
-            /*
-            if(isNumLock == true){
-                NumLockPuzzle();
-            }*/
 
         }
 
@@ -66,34 +60,28 @@ public class TriggerLock : MonoBehaviour
 
             //hide all other camera
             SlideLockCamera.enabled = false;
-
-            //numLockCamera.enabled = false;
         }
 
-        else if (slidePuzzle.puzzleComplete == true)
+        if (slidePuzzle.puzzleComplete == true && !puzzleCompletedHandled ) 
         {
+            Debug.Log(23);
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
-
 
             //switch back to player camera 
             PlayerCamera.enabled = true;
 
             //hide all other camera
             SlideLockCamera.enabled = false;
+
+            //disable this statment
+            puzzleCompletedHandled = true;
         }
     }
 
     void NumSlidePuzzle(){
         SlideLockCamera.enabled = true;
     }
-
-    /*
-    void NumLockPuzzle(){
-        numLockCamera.enabled = true;
-        //gm.numLock.OpenNumLock();
-    }*/
-
 
     void OnTriggerEnter(Collider  other){
         IsTrigger = true;
@@ -102,12 +90,6 @@ public class TriggerLock : MonoBehaviour
             Debug.Log("Player entered the SlideLock!");
             IsSlideLock =true;
         }
-        /*
-        if (other.CompareTag("NumLock")){
-             isNumLock = true;
-        }*/
-
-
 
     }
 
@@ -117,13 +99,6 @@ public class TriggerLock : MonoBehaviour
             Debug.Log("Player exited " + other);
             IsSlideLock =false;
         }
-
-       /*
-        if (other.CompareTag("NumLock"))
-        {
-            isNumLock = false;
-        }        
-       */
     }
     
 }

@@ -21,6 +21,8 @@ public class SlidePuzzle : MonoBehaviour{
 
     public bool puzzleComplete = false;
 
+    private bool SlidDoorOpen = false;
+
     // Start is called before the first frame update
     void Start(){
         Init();
@@ -29,10 +31,12 @@ public class SlidePuzzle : MonoBehaviour{
 
     void Update (){
         //openDoor();
-        if (puzzleComplete ==true)
+        if (puzzleComplete ==true && SlidDoorOpen == false)
         {
             keyDoor.DoorOpen();
+            SlidDoorOpen = true;
         }
+
     }
 
 
@@ -140,17 +144,5 @@ public class SlidePuzzle : MonoBehaviour{
 
     }
 
-    /*
-    private void openDoor(){
-        if(puzzleComplete == true){
-            //check door is fully open or not
-            if(doorFullyOpened == false){
-                Doors.transform.Translate(Vector3.right * moveSpeed * Time.deltaTime);
-                if( Doors.transform.position.z <=11.69){
-                    doorFullyOpened = true;
-                }
-            }
-        }
-    }
-    */
+
 }
