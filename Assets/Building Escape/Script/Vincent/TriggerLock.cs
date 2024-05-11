@@ -36,7 +36,7 @@ public class TriggerLock : MonoBehaviour
             if (Input.GetKeyDown(interactKey) && IsSlideLock == true)
             {
                 //swicth off the player camera
-                PlayerCamera.enabled = false;
+                //PlayerCamera.enabled = false;
 
                 //Show the cursor
                 Cursor.lockState = CursorLockMode.None;
@@ -67,7 +67,6 @@ public class TriggerLock : MonoBehaviour
 
         if (slidePuzzle.puzzleComplete == true && !puzzleCompletedHandled ) 
         {
-            Debug.Log(23);
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
 
@@ -91,16 +90,15 @@ public class TriggerLock : MonoBehaviour
 
         if (other.CompareTag("SlideLock")){
             IsTriggerLock = true;
-            Debug.Log("Player entered the SlideLock!");
             IsSlideLock =true;
         }
 
     }
 
     public void OnTriggerExit(Collider  other){
-        IsTriggerLock = false;
+        
         if (other.CompareTag("SlideLock")){
-            Debug.Log("Player exited " + other);
+            IsTriggerLock = false;
             IsSlideLock =false;
         }
     }

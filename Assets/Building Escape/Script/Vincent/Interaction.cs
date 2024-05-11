@@ -8,8 +8,6 @@ public class Interaction : MonoBehaviour
     [SerializeField] private KeyCode interactKey = KeyCode.F; // Key to interact
 
     private bool isInteracting = false;
-    private bool checkCrate =false;
-
 
     private GameObject currentCrate = null;
     void Update()
@@ -28,12 +26,12 @@ public class Interaction : MonoBehaviour
 
             if (hitObject.CompareTag("Crate"))
             {
+                //get target crate that looking
                 currentCrate = hitObject;
 
                 if (Input.GetKeyDown(interactKey))
                 {
-                    // Start the interaction coroutine
-                    StartCoroutine(InteractWithCrate(currentCrate.GetComponent<Crate>()));
+                    OpenCrate(currentCrate.GetComponent<Crate>());
                 }
             }
         }
@@ -45,22 +43,12 @@ public class Interaction : MonoBehaviour
         }
     }
 
-
-    IEnumerator InteractWithCrate(Crate crate)
+    void OpenCrate(Crate crate)
     {
-        // Set interacting flag to true
         isInteracting = true;
 
-        // Open the crate
         crate.Open();
 
-        // Wait until the crate animation is complete
-        yield return new WaitUntil(() => crate.IsAnimationComplete());
-
-        // Interaction complete
-        Debug.Log("Player interacted with the target object.");
-
-        // Reset interacting flag
         isInteracting = false;
     }
 }

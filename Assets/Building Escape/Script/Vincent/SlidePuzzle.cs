@@ -138,7 +138,6 @@ public class SlidePuzzle : MonoBehaviour{
                 }
             }
         }
-        Debug.Log("Puzzle is complete!");
         puzzleComplete = true;
         //keyDoor.DoorOpen();
 
