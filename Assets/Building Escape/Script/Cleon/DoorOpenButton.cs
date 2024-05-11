@@ -4,16 +4,12 @@ using UnityEngine;
 
 public class DoorOpenButton : MonoBehaviour
 {
-    [SerializeField] Animator animator;
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
+    [SerializeField] Animator am;
 
     // Update is called once per frame
     void Update()
     {
+
         if (Input.GetKeyDown(KeyCode.F))
         {
             Ray ray = Camera.main.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, 0));
@@ -21,10 +17,12 @@ public class DoorOpenButton : MonoBehaviour
 
             if (Physics.Raycast(ray, out hitInfo, 50f))
             {
+
                 if (hitInfo.collider.gameObject.CompareTag("Door"))
                 {
-                    animator.SetBool("Enter", true);
+                    am.SetBool("Enter", true);
                 }
+
             }
         }
     }

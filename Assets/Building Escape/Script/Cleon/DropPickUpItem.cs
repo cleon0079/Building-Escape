@@ -15,7 +15,7 @@ public class DropPickUpItem : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.F) && gameManager.GetZoom() == false)
+        if (Input.GetKeyDown(KeyCode.F) && gameManager.GetLock() == false)
         {
             Ray ray = camera.ViewportPointToRay(new Vector3(.5f, .5f, 0));
             RaycastHit hitInfo;

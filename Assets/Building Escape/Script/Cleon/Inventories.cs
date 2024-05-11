@@ -52,7 +52,7 @@ public class Inventories : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.B) && gameManager.GetZoom() == false)
+        if (Input.GetKeyDown(KeyCode.B) && gameManager.GetLock() == false)
         {
 
             if (inventoryGameObject.activeSelf)
@@ -109,7 +109,7 @@ public class Inventories : MonoBehaviour
             mesh.transform.parent = camera.transform;
             mesh.transform.localPosition = new Vector3(0, 0, 1);
             mesh.GetComponent<DropItem>().SetView(true);
-            gameManager.IsZoom(true);
+            gameManager.IsLock(true);
         }
         closeButton.onClick.AddListener(() => { CloseSelectedItemCanvas(); });
         dropButton.onClick.AddListener(() => { DropSelectedItem(); });
@@ -120,7 +120,7 @@ public class Inventories : MonoBehaviour
         camera.orthographic = false;
         camera.fieldOfView = 60f;
         zoomInGameObject.SetActive(false);
-        gameManager.IsZoom(false);
+        gameManager.IsLock(false);
         gameManager.CursorLock(true);
         for (int i = 0; i < camera.transform.childCount; i++)
         {

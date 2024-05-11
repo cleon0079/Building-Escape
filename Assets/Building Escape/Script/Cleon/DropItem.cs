@@ -20,7 +20,7 @@ public class DropItem : MonoBehaviour
 
     private void Update()
     {
-        if (gameManager.isZoom && isView)
+        if (gameManager.GetLock() && isView)
         {
             if (Input.GetMouseButton(0))
             {

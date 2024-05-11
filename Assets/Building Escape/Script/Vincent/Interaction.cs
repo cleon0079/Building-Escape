@@ -28,12 +28,10 @@ public class Interaction : MonoBehaviour
 
             if (hitObject.CompareTag("Crate"))
             {
-                Debug.Log("Looking at crate" + ": " + hitObject.name);
                 currentCrate = hitObject;
 
                 if (Input.GetKeyDown(interactKey))
                 {
-                    Debug.Log("Player look target object.");
                     // Start the interaction coroutine
                     StartCoroutine(InteractWithCrate(currentCrate.GetComponent<Crate>()));
                 }

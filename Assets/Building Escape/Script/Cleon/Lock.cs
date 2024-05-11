@@ -21,7 +21,6 @@ public class Lock : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            Debug.Log(1);
             gm.IsLock(true);
         }
     }

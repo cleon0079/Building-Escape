@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    [NonSerialized] public bool isZoom = false;
     [NonSerialized] public bool isPause = false;
     private bool isLock = false;
     [SerializeField] private GameObject ui;
@@ -68,12 +67,8 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void IsZoom(bool _isZoom) {
-        isZoom = _isZoom;
-    }
-
-    public bool GetZoom() {
-        return isZoom;
+    public bool GetLock() {
+        return isLock;
     }
 
     public bool GetPause() {

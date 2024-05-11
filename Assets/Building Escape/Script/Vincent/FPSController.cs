@@ -63,7 +63,7 @@ public class FPSController : MonoBehaviour
 
     Vector3 movement = forward * moveX + right * moveZ;
 
-        if (gm.GetZoom() == false)
+        if (gm.GetLock() == false)
         {
             // Handles Rotation
             rotationX += -Input.GetAxis("Mouse Y") * lookSpeed;
