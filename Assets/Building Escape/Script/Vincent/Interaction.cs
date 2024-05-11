@@ -5,7 +5,7 @@ public class Interaction : MonoBehaviour
 {
     [SerializeField] private Camera playerCamera; // Reference to the player's camera
     public float interactionDistance = 5f; // Distance for interaction
-    [SerializeField] private KeyCode interactKey = KeyCode.E; // Key to interact
+    [SerializeField] private KeyCode interactKey = KeyCode.F; // Key to interact
 
     private bool isInteracting = false;
     private bool checkCrate =false;
