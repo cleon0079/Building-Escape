@@ -17,8 +17,7 @@ public class TriggerLock : MonoBehaviour
 
 
 
-
-    private bool IsTrigger;
+    private bool IsTriggerLock;
     private bool IsSlideLock =false;
     private bool puzzleCompletedHandled = false;
     
@@ -32,34 +31,38 @@ public class TriggerLock : MonoBehaviour
 
     // Update is called once per frame
     public void Update()    {
-        if(IsTrigger == true && Input.GetKeyDown(interactKey) && IsSlideLock == true ){
-            //swicth off the player camera
-            PlayerCamera.enabled =false;
+        if (IsTriggerLock == true)
+        {
+            if (Input.GetKeyDown(interactKey) && IsSlideLock == true)
+            {
+                //swicth off the player camera
+                PlayerCamera.enabled = false;
 
-            //Show the cursor
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
+                //Show the cursor
+                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
 
-            
-            if(IsSlideLock ==true){
-                NumSlidePuzzle();
+
+                if (IsSlideLock == true)
+                {
+                    NumSlidePuzzle();
+                }
             }
 
-
-        }
-
-        //Excape the puzzle
-        if (Input.GetKeyDown(EscapeKey)){
-            //hide the cursor
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
+            //Excape the puzzle
+            if (Input.GetKeyDown(EscapeKey))
+            {
+                //hide the cursor
+                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
 
 
-            //switch back to player camera 
-            PlayerCamera.enabled = true;
+                //switch back to player camera 
+                PlayerCamera.enabled = true;
 
-            //hide all other camera
-            SlideLockCamera.enabled = false;
+                //hide all other camera
+                SlideLockCamera.enabled = false;
+            }
         }
 
         if (slidePuzzle.puzzleComplete == true && !puzzleCompletedHandled ) 
@@ -84,9 +87,10 @@ public class TriggerLock : MonoBehaviour
     }
 
     void OnTriggerEnter(Collider  other){
-        IsTrigger = true;
+        
 
         if (other.CompareTag("SlideLock")){
+            IsTriggerLock = true;
             Debug.Log("Player entered the SlideLock!");
             IsSlideLock =true;
         }
@@ -94,7 +98,7 @@ public class TriggerLock : MonoBehaviour
     }
 
     public void OnTriggerExit(Collider  other){
-        IsTrigger = false;
+        IsTriggerLock = false;
         if (other.CompareTag("SlideLock")){
             Debug.Log("Player exited " + other);
             IsSlideLock =false;

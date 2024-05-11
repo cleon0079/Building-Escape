@@ -28,7 +28,7 @@ public class Interaction : MonoBehaviour
 
             if (hitObject.CompareTag("Crate"))
             {
-                Debug.Log("Looking at crate");
+                Debug.Log("Looking at crate" + ": " + hitObject.name);
                 currentCrate = hitObject;
 
                 if (Input.GetKeyDown(interactKey))
@@ -42,11 +42,11 @@ public class Interaction : MonoBehaviour
         else
         {
             currentCrate = null;
-            Debug.Log("Not looking at crate");
             // Draw a debug line to visualize the raycast's direction when it doesn't hit anything
             Debug.DrawRay(ray.origin, ray.direction * interactionDistance, Color.red);
         }
     }
+
 
     IEnumerator InteractWithCrate(Crate crate)
     {
