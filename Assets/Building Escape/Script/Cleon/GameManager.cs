@@ -15,12 +15,17 @@ public class GameManager : MonoBehaviour
     public PlayerController playerController;
     public Inventories inventories;
     public DropPickUpItem dropPickUpItem;
+
+    [SerializeField] GameObject startMenu;
+    [SerializeField] GameObject endMenu;
     //public KeyDoor keyDoor;
     //public NumLock numLock;
 
     // Start is called before the first frame update
     void Start()
     {
+        startMenu.SetActive(true);
+        CursorLock(false);
     }
 
     // Update is called once per frame
@@ -88,5 +93,24 @@ public class GameManager : MonoBehaviour
             Cursor.visible = !isLock;
             playerController.CanMove(isLock);
         }
+    }
+
+    public void StartGame() {
+        startMenu.SetActive(false);
+
+        CursorLock(true);
+    }
+
+    public void EndGame() {
+        endMenu.SetActive(true);
+        CursorLock(false);
+    }
+
+    public void ExitGame(){
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
+        Application.Quit();
+#endif
     }
 }
