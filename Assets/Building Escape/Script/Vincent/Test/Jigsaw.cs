@@ -10,7 +10,7 @@ public class Jigsaw : MonoBehaviour
 
 
     private bool isInteracting = false;
-
+    private int count;
 
     //set the piece of the origin
     [SerializeField] private GameObject PhotoFrame;
@@ -22,6 +22,9 @@ public class Jigsaw : MonoBehaviour
 
     private int PhotoFrameCount;
     private int jigsawCount;
+
+    //check the complete the jigsaw
+    private bool Complete =false;
 
 
 
@@ -48,6 +51,8 @@ public class Jigsaw : MonoBehaviour
             PhotoFramePiece[i] = PhotoFrame.transform.GetChild(i).gameObject;
             PhotoFramePiece[i].SetActive(false);
         }
+        
+
 
     }
 
@@ -73,12 +78,11 @@ public class Jigsaw : MonoBehaviour
                 {
                     if(hitObject == jigsawPieces[i])
                     {
-
                         jigsawPieces[i].SetActive(false);
                         PhotoFramePiece[i].SetActive(true);
+                        count ++;
                         break;
                     }
-
                 }
             }
         }
@@ -87,6 +91,18 @@ public class Jigsaw : MonoBehaviour
         {
             // Draw a debug line to visualize the raycast's direction when it doesn't hit anything
             Debug.DrawRay(ray.origin, ray.direction * interactionDistance, Color.red);
+        }
+
+        checkComplete();
+    }
+
+
+    private void checkComplete()
+    {
+        if (count == PhotoFrameCount && Complete ==false)
+        {
+            Debug.Log(12);
+            Complete = true;
         }
     }
 }
