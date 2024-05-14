@@ -26,7 +26,7 @@ public class Jigsaw : MonoBehaviour
     //check the complete the jigsaw
     private bool Complete =false;
 
-
+    [SerializeField] private KeyDoor JigsawDoor;
 
     // Start is called before the first frame update
     void Start()
@@ -102,6 +102,7 @@ public class Jigsaw : MonoBehaviour
         if (count == PhotoFrameCount && Complete ==false)
         {
             Debug.Log(12);
+            JigsawDoor.DoorOpen();
             Complete = true;
         }
     }
