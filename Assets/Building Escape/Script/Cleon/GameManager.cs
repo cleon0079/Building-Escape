@@ -18,6 +18,8 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] GameObject startMenu;
     [SerializeField] GameObject endMenu;
+
+    [SerializeField] KeyCode interact = KeyCode.F;
     //public KeyDoor keyDoor;
     //public NumLock numLock;
 
@@ -38,17 +40,32 @@ public class GameManager : MonoBehaviour
             Debug.Log("111");
         }*/
 
-        if (isLock && Input.GetKeyDown(KeyCode.F))
+        if (isLock && Input.GetKeyDown(interact))
         {
             ui.SetActive(true);
             CursorLock(false);
+            noInteract();
             //am.SetBool("Open", true);
         }
         else if (ui.activeSelf && Input.GetKeyDown(KeyCode.Escape))
         {
             ui.SetActive(false);
             CursorLock(true);
+            yesInteract();
         }
+    }
+
+    public KeyCode getInteractKey() {
+        return interact;
+    }
+
+
+    public void noInteract() {
+        interact = KeyCode.None;
+    }
+
+    public void yesInteract() {
+        interact = KeyCode.F;
     }
 
     public void OpenGlassDoor() {
@@ -59,17 +76,6 @@ public class GameManager : MonoBehaviour
 
     public void IsLock(bool isClose) {
         this.isLock = isClose;
-    }
-
-    void OpenKeyDoor() {
-        foreach (Item item in inventories.getInventory())
-        {
-            if (item.Type == Item.Index.KeyDoor)
-            {
-                Debug.Log(222);
-                //keyDoor.DoorOpen();
-            }
-        }
     }
 
     public bool GetLock() {

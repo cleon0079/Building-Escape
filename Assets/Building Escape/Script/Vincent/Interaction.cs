@@ -5,11 +5,16 @@ public class Interaction : MonoBehaviour
 {
     [SerializeField] private Camera playerCamera; // Reference to the player's camera
     public float interactionDistance = 5f; // Distance for interaction
-    [SerializeField] private KeyCode interactKey = KeyCode.F; // Key to interact
+    [SerializeField] GameManager gm;
 
     private bool isInteracting = false;
 
     private GameObject currentCrate = null;
+
+    private void Start()
+    {
+        gm = FindObjectOfType<GameManager>();
+    }
     void Update()
     {
         // Check if already interacting or not
@@ -29,7 +34,7 @@ public class Interaction : MonoBehaviour
                 //get target crate that looking
                 currentCrate = hitObject;
 
-                if (Input.GetKeyDown(interactKey))
+                if (Input.GetKeyDown(gm.getInteractKey()))
                 {
                     OpenCrate(currentCrate.GetComponent<Crate>());
                 }

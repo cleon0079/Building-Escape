@@ -5,12 +5,18 @@ using UnityEngine;
 public class DoorOpenButton : MonoBehaviour
 {
     [SerializeField] Animator am;
+    [SerializeField] GameManager gm;
+
+    private void Start()
+    {
+        gm = FindObjectOfType<GameManager>();
+    }
 
     // Update is called once per frame
     void Update()
     {
 
-        if (Input.GetKeyDown(KeyCode.F))
+        if (Input.GetKeyDown(gm.getInteractKey()))
         {
             Ray ray = Camera.main.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, 0));
             RaycastHit hitInfo;

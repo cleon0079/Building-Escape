@@ -17,7 +17,7 @@ public class Inventories : MonoBehaviour
     
 
     private Camera camera;
-    private GameManager gameManager;
+    private GameManager gm;
 
     [Header("ZoomIn UI Element")]
     [SerializeField] GameObject zoomInGameObject;
@@ -27,7 +27,7 @@ public class Inventories : MonoBehaviour
     private void Start()
     {
         camera = Camera.main;
-        gameManager = FindAnyObjectByType<GameManager>();
+        gm = FindAnyObjectByType<GameManager>();
     }
 
     public void AddItem(Item _item)
@@ -52,19 +52,21 @@ public class Inventories : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.B) && gameManager.GetLock() == false)
+        if (Input.GetKeyDown(KeyCode.B) && gm.GetLock() == false)
         {
 
             if (inventoryGameObject.activeSelf)
             {
-                gameManager.CursorLock(true);
+                gm.CursorLock(true);
                 inventoryGameObject.SetActive(false);
+                gm.yesInteract();
             }
             else
             {
-                gameManager.CursorLock(false);
+                gm.CursorLock(false);
                 inventoryGameObject.SetActive(true);
                 DisplayItemsCanvas();
+                gm.noInteract();
             }
         }
     }
@@ -109,7 +111,7 @@ public class Inventories : MonoBehaviour
             mesh.transform.parent = camera.transform;
             mesh.transform.localPosition = new Vector3(0, 0, 1);
             mesh.GetComponent<DropItem>().SetView(true);
-            gameManager.IsLock(true);
+            gm.IsLock(true);
         }
         closeButton.onClick.AddListener(() => { CloseSelectedItemCanvas(); });
         dropButton.onClick.AddListener(() => { DropSelectedItem(); });
@@ -120,8 +122,8 @@ public class Inventories : MonoBehaviour
         camera.orthographic = false;
         camera.fieldOfView = 60f;
         zoomInGameObject.SetActive(false);
-        gameManager.IsLock(false);
-        gameManager.CursorLock(true);
+        gm.IsLock(false);
+        gm.CursorLock(true);
         for (int i = 0; i < camera.transform.childCount; i++)
         {
             GameObject mesh = camera.transform.GetChild(i).gameObject;
@@ -129,12 +131,13 @@ public class Inventories : MonoBehaviour
             mesh.GetComponentInChildren<MeshRenderer>().enabled = false;
             mesh.GetComponent<DropItem>().SetView(false);
         }
-        
+        gm.yesInteract();
     }
 
     void DropSelectedItem() {
         CloseSelectedItemCanvas();
-        gameManager.dropPickUpItem.DropItem();
+        gm.dropPickUpItem.DropItem();
+        gm.yesInteract();
     }
 
     public List<Item> getInventory() {

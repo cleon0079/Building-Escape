@@ -7,9 +7,7 @@ public class TriggerLock : MonoBehaviour
     [SerializeField] private PlayerController controller;
     [SerializeField] private Camera PlayerCamera;
 
-    [SerializeField] private KeyCode interactKey = KeyCode.F; // Key to interact
-
-    [SerializeField] private KeyCode EscapeKey = KeyCode.Escape; // Key to interact
+    [SerializeField] GameManager gm;
 
     [SerializeField] private Camera SlideLockCamera;
 
@@ -27,13 +25,15 @@ public class TriggerLock : MonoBehaviour
         //Hide all other camera
         SlideLockCamera.enabled = false;
         //numLockCamera.enabled = false;
+
+        gm = FindObjectOfType<GameManager>();
     }
 
     // Update is called once per frame
     public void Update()    {
         if (IsTriggerLock == true)
         {
-            if (Input.GetKeyDown(interactKey) && IsSlideLock == true)
+            if (Input.GetKeyDown(gm.getInteractKey()) && IsSlideLock == true)
             {
                 //swicth off the player camera
                 //PlayerCamera.enabled = false;
@@ -41,7 +41,7 @@ public class TriggerLock : MonoBehaviour
                 //Show the cursor
                 Cursor.lockState = CursorLockMode.None;
                 Cursor.visible = true;
-
+                gm.noInteract();
 
                 if (IsSlideLock == true)
                 {
@@ -50,12 +50,12 @@ public class TriggerLock : MonoBehaviour
             }
 
             //Excape the puzzle
-            if (Input.GetKeyDown(EscapeKey))
+            if (Input.GetKeyDown(KeyCode.Escape))
             {
                 //hide the cursor
                 Cursor.lockState = CursorLockMode.Locked;
                 Cursor.visible = false;
-
+                gm.yesInteract();
 
                 //switch back to player camera 
                 PlayerCamera.enabled = true;
@@ -69,6 +69,8 @@ public class TriggerLock : MonoBehaviour
         {
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
+
+            gm.yesInteract();
 
             //switch back to player camera 
             PlayerCamera.enabled = true;

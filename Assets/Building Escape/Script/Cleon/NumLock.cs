@@ -131,7 +131,7 @@ public class NumLock : MonoBehaviour
             right = false;
             setButton();
             gm.OpenGlassDoor();
-
+            gm.yesInteract();
 
         }
     }

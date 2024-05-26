@@ -6,7 +6,7 @@ public class Jigsaw : MonoBehaviour
 {
     [SerializeField] private Camera playerCamera; // Reference to the player's camera
     [SerializeField] private float interactionDistance = 6f; // Distance for interaction
-    [SerializeField] private KeyCode interactKey = KeyCode.F; // Key to interact
+    [SerializeField] GameManager gm;
 
 
     private bool isInteracting = false;
@@ -31,6 +31,8 @@ public class Jigsaw : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        gm = FindObjectOfType<GameManager>();
+
         //set the parent object
         PhotoFrameCount = PhotoFrame.transform.childCount;
         jigsawCount = jigsaw.transform.childCount;
@@ -72,7 +74,7 @@ public class Jigsaw : MonoBehaviour
         {
             GameObject hitObject = hit.collider.gameObject;
 
-            if (hitObject.CompareTag("Jigsaw") && Input.GetKeyDown(interactKey))
+            if (hitObject.CompareTag("Jigsaw") && Input.GetKeyDown(gm.getInteractKey()))
             {
                 for (int i = 0; i < jigsawCount; i++)
                 {

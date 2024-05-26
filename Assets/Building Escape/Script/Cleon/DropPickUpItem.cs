@@ -5,17 +5,17 @@ using UnityEngine;
 public class DropPickUpItem : MonoBehaviour
 {
     private Camera camera;
-    private GameManager gameManager;
+    private GameManager gm;
 
     private void Start()
     {
-        gameManager = FindObjectOfType<GameManager>();
+        gm = FindObjectOfType<GameManager>();
         camera = Camera.main;
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.F) && gameManager.GetLock() == false)
+        if (Input.GetKeyDown(gm.getInteractKey()) && gm.GetLock() == false)
         {
             Ray ray = camera.ViewportPointToRay(new Vector3(.5f, .5f, 0));
             RaycastHit hitInfo;
@@ -25,7 +25,7 @@ public class DropPickUpItem : MonoBehaviour
                 DropItem dropedItem = hitInfo.collider.gameObject.GetComponent<DropItem>();
                 if (dropedItem != null)
                 {
-                    gameManager.inventories.AddItem(dropedItem.item);
+                    gm.inventories.AddItem(dropedItem.item);
                     hitInfo.transform.gameObject.GetComponent<BoxCollider>().enabled = false;
 
                     if (hitInfo.transform.childCount == 0)
@@ -49,12 +49,12 @@ public class DropPickUpItem : MonoBehaviour
 
     public void DropItem()
     {
-        if (gameManager.inventories.selectedItem == null)
+        if (gm.inventories.selectedItem == null)
         {
             return;
         }
 
-        GameObject mesh = gameManager.inventories.selectedItem.Mesh;
+        GameObject mesh = gm.inventories.selectedItem.Mesh;
         if (mesh != null)
         {
             mesh.GetComponentInChildren<MeshRenderer>().enabled = true;
@@ -67,11 +67,11 @@ public class DropPickUpItem : MonoBehaviour
             dropedItem.Drop();
             if (dropedItem != null)
             {
-                dropedItem.item = new Item(gameManager.inventories.selectedItem);
+                dropedItem.item = new Item(gm.inventories.selectedItem);
             }
         }
 
-        gameManager.inventories.RemoveItem(gameManager.inventories.selectedItem);
-        gameManager.inventories.selectedItem = null;
+        gm.inventories.RemoveItem(gm.inventories.selectedItem);
+        gm.inventories.selectedItem = null;
     }
 }
