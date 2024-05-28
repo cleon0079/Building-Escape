@@ -11,6 +11,7 @@ TagManager:
   - Crate
   - End
   - Jigsaw
+  - ID_Card
   layers:
   - Default
   - TransparentFX

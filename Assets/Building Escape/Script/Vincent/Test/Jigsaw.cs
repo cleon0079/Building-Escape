@@ -20,6 +20,9 @@ public class Jigsaw : MonoBehaviour
     [SerializeField] private GameObject jigsaw;
     [SerializeField] private GameObject[] jigsawPieces;
 
+
+    
+
     private int PhotoFrameCount;
     private int jigsawCount;
 
@@ -28,10 +31,16 @@ public class Jigsaw : MonoBehaviour
 
     [SerializeField] private KeyDoor JigsawDoor;
 
+
+    [SerializeField] private GameObject FinishHint;
+
+
     // Start is called before the first frame update
     void Start()
     {
         gm = FindObjectOfType<GameManager>();
+
+        FinishHint.SetActive(false);
 
         //set the parent object
         PhotoFrameCount = PhotoFrame.transform.childCount;
@@ -103,7 +112,9 @@ public class Jigsaw : MonoBehaviour
     {
         if (count == PhotoFrameCount && Complete ==false)
         {
-            Debug.Log(12);
+            //show the finish hint
+            FinishHint.SetActive(true);
+            //Open the Final Door
             JigsawDoor.DoorOpen();
             Complete = true;
         }
