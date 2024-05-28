@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Jigsaw : MonoBehaviour
@@ -21,18 +22,18 @@ public class Jigsaw : MonoBehaviour
     [SerializeField] private GameObject[] jigsawPieces;
 
 
-    
+
 
     private int PhotoFrameCount;
     private int jigsawCount;
 
     //check the complete the jigsaw
-    private bool Complete =false;
+    private bool Complete = false;
 
     [SerializeField] private KeyDoor JigsawDoor;
 
 
-    [SerializeField] private GameObject FinishHint;
+
 
 
     // Start is called before the first frame update
@@ -40,17 +41,15 @@ public class Jigsaw : MonoBehaviour
     {
         gm = FindObjectOfType<GameManager>();
 
-        FinishHint.SetActive(false);
-
         //set the parent object
         PhotoFrameCount = PhotoFrame.transform.childCount;
         jigsawCount = jigsaw.transform.childCount;
 
         //set  the childe object of jigsaw Pieces
         PhotoFramePiece = new GameObject[PhotoFrameCount];
-        jigsawPieces =new GameObject[jigsawCount];
+        jigsawPieces = new GameObject[jigsawCount];
 
-        for (int i  = 0;i < jigsawCount; i++)
+        for (int i = 0; i < jigsawCount; i++)
         {
             jigsawPieces[i] = jigsaw.transform.GetChild(i).gameObject;
             jigsawPieces[i].AddComponent<BoxCollider>();
@@ -62,7 +61,7 @@ public class Jigsaw : MonoBehaviour
             PhotoFramePiece[i] = PhotoFrame.transform.GetChild(i).gameObject;
             PhotoFramePiece[i].SetActive(false);
         }
-        
+
 
 
     }
@@ -87,11 +86,11 @@ public class Jigsaw : MonoBehaviour
             {
                 for (int i = 0; i < jigsawCount; i++)
                 {
-                    if(hitObject == jigsawPieces[i])
+                    if (hitObject == jigsawPieces[i])
                     {
                         jigsawPieces[i].SetActive(false);
                         PhotoFramePiece[i].SetActive(true);
-                        count ++;
+                        count++;
                         break;
                     }
                 }
@@ -105,18 +104,22 @@ public class Jigsaw : MonoBehaviour
         }
 
         checkComplete();
+        
     }
 
 
     private void checkComplete()
     {
-        if (count == PhotoFrameCount && Complete ==false)
+        if (count == PhotoFrameCount && Complete == false)
         {
-            //show the finish hint
-            FinishHint.SetActive(true);
+           
+           
+
             //Open the Final Door
             JigsawDoor.DoorOpen();
             Complete = true;
         }
     }
+
+
 }
