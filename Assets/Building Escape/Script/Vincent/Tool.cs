@@ -27,7 +27,7 @@ public class Tool : MonoBehaviour
         {
             GameObject hitObject = hit.collider.gameObject;
 
-            if (hitObject.CompareTag("Jigsaw") || hitObject.CompareTag("NumLock"))
+            if (hitObject.CompareTag("Jigsaw") || hitObject.CompareTag("NumLock") || hitObject.CompareTag("Door") || hitObject.CompareTag("SlideLock"))
             {
                 ToolHint.SetActive(true);
             }
