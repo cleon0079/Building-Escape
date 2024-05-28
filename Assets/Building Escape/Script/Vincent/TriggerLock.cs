@@ -13,8 +13,6 @@ public class TriggerLock : MonoBehaviour
 
     [SerializeField] private SlidePuzzle slidePuzzle;
 
-
-
     private bool IsTriggerLock;
     private bool IsSlideLock =false;
     private bool puzzleCompletedHandled = false;

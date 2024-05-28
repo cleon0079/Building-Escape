@@ -7,7 +7,9 @@ public class Tool : MonoBehaviour
 
     [SerializeField] private Camera playerCamera; // Reference to the player's camera
     public float interactionDistance = 5f; // Distance for interaction
-    [SerializeField] private GameObject ToolHint; // Key to interact
+    [SerializeField] private GameObject ToolHint; // Look the intercat obj
+
+    [SerializeField] private TriggerLock triggerLock;
 
     // Start is called before the first frame update
     void Start()
@@ -27,9 +29,9 @@ public class Tool : MonoBehaviour
         {
             GameObject hitObject = hit.collider.gameObject;
 
-            if (hitObject.CompareTag("Jigsaw") || hitObject.CompareTag("NumLock") || hitObject.CompareTag("Door") || hitObject.CompareTag("SlideLock"))
+            if (hitObject.CompareTag("Jigsaw")  || hitObject.CompareTag("Door") || hitObject.CompareTag("Crate") || hitObject.CompareTag("ID_Card"))
             {
-                ToolHint.SetActive(true);
+              ToolHint.SetActive(true);
             }
         }
         else
@@ -37,4 +39,5 @@ public class Tool : MonoBehaviour
             ToolHint.SetActive(false);
         }
     }
+
 }
