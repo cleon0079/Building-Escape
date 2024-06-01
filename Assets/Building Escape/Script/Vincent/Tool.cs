@@ -29,7 +29,7 @@ public class Tool : MonoBehaviour
         {
             GameObject hitObject = hit.collider.gameObject;
 
-            if (hitObject.CompareTag("Jigsaw")  || hitObject.CompareTag("Door") || hitObject.CompareTag("Crate") || hitObject.CompareTag("ID_Card"))
+            if (hitObject.CompareTag("Jigsaw")  || hitObject.CompareTag("Door") || hitObject.CompareTag("Crate") || hitObject.CompareTag("ID_Card") || hitObject.CompareTag("Clue"))
             {
               ToolHint.SetActive(true);
             }

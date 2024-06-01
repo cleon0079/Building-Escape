@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class EndGame : MonoBehaviour
 {
+    [SerializeField] private GameObject FinishText;  // finish text
+
+
     GameManager gm;
     // Start is called before the first frame update
     void Start()
@@ -21,6 +24,7 @@ public class EndGame : MonoBehaviour
     {
         if (other.gameObject.CompareTag("End"))
         {
+            FinishText.SetActive(false);
             gm.EndGame();
         }
     }

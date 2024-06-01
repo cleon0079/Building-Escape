@@ -1104,6 +1104,10 @@ PrefabInstance:
       value: File1
       objectReference: {fileID: 0}
     - target: {fileID: 8395136790892582353, guid: 8ce950fa62b505a469fbf74fd6c8f939, type: 3}
+      propertyPath: m_TagString
+      value: Clue
+      objectReference: {fileID: 0}
+    - target: {fileID: 8395136790892582353, guid: 8ce950fa62b505a469fbf74fd6c8f939, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -6046,6 +6050,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e03f425cabe37224da29cd9dca706cae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  FinishText: {fileID: 971925413}
 --- !u!114 &416709865
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6066,6 +6071,7 @@ MonoBehaviour:
   jigsaw: {fileID: 2107163397}
   jigsawPieces: []
   JigsawDoor: {fileID: 926964313}
+  FinishText: {fileID: 971925413}
 --- !u!114 &416709866
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7419,15 +7425,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4968438875268317221, guid: ef41f150dfaf0574795fcc1eeca178e5, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -33.46
+      value: -32.514
       objectReference: {fileID: 0}
     - target: {fileID: 4968438875268317221, guid: ef41f150dfaf0574795fcc1eeca178e5, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.499
+      value: 4.432
       objectReference: {fileID: 0}
     - target: {fileID: 4968438875268317221, guid: ef41f150dfaf0574795fcc1eeca178e5, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 68.053
+      value: 72.38
       objectReference: {fileID: 0}
     - target: {fileID: 4968438875268317221, guid: ef41f150dfaf0574795fcc1eeca178e5, type: 3}
       propertyPath: m_LocalRotation.w
@@ -12822,7 +12828,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &971925414
 RectTransform:
   m_ObjectHideFlags: 0
@@ -24338,8 +24344,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75882c126167f614caa723d2e0095e3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enterFinal: 0
-  Player: {fileID: 416709855}
 --- !u!65 &2092609555
 BoxCollider:
   m_ObjectHideFlags: 0

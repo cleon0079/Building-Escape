@@ -101,6 +101,9 @@ public class TriggerLock : MonoBehaviour
             IsTriggerLock = false;
             IsSlideLock =false;
         }
+
     }
     
+
+
 }

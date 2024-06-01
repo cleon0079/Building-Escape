@@ -12,6 +12,7 @@ TagManager:
   - End
   - Jigsaw
   - ID_Card
+  - Clue
   layers:
   - Default
   - TransparentFX

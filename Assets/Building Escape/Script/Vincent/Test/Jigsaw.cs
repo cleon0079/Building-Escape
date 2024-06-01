@@ -20,7 +20,7 @@ public class Jigsaw : MonoBehaviour
     //set tje piece that in the map
     [SerializeField] private GameObject jigsaw;
     [SerializeField] private GameObject[] jigsawPieces;
-
+    [SerializeField] private KeyDoor JigsawDoor;
 
 
 
@@ -30,8 +30,8 @@ public class Jigsaw : MonoBehaviour
     //check the complete the jigsaw
     private bool Complete = false;
 
-    [SerializeField] private KeyDoor JigsawDoor;
 
+    [SerializeField] private GameObject FinishText;  // finish text
 
 
 
@@ -40,6 +40,9 @@ public class Jigsaw : MonoBehaviour
     void Start()
     {
         gm = FindObjectOfType<GameManager>();
+
+
+        
 
         //set the parent object
         PhotoFrameCount = PhotoFrame.transform.childCount;
@@ -63,7 +66,7 @@ public class Jigsaw : MonoBehaviour
         }
 
 
-
+        FinishText.SetActive(false);
     }
 
     // Update is called once per frame
@@ -113,13 +116,16 @@ public class Jigsaw : MonoBehaviour
         if (count == PhotoFrameCount && Complete == false)
         {
            
-           
-
             //Open the Final Door
             JigsawDoor.DoorOpen();
             Complete = true;
+
+            //After the complter the finish text will show 
+            FinishText.SetActive(true);
         }
     }
 
+
+    
 
 }
