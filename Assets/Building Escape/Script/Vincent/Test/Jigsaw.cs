@@ -28,7 +28,7 @@ public class Jigsaw : MonoBehaviour
     private int jigsawCount;
 
     //check the complete the jigsaw
-    private bool Complete = false;
+    public bool Complete = false;
 
 
     [SerializeField] private GameObject FinishText;  // finish text

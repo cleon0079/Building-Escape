@@ -9,12 +9,17 @@ public class Tool : MonoBehaviour
     public float interactionDistance = 5f; // Distance for interaction
     [SerializeField] private GameObject ToolHint; // Look the intercat obj
 
-    [SerializeField] private TriggerLock triggerLock;
+    [SerializeField] private GameObject PhotoFrameHint;
+
+    [SerializeField] private Jigsaw jigsaw;
 
     // Start is called before the first frame update
     void Start()
     {
         ToolHint.SetActive(false);
+        PhotoFrameHint.SetActive(false);
+
+        jigsaw =FindFirstObjectByType<Jigsaw>();
     }
 
 
@@ -33,10 +38,18 @@ public class Tool : MonoBehaviour
             {
               ToolHint.SetActive(true);
             }
+
+            if (hitObject.CompareTag("PhotoFrame") && jigsaw.Complete ==false)
+            {
+                PhotoFrameHint.SetActive(true);
+            }
         }
+
         else
         {
             ToolHint.SetActive(false);
+            PhotoFrameHint.SetActive(false);
+
         }
     }
 
