@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
+[RequireComponent(typeof(Rigidbody))]
 public class Controller : MonoBehaviour
 {
 
@@ -12,14 +13,13 @@ public class Controller : MonoBehaviour
     private InputAction look;
     private InputAction jump;
 
-
     //Control player Move 
     [SerializeField] private float moveSpeed = 10f;
 
     //control player Look
-    [SerializeField] private Camera mainCamera;
     [SerializeField] private float lookSensitivity = 10f;
     private float yRotation;
+    private float xRotation;
 
     //Control player jump
     [SerializeField] private float jumpHight = 1.0f;
@@ -32,10 +32,12 @@ public class Controller : MonoBehaviour
         move = input.Player.Move;
         look = input.Player.Look;
         jump = input.Player.Jump;
+
         jump.started += Jump;
 
         rb = GetComponent<Rigidbody>();
-
+        rb.freezeRotation = true;
+        rb.collisionDetectionMode = CollisionDetectionMode.Continuous;
     }
 
     private void OnEnable()
@@ -56,15 +58,14 @@ public class Controller : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.Locked;
     }
+
     void Update()
     {
         Movement();
-        Camera();
+        RotateCamera();
 
         //check the player is ground
         isGrounded = Physics.Raycast(transform.position, Vector3.down, 1.1f);
-
-
     }
 
     void Movement()
@@ -77,7 +78,7 @@ public class Controller : MonoBehaviour
         transform.Translate(Vector3.right * vertcal * Time.deltaTime * moveSpeed);
     }
 
-    void Camera()
+    void RotateCamera()
     {
         float mouse_x = look.ReadValue<Vector2>().x;
         float mouse_y = look.ReadValue<Vector2>().y;
@@ -88,7 +89,9 @@ public class Controller : MonoBehaviour
         yRotation -= mouse_y * lookSensitivity;
         yRotation = Mathf.Clamp(yRotation, -90f, 90f);
 
-        mainCamera.transform.localRotation = Quaternion.Euler(yRotation, 0f, 0f);
+        //xRotation -= mouse_x * lookSensitivity;
+
+        Camera.main.transform.localRotation = Quaternion.Euler(yRotation, 0f, 0f);
     }
 
     void Jump(InputAction.CallbackContext context)
@@ -100,7 +103,16 @@ public class Controller : MonoBehaviour
         
     }
 
-
+    public void CanMove(bool move) {
+        if (move)
+        {
+            OnEnable();
+        }
+        else
+        {
+            OnDisable();
+        }
+    }
 }
 
 

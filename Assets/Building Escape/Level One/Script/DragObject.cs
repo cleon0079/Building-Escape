@@ -1,69 +1,119 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class DragObject : MonoBehaviour
 {
-    [SerializeField] float rayDistance = 10f; // 射线检测距离
-    [SerializeField] LayerMask draggableLayer; // 可拖动物体的层级
-    [SerializeField] float minHeight = 0.5f; // 物体的最小高度，防止穿过平面
-    float positionSpring = 200f; // 位置弹簧
-    float positionDamper = 20f; // 位置阻尼
-    float rotationSpring = 200f; // 旋转弹簧
-    float rotationDamper = 20f; // 旋转阻尼
-    float linearLimit = 0.5f; // 线性限制
-    float angularLimit = 45f; // 角度限制
-    [SerializeField] float minDistance = 1f; // 物体离玩家的最小距离
-    [SerializeField] float maxDistance = 10f; // 物体离玩家的最大距离
-    [SerializeField] float scrollSpeed = 1f; // 滚轮滚动的速度
-    [SerializeField] float rotationSpeed = 100f; // 旋转速度
+    [SerializeField] float rayDistance = 10f;
+    [SerializeField] LayerMask draggableLayer;
+    [SerializeField] float minHeight = 0.5f;
+    float positionSpring = 200f;
+    float positionDamper = 20f;
+    float rotationSpring = 200f;
+    float rotationDamper = 20f;
+    float linearLimit = 0.5f;
+    float angularLimit = 45f;
+    [SerializeField] float minDistance = 1f;
+    [SerializeField] float maxDistance = 10f;
+    [SerializeField] float scrollSpeed = 1f;
+    [SerializeField] float rotationSpeed = 100f;
 
-    private Rigidbody draggedRigidbody; // 当前被拖动的物体的Rigidbody
-    private ConfigurableJoint configurableJoint; // 用于抓取物体的可配置关节
-    private Transform grabTransform; // 抓取点的虚拟Transform
-    private bool isDragging = false; // 当前是否在拖拽物体
-    private bool isRotating = false; // 当前是否在旋转物体
-    private bool canRotate = false; // 是否可以旋转物体
-    private float currentDistance; // 当前抓取点与玩家的距离
+    private Rigidbody draggedRigidbody;
+    private ConfigurableJoint configurableJoint;
+    private Transform grabTransform;
+    private bool isDragging = false;
+    private bool isRotating = false;
+    private bool canRotate = false;
+    private float currentDistance;
 
-    void Start()
+    private GameInput input;
+    private InputAction interatAction;
+    private InputAction scrollAction;
+    private InputAction rotateAction;
+    private InputAction deltaAction;
+    private bool isRightClicking = false;
+
+    private Controller player;
+
+    private void Awake()
     {
-        // 创建一个虚拟的抓取点
+        input = new GameInput();
+        interatAction = input.Player.Interart;
+        scrollAction = input.Player.Scroll;
+        rotateAction = input.Player.Rotate;
+        deltaAction = input.Player.Look;
+
+        interatAction.started += OnDrag;
+        scrollAction.performed += OnScroll;
+        rotateAction.started += OnRightClick;
+
+        player = FindObjectOfType<Controller>();
+
         grabTransform = new GameObject("Grab Point").transform;
         grabTransform.gameObject.AddComponent<Rigidbody>().isKinematic = true;
     }
 
+    private void OnEnable()
+    {
+        interatAction.Enable();
+        scrollAction.Enable();
+        rotateAction.Enable();
+        deltaAction.Enable();
+    }
+
+    private void OnDisable()
+    {
+        interatAction.Disable();
+        scrollAction.Disable();
+        rotateAction.Disable();
+        deltaAction.Disable();
+    }
+
+    void OnRightClick(InputAction.CallbackContext context) {
+        if (canRotate)
+        {
+            isRightClicking = !isRightClicking;
+        }
+        if (isRightClicking)
+        {
+            player.CanMove(false);
+        }
+        else
+        {
+            player.CanMove(true);
+        }
+    }    
+
+    private void OnDrag(InputAction.CallbackContext context)
+    {
+        if (isDragging)
+        {
+            StopDrag();
+        }
+        else
+        {
+            TryStartDrag();
+        }
+    }
+
+    void OnScroll(InputAction.CallbackContext context)
+    {
+        float scroll = context.ReadValue<Vector2>().y;
+        AdjustGrabDistance(scroll);
+    }
+
     void Update()
     {
-        // 检测鼠标左键或F键按下，切换拖拽状态
-        if (Input.GetKeyDown(KeyCode.F) || Input.GetMouseButtonDown(0))
-        {
-            if (isDragging)
-            {
-                StopDrag();
-            }
-            else
-            {
-                TryStartDrag();
-            }
-        }
 
-        // 如果正在拖拽物体，更新拖拽逻辑
         if (isDragging && draggedRigidbody != null)
         {
             DragTheObject();
 
-            // 检测鼠标滚轮滚动
-            float scroll = Input.GetAxis("Mouse ScrollWheel");
-            if (scroll != 0)
+            if (canRotate && isRightClicking)
             {
-                AdjustGrabDistance(scroll);
-            }
-
-            // 检测WASD键，旋转物体
-            if (canRotate)
-            {
-                RotateObject();
+                Vector2 mouseDelta = deltaAction.ReadValue<Vector2>();
+                RotateObject(mouseDelta);
             }
         }
     }
@@ -85,16 +135,14 @@ public class DragObject : MonoBehaviour
 
                 AddConfigurableJoint();
 
-                // 设置拖拽状态为true
                 isDragging = true;
-                canRotate = false; // 初始化时不允许旋转
+                canRotate = false;
             }
         }
     }
 
     void DragTheObject()
     {
-        // 更新抓取点位置
         Ray ray = Camera.main.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2));
         Vector3 targetPoint;
         RaycastHit hit;
@@ -102,7 +150,7 @@ public class DragObject : MonoBehaviour
         {
             if (((1 << hit.collider.gameObject.layer) & draggableLayer) != 0)
             {
-                return; // 如果检测到的物体属于停止移动层级，则不移动抓取点
+                return;
             }
             targetPoint = hit.point;
         }
@@ -111,12 +159,10 @@ public class DragObject : MonoBehaviour
             targetPoint = ray.origin + ray.direction * currentDistance;
         }
 
-        // 确保抓取点的目标高度不会低于minHeight
         targetPoint.y = Mathf.Max(targetPoint.y, minHeight);
 
         grabTransform.position = targetPoint;
 
-        // 检查物体是否到达目标位置
         if (Vector3.Distance(grabTransform.position, draggedRigidbody.position) < 1)
         {
             canRotate = true;
@@ -125,49 +171,38 @@ public class DragObject : MonoBehaviour
 
     void StopDrag()
     {
-        // 结束拖动，销毁关节并重置拖拽状态
         if (draggedRigidbody != null)
         {
             Destroy(configurableJoint);
-            draggedRigidbody.useGravity = true; // 恢复重力
+            draggedRigidbody.useGravity = true;
             draggedRigidbody = null;
             isDragging = false;
-            canRotate = false; // 停止拖拽时不允许旋转
+            canRotate = false;
+            isRightClicking = false;
+            player.CanMove(true);
         }
     }
 
     void AdjustGrabDistance(float scroll)
     {
-        // 获取当前抓取点的方向和距离
-        Vector3 direction = (grabTransform.position - Camera.main.transform.position).normalized;
-        currentDistance = Mathf.Clamp(currentDistance + scroll * scrollSpeed, minDistance, maxDistance);
+        if (isDragging && draggedRigidbody != null)
+        {
+            Vector3 direction = (grabTransform.position - Camera.main.transform.position).normalized;
+            currentDistance = Mathf.Clamp(currentDistance + scroll * scrollSpeed, minDistance, maxDistance);
 
-        // 根据新的距离调整抓取点位置
-        grabTransform.position = Camera.main.transform.position + direction * currentDistance;
+            grabTransform.position = Camera.main.transform.position + direction * currentDistance;
+            if (isRightClicking)
+            {
+                draggedRigidbody.transform.position = Camera.main.transform.position + direction * currentDistance;
+            }
+        }
     }
 
-    void RotateObject()
+    void RotateObject(Vector2 mouseDelta)
     {
         if (draggedRigidbody == null) return;
 
-        Vector3 rotationAxis = Vector3.zero;
-
-        if (Input.GetKey(KeyCode.I))
-        {
-            rotationAxis = Camera.main.transform.right;
-        }
-        if (Input.GetKey(KeyCode.K))
-        {
-            rotationAxis = -Camera.main.transform.right;
-        }
-        if (Input.GetKey(KeyCode.J))
-        {
-            rotationAxis = Camera.main.transform.forward;
-        }
-        if (Input.GetKey(KeyCode.L))
-        {
-            rotationAxis = -Camera.main.transform.forward;
-        }
+        Vector3 rotationAxis = Camera.main.transform.up * -mouseDelta.x + Camera.main.transform.right * mouseDelta.y;
 
         if (rotationAxis != Vector3.zero)
         {
@@ -177,12 +212,10 @@ public class DragObject : MonoBehaviour
                 isRotating = true;
             }
 
-            // 进行旋转
             draggedRigidbody.transform.RotateAround(draggedRigidbody.position, rotationAxis, rotationSpeed * Time.deltaTime);
         }
         else if (isRotating)
         {
-            // 恢复关节和重力
             AddConfigurableJoint();
             isRotating = false;
         }
@@ -195,7 +228,6 @@ public class DragObject : MonoBehaviour
         configurableJoint = draggedRigidbody.gameObject.AddComponent<ConfigurableJoint>();
         configurableJoint.connectedBody = grabTransform.GetComponent<Rigidbody>();
 
-        // 设置线性和角度限制
         SoftJointLimit linearSoftLimit = new SoftJointLimit { limit = linearLimit };
         configurableJoint.linearLimit = linearSoftLimit;
 
@@ -215,7 +247,6 @@ public class DragObject : MonoBehaviour
         configurableJoint.angularYLimit = angularYZLimit;
         configurableJoint.angularZLimit = angularYZLimit;
 
-        // 配置位置和角度驱动
         JointDrive positionDrive = new JointDrive
         {
             positionSpring = positionSpring,
