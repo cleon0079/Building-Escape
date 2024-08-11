@@ -15,7 +15,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float gravity = -9.81f;
     private Vector3 playerVelocity;
     private bool grounded;
-    float mRotationY = 0f;
+    private float mRotationY = 0f;
     [SerializeField] private float lookSensitivity =1f;
    
     private GameManager gm;
