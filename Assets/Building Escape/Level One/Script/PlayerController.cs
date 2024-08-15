@@ -40,7 +40,7 @@ public class PlayerController : MonoBehaviour
         //if (gm.GetZoom() == false){
             
         //}
-        bridgePosition = new Vector3(0,3.75f,transform.position.z);
+        bridgePosition = new Vector3(0,8.75f,transform.position.z);
 
         if (canMove)
         {
@@ -139,6 +139,7 @@ public class PlayerController : MonoBehaviour
     void OnTriggerExit(Collider collider){
         if(collider.gameObject.layer == 12)
         {
+            playerVelocity.y = -1;
             isfalling = false;
         }
     }
