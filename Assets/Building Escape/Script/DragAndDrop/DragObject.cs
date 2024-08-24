@@ -191,10 +191,6 @@ public class DragObject : MonoBehaviour
             currentDistance = Mathf.Clamp(currentDistance + scroll * scrollSpeed, minDistance, maxDistance);
 
             grabTransform.position = Camera.main.transform.position + direction * currentDistance;
-            if (isRightClicking)
-            {
-                draggedRigidbody.transform.position = Camera.main.transform.position + direction * currentDistance;
-            }
         }
     }
 
