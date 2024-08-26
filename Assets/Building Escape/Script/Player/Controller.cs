@@ -7,6 +7,7 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(Rigidbody))]
 public class Controller : MonoBehaviour
 {
+    UIManager uiManager;
 
     private GameInput input;
     private InputAction move;
@@ -56,7 +57,8 @@ public class Controller : MonoBehaviour
 
     void Start()
     {
-        Cursor.lockState = CursorLockMode.Locked;
+        uiManager = FindObjectOfType<UIManager>();
+        uiManager.CursorMode(false);
     }
 
     void Update()
@@ -91,7 +93,7 @@ public class Controller : MonoBehaviour
 
         //xRotation -= mouse_x * lookSensitivity;
 
-        Camera.main.transform.localRotation = Quaternion.Euler(yRotation, 0f, 0f);
+        uiManager.mainCamera.transform.localRotation = Quaternion.Euler(yRotation, 0f, 0f);
     }
 
     void Jump(InputAction.CallbackContext context)

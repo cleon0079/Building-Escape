@@ -118,6 +118,17 @@ public class DragObject : MonoBehaviour
         }
     }
 
+    public void CanDrag(bool drag) {
+        if (drag)
+        {
+            OnEnable();
+        }
+        else
+        {
+            OnDisable();
+        }
+    }
+
     void TryStartDrag()
     {
         Ray ray = Camera.main.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2));
