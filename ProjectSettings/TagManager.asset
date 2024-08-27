@@ -14,9 +14,6 @@ TagManager:
   - ID_Card
   - Clue
   - PhotoFrame
-  - 1
-  - 2
-  - 3
   layers:
   - Default
   - TransparentFX

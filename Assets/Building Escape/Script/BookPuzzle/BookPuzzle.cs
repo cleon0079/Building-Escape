@@ -19,6 +19,8 @@ public class BookPuzzle : MonoBehaviour
 
     [SerializeField] List<GameObject> levelObjects;
 
+    bool isPuzzling = false;
+
     bool isDragging = false;
     float startMousePosition;
 
@@ -50,9 +52,12 @@ public class BookPuzzle : MonoBehaviour
         interatAction.started -= OnStart;
         interatAction.started += OnClick;
         interatAction.canceled += OnNoClick;
+        escAction.started += OnEsc;
 
         mousePosition.Enable();
         escAction.Enable();
+
+        isPuzzling = true;
     }
 
     void OnClick(InputAction.CallbackContext context)
@@ -71,6 +76,11 @@ public class BookPuzzle : MonoBehaviour
     {
         isDragging = false;
         CheckPuzzle();
+    }
+
+    void OnEsc(InputAction.CallbackContext context) 
+    {
+        EscPuzzle();
     }
 
     private void Start()
@@ -111,15 +121,25 @@ public class BookPuzzle : MonoBehaviour
             {
                 if (levelObjects[k].transform.GetChild(i + 1).localPosition.x < levelObjects[k].transform.GetChild(i + 2).localPosition.x)
                 {
-                    PuzzleCompleted();
+                    if (k == levelObjects.Count - 1)
+                    {
+                        PuzzleCompleted();
+                    }
                 }
+                else
+                {
+                    return;
+                }
+            }
+            else
+            {
+                return;
             }
         }
     }
 
-    private void PuzzleCompleted()
+    void EscPuzzle() 
     {
-        isDone = true;
         isDragging = false;
 
         uiManager.EndPuzzle();
@@ -130,21 +150,40 @@ public class BookPuzzle : MonoBehaviour
         uiManager.ShowDot(true);
         uiManager.CursorMode(false);
 
-        animator.SetBool("BookShelfOpen", true);
-        uiManager.UpdateText("");
+        interatAction.started -= OnClick;
+        interatAction.canceled -= OnNoClick;
+        escAction.started -= OnEsc;
+
+        interatAction.started += OnStart;
+        uiManager.UpdateText(showedText);
 
         interatAction.Disable();
         escAction.Disable();
         mousePosition.Disable();
-}
 
-    private void OnTriggerEnter(Collider other)
+        isPuzzling = false;
+    }
+
+    private void PuzzleCompleted()
+    {
+        isDone = true;
+
+        EscPuzzle();
+        interatAction.started -= OnStart;
+
+        animator.SetBool("BookShelfOpen", true);
+        uiManager.UpdateText("");
+    }
+
+    private void OnTriggerStay(Collider other)
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("Player") && !isDone)
         {
-            uiManager.UpdateText(showedText);
+            if (!isPuzzling)
+            {
+                uiManager.UpdateText(showedText);
+            }
             interatAction.Enable();
-
         }
     }
 
