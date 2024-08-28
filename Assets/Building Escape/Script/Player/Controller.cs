@@ -18,12 +18,12 @@ public class Controller : MonoBehaviour
     [SerializeField] private float moveSpeed = 10f;
 
     //control player Look
-    [SerializeField] private float lookSensitivity = 10f;
+    [SerializeField] private float lookSensitivity = 1f;
     private float yRotation;
     private float xRotation;
 
     //Control player jump
-    [SerializeField] private float jumpHight = 1.0f;
+    [SerializeField] private float jumpHight = 2.0f;
     private Rigidbody rb;
     private bool isGrounded;
 
@@ -64,8 +64,9 @@ public class Controller : MonoBehaviour
 
     void Start()
     {
-        uiManager = FindObjectOfType<UIManager>();
-        uiManager.CursorMode(false);
+       uiManager = FindObjectOfType<UIManager>();
+       uiManager.CursorMode(false);
+
     }
 
     void Update()
@@ -88,8 +89,11 @@ public class Controller : MonoBehaviour
         float hirzontal = move.ReadValue<Vector2>().y;
 
         //Walk
-        transform.Translate(Vector3.forward * hirzontal * Time.deltaTime * moveSpeed);
-        transform.Translate(Vector3.right * vertcal * Time.deltaTime * moveSpeed);
+        Vector3 moveDirection = (transform.forward * hirzontal + transform.right * vertcal).normalized;
+        rb.velocity = new Vector3(moveDirection.x * moveSpeed, rb.velocity.y, moveDirection.z * moveSpeed);
+
+        //transform.Translate(Vector3.forward * hirzontal * Time.deltaTime * moveSpeed);
+        //Translate(Vector3.right * vertcal * Time.deltaTime * moveSpeed);
     }
 
     void RotateCamera()
@@ -103,7 +107,7 @@ public class Controller : MonoBehaviour
         yRotation -= mouse_y * lookSensitivity;
         yRotation = Mathf.Clamp(yRotation, -90f, 90f);
 
-        //xRotation -= mouse_x * lookSensitivity;
+        xRotation -= mouse_x * lookSensitivity;
 
         uiManager.mainCamera.transform.localRotation = Quaternion.Euler(yRotation, 0f, 0f);
     }
