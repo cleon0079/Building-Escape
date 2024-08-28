@@ -15,6 +15,8 @@ TagManager:
   - Clue
   - PhotoFrame
   - BlackBoard
+  - Chair
+  - Table
   layers:
   - Default
   - TransparentFX
