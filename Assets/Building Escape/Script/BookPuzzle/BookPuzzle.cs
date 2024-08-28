@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,7 +9,6 @@ public class BookPuzzle : MonoBehaviour
     UIManager uiManager;
     [SerializeField] string showedText = "Press F to interat";
     [SerializeField] GameObject target;
-    [SerializeField] Camera puzzleCamera;
 
     private GameInput input;
     private InputAction interatAction;
@@ -42,8 +42,9 @@ public class BookPuzzle : MonoBehaviour
     void OnStart(InputAction.CallbackContext context) {
         uiManager.StartPuzzle();
 
-        uiManager.mainCamera.gameObject.SetActive(false);
-        puzzleCamera.gameObject.SetActive(true);
+        uiManager.mainCamera.transform.SetParent(target.transform);
+        uiManager.mainCamera.transform.DOLocalMove(Vector3.zero, 1f);
+        uiManager.mainCamera.transform.DOLocalRotate(Vector3.zero, 1f);
 
         uiManager.ShowDot(false);
         uiManager.UpdateText("");
@@ -62,7 +63,7 @@ public class BookPuzzle : MonoBehaviour
 
     void OnClick(InputAction.CallbackContext context)
     {
-        Ray ray = puzzleCamera.ScreenPointToRay(mousePosition.ReadValue<Vector2>());
+        Ray ray = uiManager.mainCamera.ScreenPointToRay(mousePosition.ReadValue<Vector2>());
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit, 10, bookLayer))
         {
@@ -144,8 +145,9 @@ public class BookPuzzle : MonoBehaviour
 
         uiManager.EndPuzzle();
 
-        puzzleCamera.gameObject.SetActive(false);
-        uiManager.mainCamera.gameObject.SetActive(true);
+        uiManager.mainCamera.transform.SetParent(FindObjectOfType<Controller>().transform);
+        uiManager.mainCamera.transform.DOLocalMove(Vector3.zero, 1f);
+        uiManager.mainCamera.transform.DOLocalRotate(Vector3.zero, 1f);
 
         uiManager.ShowDot(true);
         uiManager.CursorMode(false);

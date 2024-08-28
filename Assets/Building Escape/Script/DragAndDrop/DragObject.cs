@@ -136,6 +136,11 @@ public class DragObject : MonoBehaviour
 
         if (Physics.Raycast(ray, out hit, rayDistance, draggableLayer))
         {
+            if (hit.rigidbody == null)
+            {
+                hit.transform.gameObject.AddComponent<Rigidbody>();
+                hit.rigidbody.collisionDetectionMode = CollisionDetectionMode.Continuous;
+            }
             draggedRigidbody = hit.rigidbody;
             if (draggedRigidbody != null)
             {
@@ -180,7 +185,7 @@ public class DragObject : MonoBehaviour
         }
     }
 
-    void StopDrag()
+    public void StopDrag()
     {
         if (draggedRigidbody != null)
         {

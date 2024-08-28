@@ -27,6 +27,9 @@ public class Controller : MonoBehaviour
     private Rigidbody rb;
     private bool isGrounded;
 
+    bool canMove = false;
+    bool canRotate = false;
+
     private void Awake()
     {
         input = new GameInput();
@@ -46,6 +49,8 @@ public class Controller : MonoBehaviour
         move.Enable();
         look.Enable();
         jump.Enable();
+        canMove = true;
+        canRotate = true;
     }
 
     private void OnDisable()
@@ -53,6 +58,8 @@ public class Controller : MonoBehaviour
         move.Disable();
         look.Disable();
         jump.Disable();
+        canMove = false;
+        canRotate = false;
     }
 
     void Start()
@@ -63,9 +70,14 @@ public class Controller : MonoBehaviour
 
     void Update()
     {
-        Movement();
-        RotateCamera();
-
+        if (canMove)
+        {
+            Movement();
+        }
+        if (canRotate)
+        {
+            RotateCamera();
+        }
         //check the player is ground
         isGrounded = Physics.Raycast(transform.position, Vector3.down, 1.1f);
     }
