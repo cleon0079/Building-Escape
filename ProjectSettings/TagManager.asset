@@ -11,6 +11,12 @@ TagManager:
   - Crate
   - End
   - Jigsaw
+  - ID_Card
+  - Clue
+  - PhotoFrame
+  - BlackBoard
+  - Chair
+  - Table
   layers:
   - Default
   - TransparentFX
@@ -22,9 +28,9 @@ TagManager:
   - PostProcessEffect
   - Lock
   - Interact
-  - 
-  - 
-  - 
+  - Camera
+  - DragItem
+  - Book
   - 
   - 
   - 
