@@ -64,8 +64,8 @@ public class Controller : MonoBehaviour
 
     void Start()
     {
-       uiManager = FindObjectOfType<UIManager>();
-       uiManager.CursorMode(false);
+       //uiManager = FindObjectOfType<UIManager>();
+       //uiManager.CursorMode(false);
 
     }
 
@@ -109,7 +109,7 @@ public class Controller : MonoBehaviour
 
         xRotation -= mouse_x * lookSensitivity;
 
-        uiManager.mainCamera.transform.localRotation = Quaternion.Euler(yRotation, 0f, 0f);
+        //uiManager.mainCamera.transform.localRotation = Quaternion.Euler(yRotation, 0f, 0f);
     }
 
     void Jump(InputAction.CallbackContext context)
