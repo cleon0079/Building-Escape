@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private CharacterController controller;
-
+    [SerializeField] private Respawn respawn;
     [SerializeField] private Camera eyes;   //main camera
 
     [SerializeField] private float speed = 10f;
@@ -16,6 +16,9 @@ public class PlayerController : MonoBehaviour
     private Vector3 playerVelocity;
     private bool grounded;
     private float mRotationY = 0f;
+    private bool isfalling;
+
+    private Vector3 bridgePosition;
     [SerializeField] private float lookSensitivity =1f;
    
     private GameManager gm;
@@ -27,6 +30,7 @@ public class PlayerController : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.Locked;
         grounded = true;
+        isfalling = false;
         CanMove(true);
     }
 
@@ -36,6 +40,7 @@ public class PlayerController : MonoBehaviour
         //if (gm.GetZoom() == false){
             
         //}
+        bridgePosition = new Vector3(0,8.75f,transform.position.z);
 
         if (canMove)
         {
@@ -43,6 +48,11 @@ public class PlayerController : MonoBehaviour
             Camera();
         }
 
+        if(isfalling)
+        {
+             transform.position = bridgePosition;
+             
+        }
         
 
 
@@ -115,6 +125,23 @@ public class PlayerController : MonoBehaviour
         ry = (Mathf.Abs(_smoothValZ) < dead) ? 0f : _smoothValZ;
 
         return new Vector2(rX, ry);
+    }
+
+     void OnTriggerEnter(Collider collider)
+    {
+        if(collider.gameObject.layer == 12)
+        {
+            Debug.Log("Istrigger");
+            isfalling = true;
+           
+        }
+    }
+    void OnTriggerExit(Collider collider){
+        if(collider.gameObject.layer == 12)
+        {
+            playerVelocity.y = -1;
+            isfalling = false;
+        }
     }
 
 }
