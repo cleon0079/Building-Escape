@@ -23,7 +23,7 @@ public class Controller : MonoBehaviour
     private float xRotation;
 
     //Control player jump
-    [SerializeField] private float jumpHight = 2.0f;
+    [SerializeField] private float jumpHight = 5f;
     private Rigidbody rb;
     private bool isGrounded;
 
@@ -64,8 +64,8 @@ public class Controller : MonoBehaviour
 
     void Start()
     {
-       //uiManager = FindObjectOfType<UIManager>();
-       //uiManager.CursorMode(false);
+       uiManager = FindObjectOfType<UIManager>();
+       uiManager.CursorMode(false);
 
     }
 
@@ -80,7 +80,7 @@ public class Controller : MonoBehaviour
             RotateCamera();
         }
         //check the player is ground
-        isGrounded = Physics.Raycast(transform.position, Vector3.down, 1.1f);
+        isGrounded = Physics.Raycast(transform.position, Vector3.down, this.transform.localScale.y * 1.1f);
     }
 
     void Movement()
@@ -109,7 +109,7 @@ public class Controller : MonoBehaviour
 
         xRotation -= mouse_x * lookSensitivity;
 
-        //uiManager.mainCamera.transform.localRotation = Quaternion.Euler(yRotation, 0f, 0f);
+        uiManager.mainCamera.transform.localRotation = Quaternion.Euler(yRotation, 0f, 0f);
     }
 
     void Jump(InputAction.CallbackContext context)
