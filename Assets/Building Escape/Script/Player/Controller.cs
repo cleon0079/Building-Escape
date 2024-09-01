@@ -121,6 +121,7 @@ public class Controller : MonoBehaviour
         
     }
 
+
     public void CanMove(bool move) {
         if (move)
         {
