@@ -20,12 +20,14 @@ public class Controller : MonoBehaviour
     //control player Look
     [SerializeField] private float lookSensitivity = 1f;
     private float yRotation;
-    private float xRotation;
 
     //Control player jump
     [SerializeField] private float jumpHight = 5f;
     private Rigidbody rb;
     private bool isGrounded;
+
+    private float baseGravity = -10f;
+    private float currentGravity;
 
     bool canMove = false;
     bool canRotate = false;
@@ -42,6 +44,7 @@ public class Controller : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
         rb.collisionDetectionMode = CollisionDetectionMode.Continuous;
+        rb.useGravity = false;
     }
 
     private void OnEnable()
@@ -81,6 +84,17 @@ public class Controller : MonoBehaviour
         }
         //check the player is ground
         isGrounded = Physics.Raycast(transform.position, Vector3.down, this.transform.localScale.y * 1.1f);
+
+        if (isGrounded)
+        {
+            // 如果在地面上，重置重力
+            currentGravity = baseGravity;
+        }
+        else
+        {
+            currentGravity -= 30 * Time.deltaTime;
+            rb.velocity += Vector3.up * currentGravity * Time.deltaTime;
+        }
     }
 
     void Movement()
@@ -107,8 +121,6 @@ public class Controller : MonoBehaviour
         yRotation -= mouse_y * lookSensitivity;
         yRotation = Mathf.Clamp(yRotation, -90f, 90f);
 
-        xRotation -= mouse_x * lookSensitivity;
-
         uiManager.mainCamera.transform.localRotation = Quaternion.Euler(yRotation, 0f, 0f);
     }
 
@@ -131,6 +143,12 @@ public class Controller : MonoBehaviour
         {
             OnDisable();
         }
+    }
+
+    void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawLine(transform.position, transform.position + Vector3.down * transform.localScale.y * 1.1f);
     }
 }
 

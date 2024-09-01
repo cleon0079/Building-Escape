@@ -215,6 +215,7 @@ public class DragObject : MonoBehaviour
         if (draggedRigidbody == null) return;
 
         Vector3 rotationAxis = Camera.main.transform.up * -mouseDelta.x + Camera.main.transform.right * mouseDelta.y;
+        Debug.Log(rotationAxis.normalized);
 
         if (rotationAxis != Vector3.zero)
         {
