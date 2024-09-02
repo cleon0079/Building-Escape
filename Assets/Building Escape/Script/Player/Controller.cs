@@ -26,9 +26,6 @@ public class Controller : MonoBehaviour
     private Rigidbody rb;
     private bool isGrounded;
 
-    private float baseGravity = -10f;
-    private float currentGravity;
-
     bool canMove = false;
     bool canRotate = false;
 
@@ -44,7 +41,6 @@ public class Controller : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
         rb.collisionDetectionMode = CollisionDetectionMode.Continuous;
-        rb.useGravity = false;
     }
 
     private void OnEnable()
@@ -84,17 +80,6 @@ public class Controller : MonoBehaviour
         }
         //check the player is ground
         isGrounded = Physics.Raycast(transform.position, Vector3.down, this.transform.localScale.y * 1.1f);
-
-        if (isGrounded)
-        {
-            // 如果在地面上，重置重力
-            currentGravity = baseGravity;
-        }
-        else
-        {
-            currentGravity -= 30 * Time.deltaTime;
-            rb.velocity += Vector3.up * currentGravity * Time.deltaTime;
-        }
     }
 
     void Movement()
