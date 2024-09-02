@@ -7,23 +7,20 @@ public class Item
 {
     public enum Index
     {
-        None,
-        One,
-        Two,
-        KeyDoor
+        LevelOne,
+        LevelTwo,
+        LevelThree
     }
 
     // Item's ID
     [SerializeField] string name;
     [SerializeField] string description;
-    [SerializeField] Texture2D icon;
-    [SerializeField] GameObject mesh;
+    [SerializeField] Sprite image;
     [SerializeField] Index type;
 
     public string Name { get { return name; } set { name = value; } }
     public string Description { get { return description; } set { description = value; } }
-    public Texture2D Icon { get { return icon; } set { icon = value; } }
-    public GameObject Mesh { get { return mesh; } set { mesh = value; } }
+    public Sprite Image { get { return image; } set { image = value; } }
     public Index Type { get { return type; } set { type = value; } }
 
     public Item() { }
@@ -32,8 +29,7 @@ public class Item
     {
         Name = _copyItem.Name;
         Description = _copyItem.Description;
-        Icon = _copyItem.Icon;
-        Mesh = _copyItem.Mesh;
+        Image = _copyItem.Image;
         Type = _copyItem.Type;
     }
 }

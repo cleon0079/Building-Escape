@@ -28,7 +28,6 @@ public class BlackBoardPuzzleCheck : MonoBehaviour
                 index++;
             }
         }
-        Debug.Log(1);
         if (index == blackboards.Length)
         {
             Finish();

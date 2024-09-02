@@ -15,7 +15,6 @@ public class GameManager : MonoBehaviour
     [Header("Reference")]
     public PlayerController playerController;
     public Inventories inventories;
-    public DropPickUpItem dropPickUpItem;
 
     [SerializeField] GameObject startMenu;
     [SerializeField] GameObject endMenu;

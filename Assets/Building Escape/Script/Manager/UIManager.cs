@@ -40,6 +40,11 @@ public class UIManager : MonoBehaviour
         interatText.text = inText;
     }
 
+    public void Inventory(bool inventory) {
+        dragObject.CanDrag(inventory);
+        player.CanMove(inventory);
+    }
+
     public void CursorMode(bool mode) 
     {
         if (mode)
