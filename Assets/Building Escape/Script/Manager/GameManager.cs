@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class UIManager : MonoBehaviour
+public class GameManager : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI interatText;
     [SerializeField] GameObject middelDot;
@@ -55,5 +55,14 @@ public class UIManager : MonoBehaviour
         {
             Cursor.lockState = CursorLockMode.Locked;
         }
+    }
+
+    public void ExitGame()
+    {
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
+        Application.Quit();
+#endif
     }
 }

@@ -18,7 +18,7 @@ public class Inventories : MonoBehaviour
     InputAction inventoryAction;
     InputAction escAction;
 
-    UIManager uIManager;
+    GameManager uIManager;
 
     private void Awake()
     {
@@ -32,7 +32,7 @@ public class Inventories : MonoBehaviour
 
     private void Start()
     {
-        uIManager = FindObjectOfType<UIManager>();
+        uIManager = FindObjectOfType<GameManager>();
     }
 
     private void OnEnable()
