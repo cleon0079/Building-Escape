@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 
 public class BookPuzzle : MonoBehaviour
 {
-    UIManager uiManager;
+    GameManager uiManager;
     [SerializeField] string showedText = "Press F to interat";
     [SerializeField] GameObject target;
 
@@ -86,7 +86,7 @@ public class BookPuzzle : MonoBehaviour
 
     private void Start()
     {
-        uiManager = FindObjectOfType<UIManager>();
+        uiManager = FindObjectOfType<GameManager>();
         animator = GetComponentInParent<Animator>();
     }
 
