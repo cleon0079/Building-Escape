@@ -891,7 +891,7 @@ GameObject:
   m_Component:
   - component: {fileID: 95794822}
   - component: {fileID: 95794821}
-  - component: {fileID: 95794820}
+  - component: {fileID: 95794823}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -899,26 +899,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &95794820
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 95794819}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SendPointerHoverToParent: 1
-  m_HorizontalAxis: Horizontal
-  m_VerticalAxis: Vertical
-  m_SubmitButton: Submit
-  m_CancelButton: Cancel
-  m_InputActionsPerSecond: 10
-  m_RepeatDelay: 0.5
-  m_ForceModuleActive: 0
 --- !u!114 &95794821
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -949,6 +929,36 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &95794823
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 95794819}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01614664b831546d2ae94a42149d80ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SendPointerHoverToParent: 1
+  m_MoveRepeatDelay: 0.5
+  m_MoveRepeatRate: 0.1
+  m_XRTrackingOrigin: {fileID: 0}
+  m_ActionsAsset: {fileID: -944628639613478452, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_PointAction: {fileID: -1654692200621890270, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_MoveAction: {fileID: -8784545083839296357, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_SubmitAction: {fileID: 392368643174621059, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_CancelAction: {fileID: 7727032971491509709, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_LeftClickAction: {fileID: 3001919216989983466, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_MiddleClickAction: {fileID: -2185481485913320682, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_RightClickAction: {fileID: -4090225696740746782, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_ScrollWheelAction: {fileID: 6240969308177333660, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_TrackedDevicePositionAction: {fileID: 6564999863303420839, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_TrackedDeviceOrientationAction: {fileID: 7970375526676320489, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_DeselectOnBackgroundClick: 1
+  m_PointerBehavior: 0
+  m_CursorLockBehavior: 0
 --- !u!1 &100070869
 GameObject:
   m_ObjectHideFlags: 0
@@ -1668,6 +1678,7 @@ GameObject:
   - component: {fileID: 218207149}
   - component: {fileID: 218207148}
   - component: {fileID: 218207147}
+  - component: {fileID: 218207151}
   m_Layer: 11
   m_Name: Blackboard_Broken.011
   m_TagString: BlackBoard
@@ -1789,6 +1800,19 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 218207145}
   m_Mesh: {fileID: 9213325167668152709, guid: 2edf86c5ab6ef4b4eb35092e94b1a1d1, type: 3}
+--- !u!114 &218207151
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 218207145}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41fc202a66e96264095adbe1207a7924, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 10
 --- !u!54 &225250407
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2108,6 +2132,7 @@ GameObject:
   - component: {fileID: 303935438}
   - component: {fileID: 303935437}
   - component: {fileID: 303935436}
+  - component: {fileID: 303935440}
   m_Layer: 11
   m_Name: Blackboard_Broken.006
   m_TagString: BlackBoard
@@ -2229,6 +2254,19 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 303935434}
   m_Mesh: {fileID: -7864961049372362665, guid: 2edf86c5ab6ef4b4eb35092e94b1a1d1, type: 3}
+--- !u!114 &303935440
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 303935434}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41fc202a66e96264095adbe1207a7924, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 6
 --- !u!65 &306852031
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2398,6 +2436,7 @@ GameObject:
   - component: {fileID: 318831324}
   - component: {fileID: 318831323}
   - component: {fileID: 318831322}
+  - component: {fileID: 318831326}
   m_Layer: 11
   m_Name: Blackboard_Broken.008
   m_TagString: BlackBoard
@@ -2519,6 +2558,19 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 318831320}
   m_Mesh: {fileID: 2248230317583828072, guid: 2edf86c5ab6ef4b4eb35092e94b1a1d1, type: 3}
+--- !u!114 &318831326
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 318831320}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41fc202a66e96264095adbe1207a7924, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 7
 --- !u!1 &319239087
 GameObject:
   m_ObjectHideFlags: 0
@@ -3821,6 +3873,7 @@ GameObject:
   - component: {fileID: 647245929}
   - component: {fileID: 647245928}
   - component: {fileID: 647245927}
+  - component: {fileID: 647245931}
   m_Layer: 11
   m_Name: Blackboard_Broken.004
   m_TagString: BlackBoard
@@ -3942,6 +3995,19 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 647245925}
   m_Mesh: {fileID: -1773196356294808590, guid: 2edf86c5ab6ef4b4eb35092e94b1a1d1, type: 3}
+--- !u!114 &647245931
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 647245925}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41fc202a66e96264095adbe1207a7924, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 44
 --- !u!54 &648668809
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -5818,6 +5884,7 @@ GameObject:
   - component: {fileID: 852936793}
   - component: {fileID: 852936792}
   - component: {fileID: 852936791}
+  - component: {fileID: 852936795}
   m_Layer: 11
   m_Name: Blackboard_Broken.003
   m_TagString: BlackBoard
@@ -5939,6 +6006,19 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 852936789}
   m_Mesh: {fileID: 1536498580760125501, guid: 2edf86c5ab6ef4b4eb35092e94b1a1d1, type: 3}
+--- !u!114 &852936795
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 852936789}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41fc202a66e96264095adbe1207a7924, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 3
 --- !u!1 &880596050
 GameObject:
   m_ObjectHideFlags: 0
@@ -7820,6 +7900,7 @@ GameObject:
   - component: {fileID: 1239478761}
   - component: {fileID: 1239478760}
   - component: {fileID: 1239478759}
+  - component: {fileID: 1239478763}
   m_Layer: 11
   m_Name: Blackboard_Broken.010
   m_TagString: BlackBoard
@@ -7941,6 +8022,19 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1239478757}
   m_Mesh: {fileID: 1290876839263642838, guid: 2edf86c5ab6ef4b4eb35092e94b1a1d1, type: 3}
+--- !u!114 &1239478763
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1239478757}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41fc202a66e96264095adbe1207a7924, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 9
 --- !u!65 &1255385189
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7975,6 +8069,7 @@ GameObject:
   - component: {fileID: 1255844723}
   - component: {fileID: 1255844722}
   - component: {fileID: 1255844721}
+  - component: {fileID: 1255844725}
   m_Layer: 11
   m_Name: Blackboard_Broken.017
   m_TagString: BlackBoard
@@ -8096,6 +8191,19 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1255844719}
   m_Mesh: {fileID: 2293851391684757355, guid: 2edf86c5ab6ef4b4eb35092e94b1a1d1, type: 3}
+--- !u!114 &1255844725
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1255844719}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41fc202a66e96264095adbe1207a7924, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 16
 --- !u!65 &1263978348
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8369,6 +8477,7 @@ GameObject:
   - component: {fileID: 1279494398}
   - component: {fileID: 1279494397}
   - component: {fileID: 1279494396}
+  - component: {fileID: 1279494400}
   m_Layer: 11
   m_Name: Blackboard_Broken.015
   m_TagString: BlackBoard
@@ -8490,6 +8599,19 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1279494394}
   m_Mesh: {fileID: 1737857578500037792, guid: 2edf86c5ab6ef4b4eb35092e94b1a1d1, type: 3}
+--- !u!114 &1279494400
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1279494394}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41fc202a66e96264095adbe1207a7924, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 14
 --- !u!1 &1296716346
 GameObject:
   m_ObjectHideFlags: 0
@@ -8503,6 +8625,7 @@ GameObject:
   - component: {fileID: 1296716350}
   - component: {fileID: 1296716349}
   - component: {fileID: 1296716348}
+  - component: {fileID: 1296716352}
   m_Layer: 11
   m_Name: Blackboard_Broken.002
   m_TagString: BlackBoard
@@ -8624,6 +8747,19 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1296716346}
   m_Mesh: {fileID: 7302680542478320029, guid: 2edf86c5ab6ef4b4eb35092e94b1a1d1, type: 3}
+--- !u!114 &1296716352
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1296716346}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41fc202a66e96264095adbe1207a7924, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 2
 --- !u!1 &1300612224
 GameObject:
   m_ObjectHideFlags: 0
@@ -9079,6 +9215,7 @@ GameObject:
   - component: {fileID: 1377803086}
   - component: {fileID: 1377803085}
   - component: {fileID: 1377803084}
+  - component: {fileID: 1377803088}
   m_Layer: 11
   m_Name: Blackboard_Broken.019
   m_TagString: BlackBoard
@@ -9200,6 +9337,19 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1377803082}
   m_Mesh: {fileID: 2953012959144674242, guid: 2edf86c5ab6ef4b4eb35092e94b1a1d1, type: 3}
+--- !u!114 &1377803088
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1377803082}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41fc202a66e96264095adbe1207a7924, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 18
 --- !u!1 &1386924156
 GameObject:
   m_ObjectHideFlags: 0
@@ -10225,6 +10375,7 @@ GameObject:
   - component: {fileID: 1499006361}
   - component: {fileID: 1499006360}
   - component: {fileID: 1499006359}
+  - component: {fileID: 1499006363}
   m_Layer: 11
   m_Name: Blackboard_Broken.021
   m_TagString: BlackBoard
@@ -10346,6 +10497,19 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1499006357}
   m_Mesh: {fileID: -3478781866638194977, guid: 2edf86c5ab6ef4b4eb35092e94b1a1d1, type: 3}
+--- !u!114 &1499006363
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1499006357}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41fc202a66e96264095adbe1207a7924, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 20
 --- !u!65 &1515223794
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10428,6 +10592,7 @@ GameObject:
   - component: {fileID: 1539205156}
   - component: {fileID: 1539205155}
   - component: {fileID: 1539205154}
+  - component: {fileID: 1539205158}
   m_Layer: 11
   m_Name: Blackboard_Broken.018
   m_TagString: BlackBoard
@@ -10549,6 +10714,19 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1539205152}
   m_Mesh: {fileID: 1205555606443134798, guid: 2edf86c5ab6ef4b4eb35092e94b1a1d1, type: 3}
+--- !u!114 &1539205158
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1539205152}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41fc202a66e96264095adbe1207a7924, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 17
 --- !u!65 &1547509290
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10716,6 +10894,7 @@ GameObject:
   - component: {fileID: 1555831737}
   - component: {fileID: 1555831736}
   - component: {fileID: 1555831735}
+  - component: {fileID: 1555831739}
   m_Layer: 11
   m_Name: Blackboard_Broken.005
   m_TagString: BlackBoard
@@ -10837,6 +11016,19 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1555831733}
   m_Mesh: {fileID: 6365580024774186035, guid: 2edf86c5ab6ef4b4eb35092e94b1a1d1, type: 3}
+--- !u!114 &1555831739
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1555831733}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41fc202a66e96264095adbe1207a7924, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 5
 --- !u!65 &1556521722
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -11068,6 +11260,7 @@ GameObject:
   - component: {fileID: 1574290613}
   - component: {fileID: 1574290612}
   - component: {fileID: 1574290611}
+  - component: {fileID: 1574290615}
   m_Layer: 11
   m_Name: Blackboard_Broken.012
   m_TagString: BlackBoard
@@ -11189,6 +11382,19 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1574290609}
   m_Mesh: {fileID: -1538435541285581006, guid: 2edf86c5ab6ef4b4eb35092e94b1a1d1, type: 3}
+--- !u!114 &1574290615
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1574290609}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41fc202a66e96264095adbe1207a7924, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 11
 --- !u!1 &1584022584
 GameObject:
   m_ObjectHideFlags: 0
@@ -11522,6 +11728,7 @@ GameObject:
   - component: {fileID: 1610828329}
   - component: {fileID: 1610828328}
   - component: {fileID: 1610828327}
+  - component: {fileID: 1610828331}
   m_Layer: 11
   m_Name: Blackboard_Broken.009
   m_TagString: BlackBoard
@@ -11643,6 +11850,19 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1610828325}
   m_Mesh: {fileID: 1855232953146473172, guid: 2edf86c5ab6ef4b4eb35092e94b1a1d1, type: 3}
+--- !u!114 &1610828331
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1610828325}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41fc202a66e96264095adbe1207a7924, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 8
 --- !u!1 &1613968934
 GameObject:
   m_ObjectHideFlags: 0
@@ -12041,6 +12261,7 @@ GameObject:
   - component: {fileID: 1640575596}
   - component: {fileID: 1640575595}
   - component: {fileID: 1640575594}
+  - component: {fileID: 1640575598}
   m_Layer: 11
   m_Name: Blackboard_Broken.020
   m_TagString: BlackBoard
@@ -12162,6 +12383,19 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1640575592}
   m_Mesh: {fileID: -1572909185549762599, guid: 2edf86c5ab6ef4b4eb35092e94b1a1d1, type: 3}
+--- !u!114 &1640575598
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1640575592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41fc202a66e96264095adbe1207a7924, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 19
 --- !u!65 &1641474876
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -12196,6 +12430,7 @@ GameObject:
   - component: {fileID: 1655216690}
   - component: {fileID: 1655216689}
   - component: {fileID: 1655216688}
+  - component: {fileID: 1655216692}
   m_Layer: 11
   m_Name: Blackboard_Broken.016
   m_TagString: BlackBoard
@@ -12317,6 +12552,19 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1655216686}
   m_Mesh: {fileID: 4884759931435175921, guid: 2edf86c5ab6ef4b4eb35092e94b1a1d1, type: 3}
+--- !u!114 &1655216692
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1655216686}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41fc202a66e96264095adbe1207a7924, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 15
 --- !u!65 &1655757552
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -12592,6 +12840,7 @@ GameObject:
   - component: {fileID: 1687422526}
   - component: {fileID: 1687422525}
   - component: {fileID: 1687422524}
+  - component: {fileID: 1687422528}
   m_Layer: 11
   m_Name: Blackboard_Broken.014
   m_TagString: BlackBoard
@@ -12713,6 +12962,19 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1687422522}
   m_Mesh: {fileID: 5972913871790389037, guid: 2edf86c5ab6ef4b4eb35092e94b1a1d1, type: 3}
+--- !u!114 &1687422528
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1687422522}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41fc202a66e96264095adbe1207a7924, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 13
 --- !u!65 &1718132432
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -13753,6 +14015,7 @@ GameObject:
   - component: {fileID: 1897372057}
   - component: {fileID: 1897372056}
   - component: {fileID: 1897372055}
+  - component: {fileID: 1897372059}
   m_Layer: 11
   m_Name: Blackboard_Broken.001
   m_TagString: BlackBoard
@@ -13874,6 +14137,19 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1897372053}
   m_Mesh: {fileID: 1188741245740504101, guid: 2edf86c5ab6ef4b4eb35092e94b1a1d1, type: 3}
+--- !u!114 &1897372059
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1897372053}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41fc202a66e96264095adbe1207a7924, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 1
 --- !u!54 &1934242645
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -14516,6 +14792,7 @@ GameObject:
   - component: {fileID: 2064271384}
   - component: {fileID: 2064271383}
   - component: {fileID: 2064271382}
+  - component: {fileID: 2064271386}
   m_Layer: 11
   m_Name: Blackboard_Broken.013
   m_TagString: BlackBoard
@@ -14637,6 +14914,19 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2064271380}
   m_Mesh: {fileID: -672857351878140838, guid: 2edf86c5ab6ef4b4eb35092e94b1a1d1, type: 3}
+--- !u!114 &2064271386
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2064271380}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41fc202a66e96264095adbe1207a7924, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 12
 --- !u!1 &2064358132
 GameObject:
   m_ObjectHideFlags: 0
@@ -24466,6 +24756,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 646713bf10f9114419d10cab0cab8b89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  index: 0
 --- !u!1 &2728762230012553454
 GameObject:
   m_ObjectHideFlags: 0
@@ -26642,6 +26933,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 646713bf10f9114419d10cab0cab8b89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  index: 7
 --- !u!4 &4056526307583921000
 Transform:
   m_ObjectHideFlags: 0
@@ -27684,6 +27976,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 646713bf10f9114419d10cab0cab8b89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  index: 4
 --- !u!1 &4809674809756734637
 GameObject:
   m_ObjectHideFlags: 0
@@ -28270,6 +28563,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 646713bf10f9114419d10cab0cab8b89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  index: 8
 --- !u!65 &5307763052401006056
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -28363,6 +28657,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 646713bf10f9114419d10cab0cab8b89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  index: 0
 --- !u!1 &5483977154919397129
 GameObject:
   m_ObjectHideFlags: 0
@@ -28648,6 +28943,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 646713bf10f9114419d10cab0cab8b89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  index: 0
 --- !u!64 &6016960567087106547
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -28665,7 +28961,7 @@ MeshCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 5
   m_Convex: 0
   m_CookingOptions: 30
@@ -29063,6 +29359,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 646713bf10f9114419d10cab0cab8b89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  index: 0
 --- !u!4 &6149518317985724324
 Transform:
   m_ObjectHideFlags: 0
@@ -29204,6 +29501,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 646713bf10f9114419d10cab0cab8b89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  index: 1
 --- !u!4 &6474870728417000494
 Transform:
   m_ObjectHideFlags: 0
@@ -29231,6 +29529,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 646713bf10f9114419d10cab0cab8b89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  index: 0
 --- !u!1 &6569001867483628187
 GameObject:
   m_ObjectHideFlags: 0
@@ -29314,6 +29613,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 646713bf10f9114419d10cab0cab8b89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  index: 5
 --- !u!1 &6715228464072819883
 GameObject:
   m_ObjectHideFlags: 0
@@ -29388,6 +29688,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 646713bf10f9114419d10cab0cab8b89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  index: 0
 --- !u!23 &6787052002592527920
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -29537,6 +29838,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 646713bf10f9114419d10cab0cab8b89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  index: 0
 --- !u!1 &7047437033322599039
 GameObject:
   m_ObjectHideFlags: 0
@@ -29987,6 +30289,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 646713bf10f9114419d10cab0cab8b89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  index: 0
 --- !u!4 &7861489859157121365
 Transform:
   m_ObjectHideFlags: 0
@@ -30120,6 +30423,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 646713bf10f9114419d10cab0cab8b89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  index: 0
 --- !u!4 &8080358773354822828
 Transform:
   m_ObjectHideFlags: 0
@@ -30242,6 +30546,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 646713bf10f9114419d10cab0cab8b89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  index: 6
 --- !u!4 &8242253036103049329
 Transform:
   m_ObjectHideFlags: 0
@@ -30602,6 +30907,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 646713bf10f9114419d10cab0cab8b89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  index: 0
 --- !u!33 &8370084999299121189
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -30666,6 +30972,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 646713bf10f9114419d10cab0cab8b89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  index: 0
 --- !u!1 &8447486294550787333
 GameObject:
   m_ObjectHideFlags: 0
@@ -30764,7 +31071,7 @@ MonoBehaviour:
   minHeight: 0.5
   minDistance: 1.5
   maxDistance: 10
-  scrollSpeed: 0.001
+  scrollSpeed: 0.01
   rotationSpeed: 100
 --- !u!23 &8651427943208823441
 MeshRenderer:
@@ -30936,6 +31243,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 646713bf10f9114419d10cab0cab8b89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  index: 0
 --- !u!1 &8841551152675786640
 GameObject:
   m_ObjectHideFlags: 0
@@ -30966,6 +31274,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 646713bf10f9114419d10cab0cab8b89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  index: 2
 --- !u!65 &8855348144799187208
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -31165,6 +31474,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 646713bf10f9114419d10cab0cab8b89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  index: 3
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

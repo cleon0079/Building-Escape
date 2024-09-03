@@ -136,6 +136,17 @@ public class DragObject : MonoBehaviour
 
         if (Physics.Raycast(ray, out hit, rayDistance, draggableLayer))
         {
+            if (hit.transform.CompareTag("BlackBoard") && hit.transform.GetComponent<BlackBoardItem>().GetPuzzleIn())
+            {
+                hit.transform.GetComponent<BlackBoardItem>().SetPuzzleIn(false);
+                GameObject[] blackboards = FindObjectOfType<BlackBoardPuzzleCheck>().GetTriggerList();
+                FindObjectOfType<BlackBoardPuzzleCheck>().SetTrigger(false);
+                for (int i = 0; i < blackboards.Length; i++)
+                {
+                    blackboards[i].GetComponent<BlackBoardPuzzle>().SetCount(true);
+                }
+            }
+
             if (hit.rigidbody == null)
             {
                 hit.transform.gameObject.AddComponent<Rigidbody>();

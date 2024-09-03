@@ -10,12 +10,15 @@ public class BlackBoardPuzzleCheck : MonoBehaviour
     GameObject[] blackboards;
     int index = 0;
 
+    bool canTrigger = true;
+
     private void Start()
     {
         blackboards = new GameObject[this.transform.childCount];
         for (int i = 0; i < this.transform.childCount; i++)
         {
             blackboards[i] = this.transform.GetChild(i).gameObject;
+            blackboards[i].GetComponent<BlackBoardPuzzle>().SetIndex(i + 1);
         }
     }
 
@@ -38,5 +41,17 @@ public class BlackBoardPuzzleCheck : MonoBehaviour
         prizeGB.SetActive(true);
         prizeGB.transform.DOMove(targetPosition.position, 2f);
         prizeGB.transform.DORotate(Vector3.zero, 2f);
+    }
+
+    public bool GetTrigger() {
+        return canTrigger;
+    }
+
+    public void SetTrigger(bool trigger) {
+        this.canTrigger = trigger;
+    }
+
+    public GameObject[] GetTriggerList() {
+        return blackboards;
     }
 }
