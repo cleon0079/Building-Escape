@@ -61,6 +61,31 @@ public class BlackBoardPuzzle : MonoBehaviour
         }
     }
 
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.transform.CompareTag("BlackBoard") && !isPuzzleIn && puzzleCheck.GetTrigger() && !isRight)
+        {
+            other.transform.SetParent(this.transform.parent);
+            other.transform.DOLocalMove(this.transform.localPosition, 1f);
+            other.transform.DOLocalRotate(Vector3.zero, 1f);
+
+            dragObject.StopDrag();
+
+            Destroy(other.GetComponent<Rigidbody>());
+            isPuzzleIn = true;
+
+
+            other.GetComponent<BlackBoardItem>().SetPuzzleIn(true);
+
+            if (other.GetComponent<BlackBoardItem>().GetIndex() == index)
+            {
+                isRight = true;
+                other.GetComponent<BlackBoardItem>().CantMove();
+            }
+            puzzleCheck.Check();
+        }
+    }
+
     public bool GetPuzzle() {
         return isRight;
     }
