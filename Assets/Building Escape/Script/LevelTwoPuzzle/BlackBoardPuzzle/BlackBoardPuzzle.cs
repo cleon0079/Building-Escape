@@ -38,7 +38,6 @@ public class BlackBoardPuzzle : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        // && this.name.Equals(other.gameObject.name)
         if (other.transform.CompareTag("BlackBoard") && !isPuzzleIn && puzzleCheck.GetTrigger() && !isRight)
         {
             other.transform.SetParent(this.transform.parent);  
@@ -46,8 +45,11 @@ public class BlackBoardPuzzle : MonoBehaviour
             other.transform.DOLocalRotate(Vector3.zero, 1f);
 
             dragObject.StopDrag();
+
             Destroy(other.GetComponent<Rigidbody>());
             isPuzzleIn = true;
+
+
             other.GetComponent<BlackBoardItem>().SetPuzzleIn(true);
 
             if (other.GetComponent<BlackBoardItem>().GetIndex() == index)
