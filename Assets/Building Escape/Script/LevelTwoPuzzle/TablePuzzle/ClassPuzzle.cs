@@ -18,21 +18,25 @@ public class ClassPuzzle : MonoBehaviour
     {
         if (other.transform.CompareTag("Chair") && !isChair)
         {
+            dragObject.StopDrag();
+            other.transform.GetComponent<Rigidbody>().velocity = Vector3.zero;
             other.transform.SetParent(this.transform);
-            other.transform.DOLocalMove(new Vector3(0, 0, -1), 1f);
+
+            other.transform.DOLocalMove(new Vector3(0, 0, -1.5f), 1f);
             other.transform.DOLocalRotate(Vector3.zero, 1f);
 
-            dragObject.StopDrag();
             isChair = true;
         }
 
         if (other.transform.CompareTag("Table") && !isTable)
         {
+            dragObject.StopDrag();
+            other.transform.GetComponent<Rigidbody>().velocity = Vector3.zero;
             other.transform.SetParent(this.transform);
+
             other.transform.DOLocalMove(Vector3.zero, 1f);
             other.transform.DOLocalRotate(Vector3.zero, 1f);
 
-            dragObject.StopDrag();
             isTable = true;
         }
     }

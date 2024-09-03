@@ -7,7 +7,7 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(Rigidbody))]
 public class Controller : MonoBehaviour
 {
-    GameManager uiManager;
+    Manager uiManager;
 
     private GameInput input;
     private InputAction move;
@@ -63,7 +63,7 @@ public class Controller : MonoBehaviour
 
     void Start()
     {
-       uiManager = FindObjectOfType<GameManager>();
+       uiManager = FindObjectOfType<Manager>();
        uiManager.CursorMode(false);
 
     }
