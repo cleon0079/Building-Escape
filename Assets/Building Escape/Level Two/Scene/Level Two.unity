@@ -238,7 +238,7 @@ GameObject:
   m_Component:
   - component: {fileID: 31411235}
   m_Layer: 0
-  m_Name: TableSet (6)
+  m_Name: TableSet (Car2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -959,7 +959,7 @@ GameObject:
   m_Component:
   - component: {fileID: 100070870}
   m_Layer: 0
-  m_Name: TableSet (12)
+  m_Name: TableSet (Robot2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1371,7 +1371,7 @@ GameObject:
   m_Component:
   - component: {fileID: 171894419}
   m_Layer: 0
-  m_Name: TableSet (13)
+  m_Name: TableSet (Football1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2529,7 +2529,7 @@ GameObject:
   m_Component:
   - component: {fileID: 319239088}
   m_Layer: 0
-  m_Name: TableSet (7)
+  m_Name: TableSet (Tree1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2562,7 +2562,7 @@ GameObject:
   m_Component:
   - component: {fileID: 346700179}
   m_Layer: 0
-  m_Name: TableSet (15)
+  m_Name: TableSet (Pig1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2643,7 +2643,7 @@ GameObject:
   m_Component:
   - component: {fileID: 362551570}
   m_Layer: 0
-  m_Name: TableSet (14)
+  m_Name: TableSet (Football2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4742,7 +4742,7 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: eedc4ba49db20f848b9d9e402aa157a9, type: 2}
-  - {fileID: 2100000, guid: a92576695ad478e41b12cce857bad886, type: 2}
+  - {fileID: 2100000, guid: 8ae2c766fd7b7a34a942a8eb0ebe33c1, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5782,7 +5782,7 @@ GameObject:
   m_Component:
   - component: {fileID: 843461182}
   m_Layer: 0
-  m_Name: TableSet (2)
+  m_Name: TableSet (Person2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6053,7 +6053,7 @@ GameObject:
   m_Component:
   - component: {fileID: 896853979}
   m_Layer: 0
-  m_Name: TableSet (10)
+  m_Name: TableSet (Center2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6202,7 +6202,7 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: eedc4ba49db20f848b9d9e402aa157a9, type: 2}
-  - {fileID: 2100000, guid: a92576695ad478e41b12cce857bad886, type: 2}
+  - {fileID: 2100000, guid: 68013bda0f4b9a744add126b3c7c7299, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -6747,7 +6747,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1079323217}
   m_Layer: 0
-  m_Name: TableSet (11)
+  m_Name: TableSet (Robot1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7274,7 +7274,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1176681072}
   m_Layer: 0
-  m_Name: TableSet (1)
+  m_Name: TableSet (Person1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7718,7 +7718,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1216585105}
   m_Layer: 0
-  m_Name: TableSet (9)
+  m_Name: TableSet (Center1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7751,7 +7751,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1233373556}
   m_Layer: 0
-  m_Name: TableSet (3)
+  m_Name: TableSet (Fish1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7784,7 +7784,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1236979937}
   m_Layer: 0
-  m_Name: TableSet (17)
+  m_Name: TableSet (Duck1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9664,7 +9664,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1432628885}
   m_Layer: 0
-  m_Name: TableSet (5)
+  m_Name: TableSet (Car1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11898,7 +11898,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1622015318}
   m_Layer: 0
-  m_Name: TableSet (16)
+  m_Name: TableSet (Pig2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12402,7 +12402,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1664287986}
   m_Layer: 0
-  m_Name: TableSet (4)
+  m_Name: TableSet (Fish2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14480,7 +14480,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2062123273}
   m_Layer: 0
-  m_Name: TableSet (8)
+  m_Name: TableSet (Tree2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14914,7 +14914,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2111806740}
   m_Layer: 0
-  m_Name: TableSet (18)
+  m_Name: TableSet (Duck2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
