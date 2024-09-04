@@ -21,11 +21,11 @@ public class BlackBoardPuzzle : MonoBehaviour
         puzzleCheck = this.transform.parent.parent.GetComponent<BlackBoardPuzzleCheck>();
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         if (startCount)
         {
-            timer += Time.deltaTime;
+            timer += Time.fixedDeltaTime;
             if (timer >= 2f)
             {
                 timer = 0;

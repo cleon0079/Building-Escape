@@ -170,6 +170,8 @@ public class DragObject : MonoBehaviour
                 isDragging = true;
                 canRotate = false;
             }
+
+            Debug.Log("Yes Drag");
         }
     }
 

@@ -7,6 +7,8 @@ public class BlackBoardItem : MonoBehaviour
     [SerializeField] int id;
     bool isPuzzleIn = false;
 
+
+
     public bool GetPuzzleIn() {
         return isPuzzleIn;
     }
@@ -23,5 +25,6 @@ public class BlackBoardItem : MonoBehaviour
         this.gameObject.layer = LayerMask.NameToLayer("Default");
         Destroy(this.GetComponent<Rigidbody>());
         Destroy(this.GetComponent<MeshCollider>());
+        Debug.Log("Cant Move This");
     }
 }
