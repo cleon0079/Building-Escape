@@ -4,18 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-<<<<<<< HEAD
-  m_Scenes: []
-=======
   m_Scenes:
-  - enabled: 0
-    path: Assets/Building Escape/Intro Level/SkyBoxTest/Scene/TestSkyBox.unity
-    guid: 7d6ff9452f7dace4c84dadb1732374d2
-  - enabled: 0
-    path: Assets/Building Escape/Level One/Scece/Vincent/DreamEscape.unity
-    guid: a5bc76869fbacbd4eaa2086e75edc3c0
   - enabled: 1
     path: Assets/Building Escape/Intro Level/Scene/Intro Level.unity
     guid: e5c5559b955577c4bbf44d3ee19b4ab5
->>>>>>> 4d5617331235f4e09b8ba92ce08330e7ae76a9fd
   m_configObjects: {}
