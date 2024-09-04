@@ -22,6 +22,11 @@ public class BlackBoardPuzzleCheck : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        Check();
+    }
+
     public void Check() {
         index = 0;
         for (int i = 0; i < blackboards.Length; i++)
@@ -29,11 +34,13 @@ public class BlackBoardPuzzleCheck : MonoBehaviour
             if (blackboards[i].GetComponent<BlackBoardPuzzle>().GetPuzzle())
             {
                 index++;
+                Debug.Log(index);
             }
         }
         if (index == blackboards.Length)
         {
             Finish();
+
         }
     }
 
@@ -41,6 +48,7 @@ public class BlackBoardPuzzleCheck : MonoBehaviour
         prizeGB.SetActive(true);
         prizeGB.transform.DOMove(targetPosition.position, 2f);
         prizeGB.transform.DORotate(Vector3.zero, 2f);
+        Destroy(this);
     }
 
     public bool GetTrigger() {
