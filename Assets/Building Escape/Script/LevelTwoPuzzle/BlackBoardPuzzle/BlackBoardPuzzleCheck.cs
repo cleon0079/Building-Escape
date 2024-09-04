@@ -34,7 +34,6 @@ public class BlackBoardPuzzleCheck : MonoBehaviour
             if (blackboards[i].GetComponent<BlackBoardPuzzle>().GetPuzzle())
             {
                 index++;
-                Debug.Log(index);
             }
         }
         if (index == blackboards.Length)
