@@ -17,7 +17,7 @@ public class BlackBoardPuzzleCheck : MonoBehaviour
         blackboards = new GameObject[this.transform.childCount];
         for (int i = 0; i < this.transform.childCount; i++)
         {
-            blackboards[i] = this.transform.GetChild(i).gameObject;
+            blackboards[i] = this.transform.GetChild(i).GetChild(0).gameObject;
             blackboards[i].GetComponent<BlackBoardPuzzle>().SetIndex(i + 1);
         }
     }

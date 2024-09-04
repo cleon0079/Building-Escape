@@ -136,19 +136,24 @@ public class DragObject : MonoBehaviour
 
         if (Physics.Raycast(ray, out hit, rayDistance, draggableLayer))
         {
-            if (hit.transform.CompareTag("BlackBoard") && hit.transform.GetComponent<BlackBoardItem>().GetPuzzleIn())
+            if (hit.transform.CompareTag("BlackBoard"))
             {
-                hit.transform.GetComponent<BlackBoardItem>().SetPuzzleIn(false);
-                GameObject[] blackboards = FindObjectOfType<BlackBoardPuzzleCheck>().GetTriggerList();
-                FindObjectOfType<BlackBoardPuzzleCheck>().SetTrigger(false);
-                for (int i = 0; i < blackboards.Length; i++)
+                if (hit.transform.GetComponent<BlackBoardItem>().GetPuzzleIn())
                 {
-                    blackboards[i].GetComponent<BlackBoardPuzzle>().SetCount(true);
+                    hit.transform.parent = null;
+                    hit.transform.GetComponent<BlackBoardItem>().SetPuzzleIn(false);
+                    GameObject[] blackboards = FindObjectOfType<BlackBoardPuzzleCheck>().GetTriggerList();
+                    FindObjectOfType<BlackBoardPuzzleCheck>().SetTrigger(false);
+                    for (int i = 0; i < blackboards.Length; i++)
+                    {
+                        blackboards[i].GetComponent<BlackBoardPuzzle>().SetCount(true);
+                    }
                 }
             }
 
             if (hit.rigidbody == null)
             {
+                hit.transform.GetComponent<MeshCollider>().convex = true;
                 hit.transform.gameObject.AddComponent<Rigidbody>();
                 hit.rigidbody.collisionDetectionMode = CollisionDetectionMode.Continuous;
             }

@@ -18,7 +18,7 @@ public class BlackBoardPuzzle : MonoBehaviour
     private void Start()
     {
         dragObject = FindObjectOfType<DragObject>();
-        puzzleCheck = this.transform.parent.GetComponent<BlackBoardPuzzleCheck>();
+        puzzleCheck = this.transform.parent.parent.GetComponent<BlackBoardPuzzleCheck>();
     }
 
     private void Update()
@@ -34,6 +34,17 @@ public class BlackBoardPuzzle : MonoBehaviour
                 isPuzzleIn = false;
             }
         }
+
+        if (this.transform.parent.childCount > 1)
+        {
+            isPuzzleIn = true;
+            if (this.transform.parent.GetChild(1).GetComponent<BlackBoardItem>().GetIndex() == index)
+            {
+                isRight = true;
+                this.transform.parent.GetChild(1).GetComponent<BlackBoardItem>().CantMove();
+                this.gameObject.SetActive(false);
+            }
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -41,21 +52,19 @@ public class BlackBoardPuzzle : MonoBehaviour
         if (other.transform.CompareTag("BlackBoard") && !isPuzzleIn && puzzleCheck.GetTrigger() && !isRight)
         {
             other.transform.SetParent(this.transform.parent);  
-            other.transform.DOLocalMove(this.transform.localPosition, 1f);
-            other.transform.DOLocalRotate(Vector3.zero, 1f);
-
-            dragObject.StopDrag();
-
-            Destroy(other.GetComponent<Rigidbody>());
-            isPuzzleIn = true;
 
 
-            other.GetComponent<BlackBoardItem>().SetPuzzleIn(true);
-
-            if (other.GetComponent<BlackBoardItem>().GetIndex() == index)
+            if (this.transform.parent.childCount > 1)
             {
-                isRight = true;
-                other.GetComponent<BlackBoardItem>().CantMove();
+                other.transform.DOLocalMove(Vector3.zero, 1f);
+                other.transform.DOLocalRotate(Vector3.zero, 1f);
+
+                dragObject.StopDrag();
+
+                Destroy(other.GetComponent<Rigidbody>());
+                other.transform.GetComponent<MeshCollider>().convex = false;
+
+                other.GetComponent<BlackBoardItem>().SetPuzzleIn(true);
             }
             puzzleCheck.Check();
         }
@@ -66,21 +75,19 @@ public class BlackBoardPuzzle : MonoBehaviour
         if (other.transform.CompareTag("BlackBoard") && !isPuzzleIn && puzzleCheck.GetTrigger() && !isRight)
         {
             other.transform.SetParent(this.transform.parent);
-            other.transform.DOLocalMove(this.transform.localPosition, 1f);
-            other.transform.DOLocalRotate(Vector3.zero, 1f);
-
-            dragObject.StopDrag();
-
-            Destroy(other.GetComponent<Rigidbody>());
-            isPuzzleIn = true;
 
 
-            other.GetComponent<BlackBoardItem>().SetPuzzleIn(true);
-
-            if (other.GetComponent<BlackBoardItem>().GetIndex() == index)
+            if (this.transform.parent.childCount > 1)
             {
-                isRight = true;
-                other.GetComponent<BlackBoardItem>().CantMove();
+                other.transform.DOLocalMove(Vector3.zero, 1f);
+                other.transform.DOLocalRotate(Vector3.zero, 1f);
+
+                dragObject.StopDrag();
+
+                Destroy(other.GetComponent<Rigidbody>());
+                other.transform.GetComponent<MeshCollider>().convex = false;
+
+                other.GetComponent<BlackBoardItem>().SetPuzzleIn(true);
             }
             puzzleCheck.Check();
         }

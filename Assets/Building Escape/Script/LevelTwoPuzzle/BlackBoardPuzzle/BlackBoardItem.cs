@@ -22,5 +22,6 @@ public class BlackBoardItem : MonoBehaviour
     public void CantMove() {
         this.gameObject.layer = LayerMask.NameToLayer("Default");
         Destroy(this.GetComponent<Rigidbody>());
+        Destroy(this.GetComponent<MeshCollider>());
     }
 }
