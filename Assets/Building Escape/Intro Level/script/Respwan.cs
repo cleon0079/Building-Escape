@@ -5,15 +5,9 @@ using UnityEngine;
 
 public class Respawn : MonoBehaviour
 {
-    [SerializeField] private Vector3 lastCheckPoint;
-    public Vector3 LastCheckPoint
-    {
-        get
-        {
-            return lastCheckPoint;
-        }
-    }
-    [SerializeField] private Controller player;
+    [SerializeField] private Transform player;
+    [SerializeField] private float yIndex = 8.55f;
+
 
     // Start is called before the first frame update
     void Start()
@@ -24,14 +18,15 @@ public class Respawn : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("LastcheckP"+lastCheckPoint);
+       
     }
 
     void OnTriggerEnter(Collider collider)
     {
         if(collider.gameObject.layer == 6)
         {
-            lastCheckPoint = player.transform.position;
+            player.transform.position = new Vector3(0,yIndex,player.position.z);
+            collider.transform.GetComponent<Rigidbody>().velocity = Vector3.zero;
         }
     }
 }
