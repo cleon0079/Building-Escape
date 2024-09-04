@@ -27,6 +27,7 @@ public class BookPuzzle : MonoBehaviour
     Transform book;
 
     Animator animator;
+    [SerializeField] GameObject prize;
     bool isDone = false;
 
     private void Awake()
@@ -99,11 +100,11 @@ public class BookPuzzle : MonoBehaviour
 
             float moveAmount = deltaMousePosition * Time.deltaTime * .5f; ;
 
-            if (book.localPosition.x <= -1.5f && moveAmount < 0)
+            if (book.localPosition.x <= -1.8f && moveAmount < 0)
             {
                 moveAmount = 0;
             }
-            else if (book.localPosition.x >= 1.5f && moveAmount > 0)
+            else if (book.localPosition.x >= 1.8f && moveAmount > 0)
             {
                 moveAmount = 0;
             }
@@ -146,7 +147,7 @@ public class BookPuzzle : MonoBehaviour
         uiManager.EndPuzzle();
 
         uiManager.mainCamera.transform.SetParent(FindObjectOfType<Controller>().transform);
-        uiManager.mainCamera.transform.DOLocalMove(Vector3.zero, 1f);
+        uiManager.mainCamera.transform.DOLocalMove(new Vector3(0, 1, 0), 1f);
         uiManager.mainCamera.transform.DOLocalRotate(Vector3.zero, 1f);
 
         uiManager.ShowDot(true);
@@ -175,6 +176,7 @@ public class BookPuzzle : MonoBehaviour
 
         animator.SetBool("BookShelfOpen", true);
         uiManager.UpdateText("");
+        prize.SetActive(true);
     }
 
     private void OnTriggerStay(Collider other)
