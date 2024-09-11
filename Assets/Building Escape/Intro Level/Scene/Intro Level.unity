@@ -441,9 +441,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c04b14d0b7a344d41b18c41b32f0bd86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  manager: {fileID: 1936981686062238336}
   startPanel: {fileID: 1588087248}
+  startText: {fileID: 2013690370}
   startButton: {fileID: 1736915660}
+  exitButton: {fileID: 330515990}
 --- !u!64 &122237414
 MeshCollider:
   m_ObjectHideFlags: 0
