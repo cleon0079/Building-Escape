@@ -64,7 +64,6 @@ public class Controller : MonoBehaviour
     void Start()
     {
        uiManager = FindObjectOfType<Manager>();
-       uiManager.CursorMode(false);
 
     }
 
