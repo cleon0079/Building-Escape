@@ -21,7 +21,7 @@ public class UIManager : MonoBehaviour
             return instance;
         }
     }
-    [SerializeField] private Manager manager;
+    Manager manager;
     [SerializeField] private GameObject startPanel;
     [SerializeField] private Button startButton;
     void Awake() 
@@ -42,10 +42,10 @@ public class UIManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        startButton.onClick.AddListener(SetStartpanelOff);
-        manager.CursorMode(true);
-        manager.StartPuzzle();
+        manager = FindObjectOfType<Manager>();
+        manager.StartGame(true);
         startPanel.SetActive(true);
+        startButton.onClick.AddListener(SetStartpanelOff);
     }
 
     // Update is called once per frame
@@ -56,8 +56,7 @@ public class UIManager : MonoBehaviour
     void SetStartpanelOff()
     {
         startPanel.SetActive(false);
-        manager.CursorMode(false);
-        manager.EndPuzzle();
+        manager.StartGame(false);
         Debug.Log("sdad");
     }
 }

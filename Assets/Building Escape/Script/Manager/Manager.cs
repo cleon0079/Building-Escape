@@ -57,6 +57,25 @@ public class Manager : MonoBehaviour
         }
     }
 
+    public void StartGame(bool start) {
+        if (start)
+        {
+            Cursor.lockState = CursorLockMode.None;
+            dragObject = FindObjectOfType<DragObject>();
+            player = FindObjectOfType<Controller>();
+            dragObject.CanDrag(false);
+            player.CanMove(false);
+        }
+        else
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            dragObject = FindObjectOfType<DragObject>();
+            player = FindObjectOfType<Controller>();
+            dragObject.CanDrag(true);
+            player.CanMove(true);
+        }
+    }
+
     public void ExitGame()
     {
 #if UNITY_EDITOR
