@@ -86,4 +86,11 @@ public class UIManager : MonoBehaviour
         manager.StartGame(true);
     }
     
+        void SetMenuPanelOn2(InputAction.CallbackContext context)
+    {
+        Time.timeScale = 0f;
+        startText.text = "Resume";  
+        startPanel.SetActive(true);
+        manager.StartGame(true);
+    }
 }
