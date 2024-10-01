@@ -107,6 +107,15 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Esc2"",
+                    ""type"": ""Button"",
+                    ""id"": ""1685360a-3534-42b5-a098-ae131022f73a"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -233,17 +242,6 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""970312a9-d738-4373-94da-4f9e775c89d9"",
-                    ""path"": ""<Keyboard>/escape"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Esc"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""f450c56a-0e55-46a0-bf52-cc6f93a0a370"",
                     ""path"": ""<Mouse>/rightButton"",
                     ""interactions"": """",
@@ -274,6 +272,17 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
                     ""action"": ""Inventory"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""68ab08ae-810e-4c84-bec2-f36f885afd1f"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Esc2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -291,6 +300,7 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
         m_Player_Esc = m_Player.FindAction("Esc", throwIfNotFound: true);
         m_Player_MousePosition = m_Player.FindAction("MousePosition", throwIfNotFound: true);
         m_Player_Inventory = m_Player.FindAction("Inventory", throwIfNotFound: true);
+        m_Player_Esc2 = m_Player.FindAction("Esc2", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -361,6 +371,7 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Esc;
     private readonly InputAction m_Player_MousePosition;
     private readonly InputAction m_Player_Inventory;
+    private readonly InputAction m_Player_Esc2;
     public struct PlayerActions
     {
         private @GameInput m_Wrapper;
@@ -374,6 +385,7 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
         public InputAction @Esc => m_Wrapper.m_Player_Esc;
         public InputAction @MousePosition => m_Wrapper.m_Player_MousePosition;
         public InputAction @Inventory => m_Wrapper.m_Player_Inventory;
+        public InputAction @Esc2 => m_Wrapper.m_Player_Esc2;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -410,6 +422,9 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
             @Inventory.started += instance.OnInventory;
             @Inventory.performed += instance.OnInventory;
             @Inventory.canceled += instance.OnInventory;
+            @Esc2.started += instance.OnEsc2;
+            @Esc2.performed += instance.OnEsc2;
+            @Esc2.canceled += instance.OnEsc2;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -441,6 +456,9 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
             @Inventory.started -= instance.OnInventory;
             @Inventory.performed -= instance.OnInventory;
             @Inventory.canceled -= instance.OnInventory;
+            @Esc2.started -= instance.OnEsc2;
+            @Esc2.performed -= instance.OnEsc2;
+            @Esc2.canceled -= instance.OnEsc2;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -469,5 +487,6 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
         void OnEsc(InputAction.CallbackContext context);
         void OnMousePosition(InputAction.CallbackContext context);
         void OnInventory(InputAction.CallbackContext context);
+        void OnEsc2(InputAction.CallbackContext context);
     }
 }

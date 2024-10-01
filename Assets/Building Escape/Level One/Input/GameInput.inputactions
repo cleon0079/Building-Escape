@@ -85,6 +85,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Esc2",
+                    "type": "Button",
+                    "id": "1685360a-3534-42b5-a098-ae131022f73a",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -211,17 +220,6 @@
                 },
                 {
                     "name": "",
-                    "id": "970312a9-d738-4373-94da-4f9e775c89d9",
-                    "path": "<Keyboard>/escape",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Esc",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "f450c56a-0e55-46a0-bf52-cc6f93a0a370",
                     "path": "<Mouse>/rightButton",
                     "interactions": "",
@@ -250,6 +248,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Inventory",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "68ab08ae-810e-4c84-bec2-f36f885afd1f",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Esc2",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

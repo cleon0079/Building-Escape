@@ -43,7 +43,7 @@ public class UIManager : MonoBehaviour
             DontDestroyOnLoad(gameObject);
         }
        inputs = new GameInput();
-       exitKey = inputs.Player.Esc;
+       exitKey = inputs.Player.Esc2;
        exitKey.started += SetMenuPanelOn;
     }
      private void OnEnable()
