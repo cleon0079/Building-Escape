@@ -5,8 +5,8 @@ using UnityEngine.InputSystem;
 
 public class DragObject : MonoBehaviour
 {
-    [SerializeField] float rayDistance = 10f;
-    [SerializeField] LayerMask draggableLayer;
+    public float rayDistance = 10f;
+    public LayerMask draggableLayer;
     [SerializeField] float minHeight = 0.5f;
     float positionSpring = 200f;
     float positionDamper = 20f;
@@ -35,6 +35,8 @@ public class DragObject : MonoBehaviour
     private bool isRightClicking = false;
 
     private Controller player;
+
+    [SerializeField] public Material outline;
 
     private void Awake()
     {
@@ -116,6 +118,8 @@ public class DragObject : MonoBehaviour
                 RotateObject(mouseDelta);
             }
         }
+
+
     }
 
     public void CanDrag(bool drag) {
@@ -170,8 +174,6 @@ public class DragObject : MonoBehaviour
                 isDragging = true;
                 canRotate = false;
             }
-
-            Debug.Log("Yes Drag");
         }
     }
 
