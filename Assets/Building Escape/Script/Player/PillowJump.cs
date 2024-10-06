@@ -6,6 +6,7 @@ public class PillowJump : MonoBehaviour
 {
     [SerializeField] private float speed = 2f;
     private Transform playerPosition;
+
     private Vector3 dist;
     // Start is called before the first frame update
     void Start()
