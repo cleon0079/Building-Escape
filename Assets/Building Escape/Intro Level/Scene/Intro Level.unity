@@ -8889,7 +8889,7 @@ PrefabInstance:
       addedObject: {fileID: 1181381606}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: d1278e2735daf974c8f9d3026d9c7111, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1181381607}
+      addedObject: {fileID: 1181381610}
   m_SourcePrefab: {fileID: 100100000, guid: d1278e2735daf974c8f9d3026d9c7111, type: 3}
 --- !u!1 &658163980 stripped
 GameObject:
@@ -15296,8 +15296,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 457b5c420187bbd469cad78d19e4b6d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 500
---- !u!65 &1181381607
+  speed: 5
+--- !u!65 &1181381610
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -15312,12 +15312,12 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.900447, y: 0.56105375, z: 0.29236868}
-  m_Center: {x: -0.013282443, y: -0.000014560406, z: 0.005421497}
+  m_Size: {x: 0.88544494, y: 0.56105375, z: 0.08769469}
+  m_Center: {x: -0.020783387, y: -0.000014572263, z: -0.08850591}
 --- !u!1001 &1190279694
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18256,6 +18256,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 0017e12ce936ce548afd3fdb2baceff7, type: 3}
       propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3451118302482216456, guid: 0017e12ce936ce548afd3fdb2baceff7, type: 3}
+      propertyPath: m_Convex
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -63213,7 +63217,7 @@ Transform:
   m_GameObject: {fileID: 109874362210401261}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -45.64, y: -120.93, z: 88.7}
+  m_LocalPosition: {x: 12.360001, y: -120.93, z: 46.949997}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -65330,7 +65334,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 112
-  m_CollisionDetection: 1
+  m_CollisionDetection: 2
 --- !u!1 &5056307851897007601
 GameObject:
   m_ObjectHideFlags: 0

@@ -22,11 +22,22 @@ public class PillowJump : MonoBehaviour
     {
         
     }
-    private void OnTriggerEnter(Collider collider)
+    private void OnCollisionEnter(Collision collision)
     {
-        Rigidbody otherRigidbody = collider.gameObject.GetComponent<Rigidbody>();
-        dist = collider.transform.position - transform.position;
-        Vector3 direction = dist.normalized;
-        otherRigidbody.AddForce(direction*speed);
+        Rigidbody otherRigidbody = collision.gameObject.GetComponent<Rigidbody>();
+        foreach (ContactPoint contact in collision.contacts)
+            {
+                if (contact.point.y > transform.position.y)
+                {
+               
+                    Vector3 bounceDirection = Vector3.up;
+
+                    otherRigidbody.AddForce(bounceDirection * speed, ForceMode.Impulse);
+
+                }
+            }
+        // dist = collision.transform.position - transform.position;
+        // Vector3 direction = dist.normalized;
+        // otherRigidbody.AddForce(direction*speed, ForceMode.Impulse);
     }
 }
