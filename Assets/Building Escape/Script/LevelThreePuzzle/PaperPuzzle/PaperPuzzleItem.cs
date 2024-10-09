@@ -5,7 +5,7 @@ using UnityEngine;
 public class PaperPuzzleItem : MonoBehaviour
 {
     [SerializeField] int id;
-    bool isPuzzleIn = false;
+    public bool isPuzzleIn = false;
     [SerializeField] TYPE type;
 
     public bool GetPuzzleIn() {
@@ -33,7 +33,6 @@ public class PaperPuzzleItem : MonoBehaviour
         this.gameObject.layer = LayerMask.NameToLayer("Default");
         Destroy(this.GetComponent<Rigidbody>());
         Destroy(this.GetComponent<MeshCollider>());
-        Debug.Log(1);
     }
 
     public enum TYPE {

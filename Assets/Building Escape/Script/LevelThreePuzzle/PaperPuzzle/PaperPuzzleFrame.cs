@@ -40,6 +40,11 @@ public class PaperPuzzleFrame : MonoBehaviour
         }
     }
 
+    public void removePuzzle(PaperPuzzleItem item) {
+        inFrame.Remove(item);
+        isPieceIn[item.GetIndex()] = false;
+    }
+
     void CheckDone() {
         isDone = IsDone<PaperPuzzleItem>(inFrame);
         if (isDone)
@@ -50,14 +55,12 @@ public class PaperPuzzleFrame : MonoBehaviour
                 {
                     this.transform.GetChild(i).GetChild(0).GetComponent<PaperPuzzleItem>().CantMove();
                 }
-                this.transform.parent.parent.GetComponent<PaperPuzzlePlayerIn>().Done(); 
             }
+            this.transform.parent.parent.GetComponent<PaperPuzzlePlayerIn>().Done();
         }
     }
 
     bool IsDone<T>(List<PaperPuzzleItem> frameItems) {
-        Debug.Log(frameItems.Count);
-        Debug.Log(this.transform.childCount);
         if (frameItems.Count != this.transform.childCount) 
         {
             return false;

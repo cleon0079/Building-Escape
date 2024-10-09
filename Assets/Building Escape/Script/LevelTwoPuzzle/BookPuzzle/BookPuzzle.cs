@@ -98,7 +98,7 @@ public class BookPuzzle : MonoBehaviour
             float currentMousePosition = mousePosition.ReadValue<Vector2>().x;
             float deltaMousePosition = currentMousePosition - startMousePosition;
 
-            float moveAmount = deltaMousePosition * Time.deltaTime * .5f; ;
+            float moveAmount = deltaMousePosition * Time.deltaTime * .5f;
 
             if (book.localPosition.x <= -1.8f && moveAmount < 0)
             {
