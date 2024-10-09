@@ -2,27 +2,43 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BlackBoardItem : MonoBehaviour
+public class PaperPuzzleItem : MonoBehaviour
 {
     [SerializeField] int id;
     bool isPuzzleIn = false;
+    [SerializeField] TYPE type;
 
     public bool GetPuzzleIn() {
         return isPuzzleIn;
     }
 
-    public void SetPuzzleIn(bool set) {
-        this.isPuzzleIn = set;
+    public void SetPuzzleIn(bool puzzleIn) {
+        isPuzzleIn = puzzleIn;
     }
 
     public int GetIndex() {
         return id;
     }
 
-    public void CantMove() {
+    public void SetPuzzleId(int id) {
+        this.id = id;
+    }
+
+    public TYPE GetItemType() {
+        return type;
+    }
+
+    public void CantMove()
+    {
         this.gameObject.layer = LayerMask.NameToLayer("Default");
         Destroy(this.GetComponent<Rigidbody>());
         Destroy(this.GetComponent<MeshCollider>());
-        Debug.Log("Cant Move This");
+        Debug.Log(1);
+    }
+
+    public enum TYPE {
+        One,
+        Two,
+        Three
     }
 }
