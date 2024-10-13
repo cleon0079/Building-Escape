@@ -61,6 +61,7 @@ public class UIManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        exitKey.Enable();
         manager = FindObjectOfType<Manager>();
         manager.StartGame(true);
         startPanel.SetActive(true);

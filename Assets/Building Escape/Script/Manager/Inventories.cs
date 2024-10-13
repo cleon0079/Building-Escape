@@ -47,8 +47,9 @@ public class Inventories : MonoBehaviour
     }
 
     void OnCloseInventory(InputAction.CallbackContext callbackContext) {
-        uIManager2.EnableEscKey(true);
+        
         ActiveMode(false);
+        uIManager2.EnableEscKey(true);
     }
     void Update(){
         Debug.Log(isOnInventory);
