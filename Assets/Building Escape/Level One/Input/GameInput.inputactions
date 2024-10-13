@@ -85,15 +85,6 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
-                },
-                {
-                    "name": "Esc2",
-                    "type": "Button",
-                    "id": "1685360a-3534-42b5-a098-ae131022f73a",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -231,6 +222,17 @@
                 },
                 {
                     "name": "",
+                    "id": "adff282c-2753-46c5-96b8-7f14a9a675db",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Esc",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "9653d070-785a-4d50-a435-133d3261dd16",
                     "path": "<Mouse>/position",
                     "interactions": "",
@@ -250,15 +252,32 @@
                     "action": "Inventory",
                     "isComposite": false,
                     "isPartOfComposite": false
-                },
+                }
+            ]
+        },
+        {
+            "name": "UiAction",
+            "id": "6315ea8f-9e07-47d6-93fa-4b3e2297d3b8",
+            "actions": [
+                {
+                    "name": "ESC",
+                    "type": "Button",
+                    "id": "fa97c443-9e42-4dc4-acfb-50a2e1942efc",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
                 {
                     "name": "",
-                    "id": "68ab08ae-810e-4c84-bec2-f36f885afd1f",
+                    "id": "79f19721-9e2b-4947-9a18-fcd35c662a7c",
                     "path": "<Keyboard>/escape",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Esc2",
+                    "action": "ESC",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

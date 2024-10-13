@@ -13,13 +13,17 @@ public class Inventories : MonoBehaviour
     [SerializeField] Image prize;
     [SerializeField] GameObject inventoryGameObject;
     [SerializeField] GameObject inventoryContent;
+    private bool isOnInventory = false;
 
     GameInput input;
     InputAction inventoryAction;
     InputAction escAction;
-
     Manager uIManager;
-
+    public bool IsOnInventory{
+        get{
+            return isOnInventory;
+        }
+    }
     private void Awake()
     {
         input = new GameInput();
@@ -48,10 +52,14 @@ public class Inventories : MonoBehaviour
     void OnCloseInventory(InputAction.CallbackContext callbackContext) {
         ActiveMode(false);
     }
-
+    void Update(){
+        Debug.Log(isOnInventory);
+    }
     void OnInventoryOpen(InputAction.CallbackContext callbackContext) {
+        
         if (inventoryGameObject.activeSelf)
         {
+            
             ActiveMode(false);
         }
         else

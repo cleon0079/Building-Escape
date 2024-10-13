@@ -107,15 +107,6 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Esc2"",
-                    ""type"": ""Button"",
-                    ""id"": ""1685360a-3534-42b5-a098-ae131022f73a"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -253,6 +244,17 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""adff282c-2753-46c5-96b8-7f14a9a675db"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Esc"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""9653d070-785a-4d50-a435-133d3261dd16"",
                     ""path"": ""<Mouse>/position"",
                     ""interactions"": """",
@@ -272,15 +274,32 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
                     ""action"": ""Inventory"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
-                },
+                }
+            ]
+        },
+        {
+            ""name"": ""UiAction"",
+            ""id"": ""6315ea8f-9e07-47d6-93fa-4b3e2297d3b8"",
+            ""actions"": [
+                {
+                    ""name"": ""ESC"",
+                    ""type"": ""Button"",
+                    ""id"": ""fa97c443-9e42-4dc4-acfb-50a2e1942efc"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
                 {
                     ""name"": """",
-                    ""id"": ""68ab08ae-810e-4c84-bec2-f36f885afd1f"",
+                    ""id"": ""79f19721-9e2b-4947-9a18-fcd35c662a7c"",
                     ""path"": ""<Keyboard>/escape"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Esc2"",
+                    ""action"": ""ESC"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -300,7 +319,9 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
         m_Player_Esc = m_Player.FindAction("Esc", throwIfNotFound: true);
         m_Player_MousePosition = m_Player.FindAction("MousePosition", throwIfNotFound: true);
         m_Player_Inventory = m_Player.FindAction("Inventory", throwIfNotFound: true);
-        m_Player_Esc2 = m_Player.FindAction("Esc2", throwIfNotFound: true);
+        // UiAction
+        m_UiAction = asset.FindActionMap("UiAction", throwIfNotFound: true);
+        m_UiAction_ESC = m_UiAction.FindAction("ESC", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -371,7 +392,6 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Esc;
     private readonly InputAction m_Player_MousePosition;
     private readonly InputAction m_Player_Inventory;
-    private readonly InputAction m_Player_Esc2;
     public struct PlayerActions
     {
         private @GameInput m_Wrapper;
@@ -385,7 +405,6 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
         public InputAction @Esc => m_Wrapper.m_Player_Esc;
         public InputAction @MousePosition => m_Wrapper.m_Player_MousePosition;
         public InputAction @Inventory => m_Wrapper.m_Player_Inventory;
-        public InputAction @Esc2 => m_Wrapper.m_Player_Esc2;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -422,9 +441,6 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
             @Inventory.started += instance.OnInventory;
             @Inventory.performed += instance.OnInventory;
             @Inventory.canceled += instance.OnInventory;
-            @Esc2.started += instance.OnEsc2;
-            @Esc2.performed += instance.OnEsc2;
-            @Esc2.canceled += instance.OnEsc2;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -456,9 +472,6 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
             @Inventory.started -= instance.OnInventory;
             @Inventory.performed -= instance.OnInventory;
             @Inventory.canceled -= instance.OnInventory;
-            @Esc2.started -= instance.OnEsc2;
-            @Esc2.performed -= instance.OnEsc2;
-            @Esc2.canceled -= instance.OnEsc2;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -476,6 +489,52 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
         }
     }
     public PlayerActions @Player => new PlayerActions(this);
+
+    // UiAction
+    private readonly InputActionMap m_UiAction;
+    private List<IUiActionActions> m_UiActionActionsCallbackInterfaces = new List<IUiActionActions>();
+    private readonly InputAction m_UiAction_ESC;
+    public struct UiActionActions
+    {
+        private @GameInput m_Wrapper;
+        public UiActionActions(@GameInput wrapper) { m_Wrapper = wrapper; }
+        public InputAction @ESC => m_Wrapper.m_UiAction_ESC;
+        public InputActionMap Get() { return m_Wrapper.m_UiAction; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(UiActionActions set) { return set.Get(); }
+        public void AddCallbacks(IUiActionActions instance)
+        {
+            if (instance == null || m_Wrapper.m_UiActionActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_UiActionActionsCallbackInterfaces.Add(instance);
+            @ESC.started += instance.OnESC;
+            @ESC.performed += instance.OnESC;
+            @ESC.canceled += instance.OnESC;
+        }
+
+        private void UnregisterCallbacks(IUiActionActions instance)
+        {
+            @ESC.started -= instance.OnESC;
+            @ESC.performed -= instance.OnESC;
+            @ESC.canceled -= instance.OnESC;
+        }
+
+        public void RemoveCallbacks(IUiActionActions instance)
+        {
+            if (m_Wrapper.m_UiActionActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(IUiActionActions instance)
+        {
+            foreach (var item in m_Wrapper.m_UiActionActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_UiActionActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public UiActionActions @UiAction => new UiActionActions(this);
     public interface IPlayerActions
     {
         void OnMove(InputAction.CallbackContext context);
@@ -487,6 +546,9 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
         void OnEsc(InputAction.CallbackContext context);
         void OnMousePosition(InputAction.CallbackContext context);
         void OnInventory(InputAction.CallbackContext context);
-        void OnEsc2(InputAction.CallbackContext context);
+    }
+    public interface IUiActionActions
+    {
+        void OnESC(InputAction.CallbackContext context);
     }
 }

@@ -26,6 +26,13 @@ public class PaperPuzzlePlayerIn : MonoBehaviour
     Vector3 startMousePosition;
 
     Transform puzzle;
+    public bool IsPuzzling{
+        
+        get{
+            return isPuzzling;
+        }
+
+    }
 
     private void Awake()
     {

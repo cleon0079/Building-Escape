@@ -29,6 +29,9 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Button exitButton;
     private GameInput inputs;
     private InputAction exitKey;
+
+    PaperPuzzlePlayerIn paperPuzzlePlayerIn;
+    Inventories inventories;
     void Awake() 
     {
     
@@ -43,18 +46,17 @@ public class UIManager : MonoBehaviour
             DontDestroyOnLoad(gameObject);
         }
        inputs = new GameInput();
-       exitKey = inputs.Player.Esc2;
+       exitKey = inputs.UiAction.ESC;
        exitKey.started += SetMenuPanelOn;
     }
-     private void OnEnable()
-    {
-        exitKey.Enable();
-        
-    }
-    private void OnDisable()
-    {
-        exitKey.Disable();
-    }
+    // private void OnEnable()
+    // {
+    //     exitKey.Enable(); 
+    // }
+    // private void OnDisable()
+    // {
+    //     exitKey.Disable();
+    // }
 
     // Start is called before the first frame update
     void Start()
@@ -64,6 +66,8 @@ public class UIManager : MonoBehaviour
         startPanel.SetActive(true);
         startButton.onClick.AddListener(SetStartpanelOff);
         exitButton.onClick.AddListener(manager.ExitGame);
+        paperPuzzlePlayerIn = FindAnyObjectByType<PaperPuzzlePlayerIn>();
+        inventories = FindAnyObjectByType<Inventories>();
     }
 
     // Update is called once per frame
@@ -72,7 +76,8 @@ public class UIManager : MonoBehaviour
         
     }
     void SetStartpanelOff()
-    {
+    {   
+        exitKey.Enable();
         Time.timeScale = 1f;
         startPanel.SetActive(false);
         manager.StartGame(false);
@@ -80,17 +85,33 @@ public class UIManager : MonoBehaviour
 
     void SetMenuPanelOn(InputAction.CallbackContext context)
     {
-        Time.timeScale = 0f;
-        startText.text = "Resume";  
-        startPanel.SetActive(true);
-        manager.StartGame(true);
+       
+            Time.timeScale = 0f;
+            startText.text = "Resume"; 
+            if(startPanel.activeSelf){
+                startPanel.SetActive(false);
+            }else{
+                startPanel.SetActive(true);
+            }
+            
+            manager.StartGame(true);
+        
     }
     
-        void SetMenuPanelOn2(InputAction.CallbackContext context)
+    void SetMenuPanelOn2(InputAction.CallbackContext context)
     {
         Time.timeScale = 0f;
         startText.text = "Resume";  
         startPanel.SetActive(true);
         manager.StartGame(true);
     }
+    public void EnableEscKey(bool isExit){
+        if(isExit){
+            exitKey.Enable(); 
+        }else{
+            exitKey.Disable();   
+        }
+        
+    }
+
 }
