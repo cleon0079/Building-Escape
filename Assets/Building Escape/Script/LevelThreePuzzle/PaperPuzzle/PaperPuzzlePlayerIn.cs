@@ -26,13 +26,7 @@ public class PaperPuzzlePlayerIn : MonoBehaviour
     Vector3 startMousePosition;
 
     Transform puzzle;
-    public bool IsPuzzling{
-        
-        get{
-            return isPuzzling;
-        }
-
-    }
+    private UIManager uIManager2;
 
     private void Awake()
     {
@@ -66,6 +60,7 @@ public class PaperPuzzlePlayerIn : MonoBehaviour
         escAction.Enable();
 
         isPuzzling = true;
+        
     }
 
     void OnClick(InputAction.CallbackContext context)
@@ -107,6 +102,7 @@ public class PaperPuzzlePlayerIn : MonoBehaviour
     private void Start()
     {
         uiManager = FindObjectOfType<Manager>();
+        uIManager2 = FindAnyObjectByType<UIManager>();
     }
 
     private void Update()
@@ -185,6 +181,7 @@ public class PaperPuzzlePlayerIn : MonoBehaviour
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
+            uIManager2.EnableEscKey(false);
             if (!isPuzzling)
             {
                 uiManager.UpdateText(showedText);
@@ -197,6 +194,7 @@ public class PaperPuzzlePlayerIn : MonoBehaviour
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
+            uIManager2.EnableEscKey(true);
             uiManager.UpdateText("");
             interatAction.Disable();
         }

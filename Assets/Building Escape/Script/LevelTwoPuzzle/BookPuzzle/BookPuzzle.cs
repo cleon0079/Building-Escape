@@ -29,6 +29,7 @@ public class BookPuzzle : MonoBehaviour
     Animator animator;
     [SerializeField] GameObject prize;
     bool isDone = false;
+    private UIManager uIManager2;
 
     private void Awake()
     {
@@ -89,6 +90,8 @@ public class BookPuzzle : MonoBehaviour
     {
         uiManager = FindObjectOfType<Manager>();
         animator = GetComponentInParent<Animator>();
+        uIManager2 = FindAnyObjectByType<UIManager>();
+    
     }
 
     private void Update()
@@ -183,6 +186,7 @@ public class BookPuzzle : MonoBehaviour
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("Player") && !isDone)
         {
+            uIManager2.EnableEscKey(false);
             if (!isPuzzling)
             {
                 uiManager.UpdateText(showedText);
@@ -195,6 +199,7 @@ public class BookPuzzle : MonoBehaviour
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("Player") && !isDone)
         {
+            uIManager2.EnableEscKey(true);
             uiManager.UpdateText("");
             interatAction.Disable();
         }

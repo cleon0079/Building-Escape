@@ -34,7 +34,7 @@ public class UIManager : MonoBehaviour
     Inventories inventories;
     void Awake() 
     {
-    
+
         if (instance != null)
         {
             // there is already a UIManager in the scene, destory this one
