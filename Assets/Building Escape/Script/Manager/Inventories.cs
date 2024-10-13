@@ -19,11 +19,7 @@ public class Inventories : MonoBehaviour
     InputAction inventoryAction;
     InputAction escAction;
     Manager uIManager;
-    public bool IsOnInventory{
-        get{
-            return isOnInventory;
-        }
-    }
+    UIManager uIManager2;
     private void Awake()
     {
         input = new GameInput();
@@ -37,6 +33,7 @@ public class Inventories : MonoBehaviour
     private void Start()
     {
         uIManager = FindObjectOfType<Manager>();
+        uIManager2 = FindObjectOfType<UIManager>();
     }
 
     private void OnEnable()
@@ -50,13 +47,14 @@ public class Inventories : MonoBehaviour
     }
 
     void OnCloseInventory(InputAction.CallbackContext callbackContext) {
+        uIManager2.EnableEscKey(true);
         ActiveMode(false);
     }
     void Update(){
         Debug.Log(isOnInventory);
     }
     void OnInventoryOpen(InputAction.CallbackContext callbackContext) {
-        
+        uIManager2.EnableEscKey(false);
         if (inventoryGameObject.activeSelf)
         {
             
