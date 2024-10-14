@@ -60,6 +60,7 @@ public class Inventories : MonoBehaviour
         {
             
             ActiveMode(false);
+            uIManager2.EnableEscKey(false);
         }
         else
         {

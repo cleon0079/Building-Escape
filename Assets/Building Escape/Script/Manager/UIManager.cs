@@ -48,6 +48,7 @@ public class UIManager : MonoBehaviour
        inputs = new GameInput();
        exitKey = inputs.UiAction.ESC;
        exitKey.started += SetMenuPanelOn;
+    //    exitKey.canceled += SetStartpanelOff();
     }
     // private void OnEnable()
     // {
@@ -78,7 +79,7 @@ public class UIManager : MonoBehaviour
     }
     void SetStartpanelOff()
     {   
-        exitKey.Enable();
+        // exitKey.Enable();
         Time.timeScale = 1f;
         startPanel.SetActive(false);
         manager.StartGame(false);
@@ -86,31 +87,30 @@ public class UIManager : MonoBehaviour
 
     void SetMenuPanelOn(InputAction.CallbackContext context)
     {
-       
-            Time.timeScale = 0f;
-            startText.text = "Resume"; 
-            if(startPanel.activeSelf){
-                startPanel.SetActive(false);
-            }else{
-                startPanel.SetActive(true);
-            }
-            
+        Time.timeScale = 0f;
+        startText.text = "Resume"; 
+        if(startPanel.activeSelf){
+            SetStartpanelOff();
+        }else{
+
+            startPanel.SetActive(true);
             manager.StartGame(true);
+        }
         
     }
     
-    void SetMenuPanelOn2(InputAction.CallbackContext context)
-    {
-        Time.timeScale = 0f;
-        startText.text = "Resume";  
-        startPanel.SetActive(true);
-        manager.StartGame(true);
-    }
+    // void SetMenuPanelOn2(InputAction.CallbackContext context)
+    // {
+    //     Time.timeScale = 0f;
+    //     startText.text = "Resume";  
+    //     startPanel.SetActive(true);
+    //     manager.StartGame(true);
+    // }
     public void EnableEscKey(bool isExit){
         if(isExit){
             exitKey.Enable(); 
         }else{
-            exitKey.Disable();   
+            exitKey.Disable();  
         }
         
     }
