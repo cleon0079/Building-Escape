@@ -18681,6 +18681,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0021a8b8846465049a1b125c23589b07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  showedText: Press F to interat
+  degreeLayer:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!1 &989670675
 GameObject:
   m_ObjectHideFlags: 0
@@ -61330,7 +61334,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5436012135087645800}
   - component: {fileID: 4107906637786733986}
-  - component: {fileID: 2941205233216854002}
   - component: {fileID: 6190722329526064013}
   - component: {fileID: 7209452155264190602}
   - component: {fileID: 4915965189327903245}
@@ -63136,27 +63139,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 6375708778553226300, guid: a8a8bbe395a5fda4da60b0b73c475a3f, type: 3}
---- !u!65 &2941205233216854002
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2752886556280641520}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 4.0568647, y: 0.09389734, z: 1.2129166}
-  m_Center: {x: 0.00000023841858, y: 4.5731573, z: 0.00012785196}
 --- !u!54 &2945160013970502172
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -98477,6 +98459,7 @@ GameObject:
   - component: {fileID: 4079821717941361688}
   - component: {fileID: 7666186799448846582}
   - component: {fileID: 7666186799448846583}
+  - component: {fileID: 7666186799448846584}
   m_Layer: 0
   m_Name: BrokenDegree
   m_TagString: Untagged
@@ -98520,12 +98503,28 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 2.9999979, y: 1.9420817, z: 3.1229641}
+  m_Center: {x: -0.0000010728836, y: 0.47104087, z: -0.00000025307725}
+--- !u!114 &7666186799448846584
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7666186799448846581}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0021a8b8846465049a1b125c23589b07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  showedText: Press F to interat
+  degreeLayer:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!1 &7671381422348804610
 GameObject:
   m_ObjectHideFlags: 0
