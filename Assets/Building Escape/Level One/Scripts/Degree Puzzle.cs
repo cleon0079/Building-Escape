@@ -9,8 +9,8 @@ public class DegreePuzzle : MonoBehaviour
     [SerializeField] string showedText = "Press F to interat";
     private GameInput input;
     private InputAction interatAction;
-     private InputAction mousePosition;
-     float startMousePosition;
+    private InputAction mousePosition;
+    float startMousePosition;
     Manager uiManager;
     [SerializeField] LayerMask degreeLayer;
     Transform book;
@@ -20,10 +20,14 @@ public class DegreePuzzle : MonoBehaviour
     {
         input = new GameInput();
         interatAction = input.Player.Interart;
+        interatAction.started += PlayAnimation;
+        
     }
-    void OnStart()
+    void PlayAnimation(InputAction.CallbackContext context)
     {
-
+        Debug.Log("ispressed");
+        puzzleAni.SetTrigger("Interact");
+        uiManager.UpdateText("");
     }
     void OnClick(InputAction.CallbackContext context)
     {
@@ -40,7 +44,7 @@ public class DegreePuzzle : MonoBehaviour
     void Start()
     {
         uiManager = FindObjectOfType<Manager>();
-        puzzleAni = GetComponentInParent<Animator>();
+        puzzleAni = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -52,10 +56,9 @@ public class DegreePuzzle : MonoBehaviour
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
-            Debug.Log("yes");
-            uIManager2.EnableEscKey(false);
-            uiManager.UpdateText(showedText);
             interatAction.Enable();
+            uiManager.UpdateText(showedText);
+            uIManager2.EnableEscKey(false);
         }
     }
 }
