@@ -9,7 +9,7 @@ public class StartDoorAni : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        animator = GetComponentInChildren<Animator>();
+        animator = GetComponent<Animator>();
         playerEnter = false;
     }
 

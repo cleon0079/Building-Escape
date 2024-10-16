@@ -65187,7 +65187,6 @@ GameObject:
   - component: {fileID: 7165296557088236766}
   - component: {fileID: 1051899878565576313}
   - component: {fileID: 7396139954418318484}
-  - component: {fileID: 7396139954418318485}
   m_Layer: 0
   m_Name: BrokenDegree1
   m_TagString: Untagged
@@ -96094,27 +96093,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -5886715609424679861, guid: b02c1bf3d2cf4a641be0992aadcca26f, type: 3}
---- !u!95 &7396139954418318485
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3244209116498957469}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 56e4297b61bd2a84eb7923498e60ed60, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!33 &7398630097422234750
 MeshFilter:
   m_ObjectHideFlags: 0

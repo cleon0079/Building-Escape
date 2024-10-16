@@ -50,7 +50,19 @@ public class DegreePuzzle : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
+        AnimatorStateInfo stateInfo = puzzleAni.GetCurrentAnimatorStateInfo(0);
+        Debug.Log("Layer 1 Animation: " + stateInfo.IsName("Fly pos"));
+        if (stateInfo.IsName("Fly pos") && stateInfo.normalizedTime >= 1.0f)
+        {
+            puzzleAni.enabled = false; 
+            Rigidbody rb = GetComponentInChildren<Rigidbody>();
+            Debug.Log("isPlayed");
+            if (rb != null)
+            {
+                rb.isKinematic = false;
+            }
+        }
     }
     private void OnTriggerStay(Collider other)
     {
