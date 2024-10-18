@@ -15,7 +15,7 @@ public class DegreePuzzle : MonoBehaviour
     [SerializeField] LayerMask degreeLayer;
     Transform book;
     private UIManager uIManager2;
-    bool isPuzzling = false;
+    bool isAnimationPlayed = false;
     void Awake()
     {
         input = new GameInput();
@@ -25,6 +25,7 @@ public class DegreePuzzle : MonoBehaviour
     }
     void PlayAnimation(InputAction.CallbackContext context)
     {
+        isAnimationPlayed = true;
         Debug.Log("ispressed");
         puzzleAni.SetTrigger("Interact");
         uiManager.UpdateText("");
@@ -50,17 +51,16 @@ public class DegreePuzzle : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        AnimatorStateInfo stateInfo = puzzleAni.GetCurrentAnimatorStateInfo(0);
-        Debug.Log("Layer 1 Animation: " + stateInfo.IsName("Fly pos"));
+        AnimatorStateInfo stateInfo = puzzleAni.GetCurrentAnimatorStateInfo(0); 
         if (stateInfo.IsName("Fly pos") && stateInfo.normalizedTime >= 1.0f)
         {
             puzzleAni.enabled = false; 
-            Rigidbody rb = GetComponentInChildren<Rigidbody>();
-            Debug.Log("isPlayed");
-            if (rb != null)
+            foreach (Transform child in transform)
             {
-                rb.isKinematic = false;
+                if (child.GetComponent<Rigidbody>() == null)
+                    {
+                        Rigidbody rb = child.gameObject.AddComponent<Rigidbody>();
+                    }   
             }
         }
     }
@@ -69,8 +69,19 @@ public class DegreePuzzle : MonoBehaviour
         if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
             interatAction.Enable();
-            uiManager.UpdateText(showedText);
+            if (!isAnimationPlayed)
+            {
+                uiManager.UpdateText(showedText);
+            }
             uIManager2.EnableEscKey(false);
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
+        {
+            interatAction.Disable();
+            uIManager2.EnableEscKey(true);
         }
     }
 }
