@@ -23,6 +23,7 @@ public class Inventories : MonoBehaviour
     InputAction escAction;
     Manager uIManager;
     UIManager uIManager2;
+    private bool canPick = false;
     private void Awake()
     {
         input = new GameInput();
@@ -55,12 +56,11 @@ public class Inventories : MonoBehaviour
         uIManager2.EnableEscKey(true);
     }
     void Update(){
-        // Debug.Log(isOnInventory);
         checkItem();
     }
     void OnInventoryOpen(InputAction.CallbackContext callbackContext) {
         uIManager2.EnableEscKey(false);
-        checkItem();
+
         if (inventoryGameObject.activeSelf)
         {
             
@@ -83,14 +83,18 @@ public class Inventories : MonoBehaviour
                 
                 if (hit.transform.CompareTag("PickableItem"))
                 {
+                    
                     if(degreePuzzle.canInterat){
                         uIManager.UpdateText(showedText);
                         ItemObject itemObject = hit.transform.GetComponent<ItemObject>();
                         if (itemObject != null)
                         {   
-                            AddItem(itemObject.item);
-                            itemObject.PickUp(); 
-                            return;
+                            if(canPick)
+                            {
+                                AddItem(itemObject.item);
+                                itemObject.PickUp(); 
+                                return;
+                            } 
                         }
                     }
                     

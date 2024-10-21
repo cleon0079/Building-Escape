@@ -65,7 +65,7 @@ public class DegreePuzzle : MonoBehaviour
                     }   
             }
         }
-        Debug.Log(canInterat);
+        // Debug.Log(canInterat);
     }
     private void OnTriggerStay(Collider other)
     {
