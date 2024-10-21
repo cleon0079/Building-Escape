@@ -14,6 +14,9 @@ public class Inventories : MonoBehaviour
     [SerializeField] GameObject inventoryGameObject;
     [SerializeField] GameObject inventoryContent;
     private bool isOnInventory = false;
+    public float rayDistance = 10f;
+    public LayerMask collectableLayer;
+    private string showedText = "Press F to collect";
 
     GameInput input;
     InputAction inventoryAction;
@@ -52,10 +55,12 @@ public class Inventories : MonoBehaviour
         uIManager2.EnableEscKey(true);
     }
     void Update(){
-        Debug.Log(isOnInventory);
+        // Debug.Log(isOnInventory);
+        checkItem();
     }
     void OnInventoryOpen(InputAction.CallbackContext callbackContext) {
         uIManager2.EnableEscKey(false);
+        checkItem();
         if (inventoryGameObject.activeSelf)
         {
             
@@ -67,7 +72,34 @@ public class Inventories : MonoBehaviour
             ActiveMode(true);
         }
     }
-
+    public void checkItem()
+    {
+        Ray ray = Camera.main.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2));
+        RaycastHit hit;
+        Debug.DrawRay(ray.origin, ray.direction * rayDistance, Color.red);
+            if (Physics.Raycast(ray, out hit, rayDistance, collectableLayer))
+            {   
+                DegreePuzzle degreePuzzle = FindObjectOfType<DegreePuzzle>();
+                
+                if (hit.transform.CompareTag("PickableItem"))
+                {
+                    if(degreePuzzle.canInterat){
+                        uIManager.UpdateText(showedText);
+                        ItemObject itemObject = hit.transform.GetComponent<ItemObject>();
+                        if (itemObject != null)
+                        {   
+                            AddItem(itemObject.item);
+                            itemObject.PickUp(); 
+                            return;
+                        }
+                    }
+                    
+                }
+            }
+            else{
+                uIManager.UpdateText("");
+            }
+    }
     public void AddItem(Item _item)
     {
         if (Inventory.Count >= 10)
@@ -77,6 +109,7 @@ public class Inventories : MonoBehaviour
         else
         {
             Inventory.Add(_item);
+            DisplayItemsCanvas();
         }
     }
 

@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class DegreePuzzle : MonoBehaviour
 {
-    private Animator puzzleAni;
+    Animator puzzleAni;
     [SerializeField] string showedText = "Press F to interat";
     private GameInput input;
     private InputAction interatAction;
@@ -16,6 +17,7 @@ public class DegreePuzzle : MonoBehaviour
     Transform book;
     private UIManager uIManager2;
     bool isAnimationPlayed = false;
+    public bool canInterat = false;
     void Awake()
     {
         input = new GameInput();
@@ -26,7 +28,6 @@ public class DegreePuzzle : MonoBehaviour
     void PlayAnimation(InputAction.CallbackContext context)
     {
         isAnimationPlayed = true;
-        Debug.Log("ispressed");
         puzzleAni.SetTrigger("Interact");
         uiManager.UpdateText("");
     }
@@ -55,6 +56,7 @@ public class DegreePuzzle : MonoBehaviour
         if (stateInfo.IsName("Fly pos") && stateInfo.normalizedTime >= 1.0f)
         {
             puzzleAni.enabled = false; 
+            canInterat = true;
             foreach (Transform child in transform)
             {
                 if (child.GetComponent<Rigidbody>() == null)
@@ -63,6 +65,7 @@ public class DegreePuzzle : MonoBehaviour
                     }   
             }
         }
+        Debug.Log(canInterat);
     }
     private void OnTriggerStay(Collider other)
     {

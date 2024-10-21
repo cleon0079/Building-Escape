@@ -10,7 +10,9 @@ public class Item
         BlackBoardPuzzle,
         TablePuzzle,
         BookPuzzle,
-        Prize
+        Prize,
+        DegreePuzzle
+
     }
 
     [SerializeField] Sprite image;

@@ -17,6 +17,7 @@ TagManager:
   - BlackBoard
   - Chair
   - Table
+  - PickableItem
   layers:
   - Default
   - TransparentFX

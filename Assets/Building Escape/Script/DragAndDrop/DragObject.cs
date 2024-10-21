@@ -118,8 +118,6 @@ public class DragObject : MonoBehaviour
                 RotateObject(mouseDelta);
             }
         }
-
-
     }
 
     public void CanDrag(bool drag) {
