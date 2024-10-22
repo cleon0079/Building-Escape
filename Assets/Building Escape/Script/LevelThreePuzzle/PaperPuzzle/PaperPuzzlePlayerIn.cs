@@ -13,6 +13,7 @@ public class PaperPuzzlePlayerIn : MonoBehaviour
     [SerializeField] string showedText = "Press F to interat";
     [SerializeField] GameObject target;
     [SerializeField] GameObject puzzleTarget;
+    [SerializeField] Transform playerTarget;
 
     private GameInput input;
     private InputAction interatAction;
@@ -60,7 +61,8 @@ public class PaperPuzzlePlayerIn : MonoBehaviour
         escAction.Enable();
 
         isPuzzling = true;
-        
+        Transform player = FindObjectOfType<Controller>().transform;
+        player.transform.position = playerTarget.transform.position;
     }
 
     void OnClick(InputAction.CallbackContext context)
@@ -69,21 +71,38 @@ public class PaperPuzzlePlayerIn : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit, 2000, puzzleLayer))
         {
-            if (hit.transform.GetComponent<PaperPuzzleItem>().GetPuzzleIn())
+            PaperPuzzleItem puzzleItem = hit.transform.GetComponent<PaperPuzzleItem>();
+
+            if (puzzleItem != null && puzzleItem.GetPuzzleIn())
             {
                 isDragging = false;
                 hit.transform.parent.parent.GetComponent<PaperPuzzleFrame>().removePuzzle(hit.transform.GetComponent<PaperPuzzleItem>());
                 hit.transform.SetParent(puzzleTarget.transform);
                 hit.transform.position = puzzleTarget.transform.position;
 
-                hit.transform.GetComponent<PaperPuzzleItem>().SetPuzzleIn(false);
+                puzzleItem.SetPuzzleIn(false);
                 hit.transform.GetComponent<MeshCollider>().convex = true;
-                hit.transform.gameObject.AddComponent<Rigidbody>().collisionDetectionMode = CollisionDetectionMode.Continuous;
+
+                Rigidbody rb = hit.transform.GetComponent<Rigidbody>();
+                if (rb == null)
+                {
+                    rb = hit.transform.gameObject.AddComponent<Rigidbody>();
+                    rb.collisionDetectionMode = CollisionDetectionMode.Continuous;
+                }
             }
-            else
+            else if (puzzleItem != null)
             {
                 isDragging = true;
                 puzzle = hit.transform;
+
+                Rigidbody rb = puzzle.GetComponent<Rigidbody>();
+                if (rb != null)
+                {
+                    rb.isKinematic = false;
+                    rb.collisionDetectionMode = CollisionDetectionMode.Continuous;
+                    rb.interpolation = RigidbodyInterpolation.Interpolate;
+                }
+
                 startMousePosition = new Vector3(mousePosition.ReadValue<Vector2>().x, mousePosition.ReadValue<Vector2>().y, uiManager.mainCamera.WorldToScreenPoint(puzzle.position).z);
             }
         }
@@ -105,21 +124,46 @@ public class PaperPuzzlePlayerIn : MonoBehaviour
         uIManager2 = FindAnyObjectByType<UIManager>();
     }
 
-    private void Update()
+
+    private void FixedUpdate()
     {
-        if (isDragging)
+        if (isDragging && puzzle != null)
         {
-            Vector3 currentMousePosition = new Vector3(mousePosition.ReadValue<Vector2>().x, mousePosition.ReadValue<Vector2>().y, uiManager.mainCamera.WorldToScreenPoint(puzzle.position).z);
+            Rigidbody rb = puzzle.GetComponent<Rigidbody>();
+            if (rb != null)
+            {
+                Vector3 currentMousePosition = new Vector3(mousePosition.ReadValue<Vector2>().x, mousePosition.ReadValue<Vector2>().y, uiManager.mainCamera.WorldToScreenPoint(puzzle.position).z);
 
-            float deltaMousePositionX = currentMousePosition.x - startMousePosition.x;
-            float deltaMousePositionY = currentMousePosition.y - startMousePosition.y;
+                float deltaMousePositionX = currentMousePosition.x - startMousePosition.x;
+                float deltaMousePositionY = currentMousePosition.y - startMousePosition.y;
 
-            float moveAmountX = deltaMousePositionX * Time.deltaTime * .5f;
-            float moveAmountY = deltaMousePositionY * Time.deltaTime * .5f;
+                float moveAmountX = deltaMousePositionX * Time.fixedDeltaTime * .08f;
+                float moveAmountY = deltaMousePositionY * Time.fixedDeltaTime * .08f;
 
-            puzzle.localPosition += new Vector3(moveAmountY, 0, -moveAmountX);
+                Vector3 moveAmount = new Vector3(moveAmountX, 0, moveAmountY);
 
-            startMousePosition = currentMousePosition;
+                float maxSpeed = 1f;
+                if (moveAmount.magnitude > maxSpeed)
+                {
+                    moveAmount = moveAmount.normalized * maxSpeed;
+                }
+                Vector3 newPosition = puzzle.position + moveAmount;
+                rb.MovePosition(newPosition);
+
+                startMousePosition = currentMousePosition;
+            }
+
+            //Vector3 currentMousePosition = new Vector3(mousePosition.ReadValue<Vector2>().x, mousePosition.ReadValue<Vector2>().y, uiManager.mainCamera.WorldToScreenPoint(puzzle.position).z);
+
+            //float deltaMousePositionX = currentMousePosition.x - startMousePosition.x;
+            //float deltaMousePositionY = currentMousePosition.y - startMousePosition.y;
+
+            //float moveAmountX = deltaMousePositionX * Time.deltaTime * .5f;
+            //float moveAmountY = deltaMousePositionY * Time.deltaTime * .5f;
+
+            //puzzle.localPosition += new Vector3(moveAmountY, 0, -moveAmountX);
+
+            //startMousePosition = currentMousePosition;
         }
     }
 
@@ -177,7 +221,7 @@ public class PaperPuzzlePlayerIn : MonoBehaviour
         isPuzzling = false;
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
