@@ -20,6 +20,7 @@ public class Inventories : MonoBehaviour
 
     GameInput input;
     InputAction inventoryAction;
+    InputAction interartAction;
     InputAction escAction;
     Manager uIManager;
     UIManager uIManager2;
@@ -28,9 +29,13 @@ public class Inventories : MonoBehaviour
     {
         input = new GameInput();
         inventoryAction = input.Player.Inventory;
+        interartAction = input.Player.Interart;
         escAction = input.Player.Esc;
 
         inventoryAction.started += OnInventoryOpen;
+        interartAction.started += PressToPick;
+        interartAction.canceled += Release;
+
         escAction.started += OnCloseInventory;
     }
 
@@ -60,7 +65,7 @@ public class Inventories : MonoBehaviour
     }
     void OnInventoryOpen(InputAction.CallbackContext callbackContext) {
         uIManager2.EnableEscKey(false);
-
+        
         if (inventoryGameObject.activeSelf)
         {
             
@@ -71,6 +76,14 @@ public class Inventories : MonoBehaviour
         {
             ActiveMode(true);
         }
+    }
+    void PressToPick(InputAction.CallbackContext callbackContext)
+    {
+        canPick = true;
+    }
+    void Release(InputAction.CallbackContext callbackContext)
+    {
+        canPick = false;
     }
     public void checkItem()
     {
@@ -86,6 +99,7 @@ public class Inventories : MonoBehaviour
                     
                     if(degreePuzzle.canInterat){
                         uIManager.UpdateText(showedText);
+                        interartAction.Enable();
                         ItemObject itemObject = hit.transform.GetComponent<ItemObject>();
                         if (itemObject != null)
                         {   
@@ -96,6 +110,10 @@ public class Inventories : MonoBehaviour
                                 return;
                             } 
                         }
+                    }
+                    else
+                    {
+                        interartAction.Disable();
                     }
                     
                 }
