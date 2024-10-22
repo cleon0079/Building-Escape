@@ -85066,7 +85066,7 @@ MonoBehaviour:
   maxDistance: 10
   scrollSpeed: 0.01
   rotationSpeed: 100
-  outline: {fileID: 0}
+  outline: {fileID: 2100000, guid: db79125069d9d9541b9722a47ef5798d, type: 2}
 --- !u!1 &5851012117262319286
 GameObject:
   m_ObjectHideFlags: 0
