@@ -33,6 +33,7 @@ public class Inventories : MonoBehaviour
         escAction = input.Player.Esc;
 
         inventoryAction.started += OnInventoryOpen;
+
         interartAction.started += PressToPick;
         interartAction.canceled += Release;
 
@@ -56,21 +57,19 @@ public class Inventories : MonoBehaviour
     }
 
     void OnCloseInventory(InputAction.CallbackContext callbackContext) {
-        
-        ActiveMode(false);
         uIManager2.EnableEscKey(true);
+        ActiveMode(false);
+        
     }
     void Update(){
         checkItem();
     }
     void OnInventoryOpen(InputAction.CallbackContext callbackContext) {
-        uIManager2.EnableEscKey(false);
         
         if (inventoryGameObject.activeSelf)
         {
             
             ActiveMode(false);
-            uIManager2.EnableEscKey(false);
         }
         else
         {
@@ -188,6 +187,7 @@ public class Inventories : MonoBehaviour
             escAction.Disable();
         }
         uIManager.Inventory(!active);
+        uIManager2.EnableEscKey(!active);
         uIManager.CursorMode(active);
     }
 }

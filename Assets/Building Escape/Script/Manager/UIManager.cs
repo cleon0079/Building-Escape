@@ -24,6 +24,7 @@ public class UIManager : MonoBehaviour
     }
     Manager manager;
     [SerializeField] private GameObject startPanel;
+    [SerializeField] private GameObject controlPanel;
     [SerializeField] private TMP_Text startText;
     [SerializeField] private Button startButton;
     [SerializeField] private Button exitButton;
@@ -66,6 +67,7 @@ public class UIManager : MonoBehaviour
         manager = FindObjectOfType<Manager>();
         manager.StartGame(true);
         startPanel.SetActive(true);
+        controlPanel.SetActive(false);
         startButton.onClick.AddListener(SetStartpanelOff);
         exitButton.onClick.AddListener(manager.ExitGame);
         paperPuzzlePlayerIn = FindAnyObjectByType<PaperPuzzlePlayerIn>();
@@ -82,6 +84,7 @@ public class UIManager : MonoBehaviour
         // exitKey.Enable();
         Time.timeScale = 1f;
         startPanel.SetActive(false);
+        controlPanel.SetActive(true);
         manager.StartGame(false);
     }
 
@@ -94,6 +97,7 @@ public class UIManager : MonoBehaviour
         }else{
 
             startPanel.SetActive(true);
+            controlPanel.SetActive(false);
             manager.StartGame(true);
         }
         

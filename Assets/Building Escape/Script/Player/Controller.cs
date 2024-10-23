@@ -7,6 +7,9 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(Rigidbody))]
 public class Controller : MonoBehaviour
 {
+    [SerializeField] private AudioClip walkSound;
+    private AudioSource audioSource;
+
     Manager uiManager;
 
     private GameInput input;
@@ -63,7 +66,8 @@ public class Controller : MonoBehaviour
 
     void Start()
     {
-       uiManager = FindObjectOfType<Manager>();
+        uiManager = FindObjectOfType<Manager>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -82,11 +86,24 @@ public class Controller : MonoBehaviour
 
     void Movement()
     {
-        float vertcal = move.ReadValue<Vector2>().x;
-        float hirzontal = move.ReadValue<Vector2>().y;
+        float vertical = move.ReadValue<Vector2>().x;
+        float horizontal = move.ReadValue<Vector2>().y;
+        
+        // Only play the walk sound if it's not already playing
+        if (isGrounded && !audioSource.isPlaying && (vertical != 0 || horizontal != 0))
+        {
+            audioSource.clip = walkSound;
+            audioSource.Play();
+        }
+
+        // Stop the audio when the player is not moving
+        if (audioSource.isPlaying && (vertical == 0 && horizontal == 0 || !isGrounded))
+        {
+            audioSource.Stop();
+        }
 
         //Walk
-        Vector3 moveDirection = (transform.forward * hirzontal + transform.right * vertcal).normalized;
+        Vector3 moveDirection = (transform.forward * horizontal + transform.right * vertical).normalized;
         rb.velocity = new Vector3(moveDirection.x * moveSpeed, rb.velocity.y, moveDirection.z * moveSpeed);
 
         //transform.Translate(Vector3.forward * hirzontal * Time.deltaTime * moveSpeed);
@@ -99,7 +116,7 @@ public class Controller : MonoBehaviour
         float mouse_y = look.ReadValue<Vector2>().y;
 
         // Horizontal rotation
-        transform.Rotate(0f, mouse_x * lookSensitivity,0f);
+        transform.Rotate(0f, mouse_x * lookSensitivity, 0f);
 
         yRotation -= mouse_y * lookSensitivity;
         yRotation = Mathf.Clamp(yRotation, -90f, 90f);
@@ -109,15 +126,17 @@ public class Controller : MonoBehaviour
 
     void Jump(InputAction.CallbackContext context)
     {
+        audioSource.Stop();
         if (isGrounded)
         {
             rb.AddForce(Vector3.up * jumpHight, ForceMode.Impulse);
         }
-        
+
     }
 
 
-    public void CanMove(bool move) {
+    public void CanMove(bool move)
+    {
         if (move)
         {
             OnEnable();

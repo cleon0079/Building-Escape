@@ -6,6 +6,7 @@ public class StartDoorAni : MonoBehaviour
 {
     private Animator animator;
     private bool playerEnter;
+    [SerializeField] AudioSource doorOpen;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,6 +19,7 @@ public class StartDoorAni : MonoBehaviour
     {
         if(playerEnter){
             animator.SetBool("DoorOpen" , true);
+            doorOpen.Play();
         }
         if(!playerEnter){
             animator.SetBool("DoorOpen" , false);
