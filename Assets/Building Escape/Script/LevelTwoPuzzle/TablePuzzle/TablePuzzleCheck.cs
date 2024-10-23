@@ -10,10 +10,12 @@ public class TablePuzzleCheck : MonoBehaviour
 
     [SerializeField] Transform targetPosition;
     [SerializeField] GameObject prizeGB;
+    Manager uimanager;
 
     // Start is called before the first frame update
     void Start()
     {
+        uimanager = FindObjectOfType<Manager>();
         tables = new GameObject[this.transform.childCount];
         for (int i = 0; i < this.transform.childCount; i++)
         {
@@ -42,5 +44,6 @@ public class TablePuzzleCheck : MonoBehaviour
         prizeGB.SetActive(true);
         prizeGB.transform.DOMove(targetPosition.position, 2f);
         prizeGB.transform.DORotate(Vector3.zero, 2f);
+        uimanager.tablesFinish = true;
     }
 }

@@ -211,6 +211,7 @@ public class BookPuzzle : MonoBehaviour
             audioSource.PlayOneShot(cabinetSound, volume);
         }
         prize.SetActive(true);
+        uiManager.bookShelfFinish = true;
     }
 
     private void OnTriggerStay(Collider other)

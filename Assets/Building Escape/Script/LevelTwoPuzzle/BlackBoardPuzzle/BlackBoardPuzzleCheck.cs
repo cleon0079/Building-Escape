@@ -8,6 +8,7 @@ public class BlackBoardPuzzleCheck : MonoBehaviour
     [SerializeField] Transform targetPosition;
     [SerializeField] GameObject prizeGB;
     GameObject[] blackboards;
+    Manager uimanager;
     int index = 0;
 
     public bool isFinish;
@@ -16,6 +17,7 @@ public class BlackBoardPuzzleCheck : MonoBehaviour
 
     private void Start()
     {
+        uimanager = FindObjectOfType<Manager>();
         isFinish = false;
         blackboards = new GameObject[this.transform.childCount];
         for (int i = 0; i < this.transform.childCount; i++)
@@ -48,9 +50,10 @@ public class BlackBoardPuzzleCheck : MonoBehaviour
    
     void Finish() {
         isFinish = true;
-        prizeGB.SetActive(true);
-        prizeGB.transform.DOMove(targetPosition.position, 2f);
-        prizeGB.transform.DORotate(Vector3.zero, 2f);
+        // prizeGB.SetActive(true);
+        // prizeGB.transform.DOMove(targetPosition.position, 2f);
+        // prizeGB.transform.DORotate(Vector3.zero, 2f);
+        uimanager.blackboardFinish = true;
         // Destroy(this);
     }
 

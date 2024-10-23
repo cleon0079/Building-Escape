@@ -11,13 +11,30 @@ public class Manager : MonoBehaviour
     public Camera mainCamera;
     DragObject dragObject;
     Controller player;
+    public bool blackboardFinish = false;
+    public bool tablesFinish = false;
+    public bool bookShelfFinish = false;
+    public bool level2Completed = false;
 
     private void Start()
     {
+
         dragObject = FindObjectOfType<DragObject>();
         player = FindObjectOfType<Controller>();
     }
+    void Update()
+    {
+        Debug.Log(level2Completed);
+        CheckLevelCompleted();
+    }
 
+    public void CheckLevelCompleted()
+    {
+        if(blackboardFinish && tablesFinish && bookShelfFinish){
+            level2Completed = true;
+        }
+        
+    }
     public void StartPuzzle()
     {
         dragObject.CanDrag(false);
