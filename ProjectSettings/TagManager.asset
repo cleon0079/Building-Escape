@@ -19,6 +19,7 @@ TagManager:
   - Table
   - PickableItem
   - Book
+  - Container
   layers:
   - Default
   - TransparentFX

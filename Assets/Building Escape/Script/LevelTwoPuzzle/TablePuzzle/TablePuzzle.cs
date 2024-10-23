@@ -6,11 +6,13 @@ using UnityEngine;
 public class TablePuzzle : MonoBehaviour
 {
     DragObject dragObject;
-    bool isChair = false;
-    bool isTable = false;
+    [SerializeField] bool isChair = false;
+    [SerializeField] bool isTable = false;
 
     [SerializeField] int index;
     bool isRight = false;
+
+    [SerializeField] Transform container;
 
     void Start()
     {
@@ -23,14 +25,15 @@ public class TablePuzzle : MonoBehaviour
 
         if (other.transform.CompareTag("Table") && !isTable && !isRight)
         {
+            isTable = true;
             other.transform.SetParent(this.transform);
 
             other.transform.DOLocalMove(Vector3.zero, 1f);
             other.transform.DOLocalRotate(Vector3.zero, 1f);
 
             dragObject.StopDrag();
+            other.transform.GetComponent<Rigidbody>().velocity = Vector3.zero;
 
-            isTable = true;
 
             other.GetComponent<TableItem>().SetTableIn(true);
 
@@ -48,13 +51,15 @@ public class TablePuzzle : MonoBehaviour
     {
         if (other.transform.CompareTag("Chair") && isChair)
         {
-            other.transform.SetParent(null);
+            other.transform.SetParent(container);
+            other.transform.DOKill();
             isChair = false;
         }
 
         if (other.transform.CompareTag("Table") && isTable)
         {
-            other.transform.SetParent(null);
+            other.transform.SetParent(container);
+            other.transform.DOKill();
             isTable = false;
         }
     }
@@ -62,15 +67,15 @@ public class TablePuzzle : MonoBehaviour
     void CheckChair(Collider other) {
         if (other.transform.CompareTag("Chair") && !isChair)
         {
-
+            isChair = true;
             other.transform.SetParent(this.transform);
 
             other.transform.DOLocalMove(new Vector3(0, 0, -1.5f), 1f);
             other.transform.DOLocalRotate(Vector3.zero, 1f);
 
-            dragObject.StopDrag();
+            other.transform.GetComponent<Rigidbody>().velocity = Vector3.zero;
 
-            isChair = true;
+            dragObject.StopDrag();
 
 
         }
