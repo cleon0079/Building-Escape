@@ -18,6 +18,7 @@ TagManager:
   - Chair
   - Table
   - PickableItem
+  - Book
   layers:
   - Default
   - TransparentFX

@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class ChangeMaterials : MonoBehaviour
-{
+{   
+    [SerializeField] private AudioClip finishSound;
+    private AudioSource audioSource;
     [SerializeField] private Material finishMaterial;
     // Start is called before the first frame update
     void Start()
     {
-        
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -23,6 +25,7 @@ public class ChangeMaterials : MonoBehaviour
                 Renderer renderer = obj.GetComponent<Renderer>();
                 renderer.material = finishMaterial;
             }
+            audioSource.PlayOneShot(finishSound);
             
         }
 

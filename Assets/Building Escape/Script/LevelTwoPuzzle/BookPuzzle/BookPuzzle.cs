@@ -6,6 +6,10 @@ using UnityEngine.InputSystem;
 
 public class BookPuzzle : MonoBehaviour
 {
+    [SerializeField] private AudioClip cabinetSound;
+    [SerializeField] private AudioClip bookSound;
+    private AudioSource audioSource;
+
     Manager uiManager;
     [SerializeField] string showedText = "Press F to interat";
     [SerializeField] GameObject target;
@@ -20,7 +24,7 @@ public class BookPuzzle : MonoBehaviour
     [SerializeField] List<GameObject> levelObjects;
 
     bool isPuzzling = false;
-
+    bool isBookCliked = false;  
     bool isDragging = false;
     float startMousePosition;
 
@@ -39,9 +43,11 @@ public class BookPuzzle : MonoBehaviour
         mousePosition = input.Player.MousePosition;
 
         interatAction.started += OnStart;
+        audioSource = GetComponent<AudioSource>();
     }
 
-    void OnStart(InputAction.CallbackContext context) {
+    void OnStart(InputAction.CallbackContext context)
+    {
         uiManager.StartPuzzle();
 
         uiManager.mainCamera.transform.SetParent(target.transform);
@@ -72,16 +78,35 @@ public class BookPuzzle : MonoBehaviour
             isDragging = true;
             book = hit.transform;
             startMousePosition = mousePosition.ReadValue<Vector2>().x;
+
+            if (hit.transform.CompareTag("Book") && bookSound != null && audioSource != null)
+            {
+                float volume = 0.09f;
+                audioSource.PlayOneShot(bookSound, volume);
+                isBookCliked = true;
+            }
         }
     }
 
-    void OnNoClick(InputAction.CallbackContext context) 
+    void OnNoClick(InputAction.CallbackContext context)
     {
         isDragging = false;
+
+        if (audioSource != null && !audioSource.isPlaying && bookSound != null && isBookCliked) 
+        {
+            audioSource.PlayOneShot(bookSound, 0.09f);
+            isBookCliked = false;
+        }
+        else if (audioSource != null && audioSource.isPlaying)
+        {
+            audioSource.Stop();
+            isBookCliked = false;
+        }
+
         CheckPuzzle();
     }
 
-    void OnEsc(InputAction.CallbackContext context) 
+    void OnEsc(InputAction.CallbackContext context)
     {
         EscPuzzle();
     }
@@ -91,7 +116,7 @@ public class BookPuzzle : MonoBehaviour
         uiManager = FindObjectOfType<Manager>();
         animator = GetComponentInParent<Animator>();
         uIManager2 = FindAnyObjectByType<UIManager>();
-    
+
     }
 
     private void Update()
@@ -111,7 +136,7 @@ public class BookPuzzle : MonoBehaviour
             {
                 moveAmount = 0;
             }
-            book.localPosition += new Vector3(moveAmount,0,0);
+            book.localPosition += new Vector3(moveAmount, 0, 0);
 
             startMousePosition = currentMousePosition;
         }
@@ -143,7 +168,7 @@ public class BookPuzzle : MonoBehaviour
         }
     }
 
-    void EscPuzzle() 
+    void EscPuzzle()
     {
         isDragging = false;
 
@@ -179,6 +204,12 @@ public class BookPuzzle : MonoBehaviour
 
         animator.SetBool("BookShelfOpen", true);
         uiManager.UpdateText("");
+
+        if (cabinetSound != null && audioSource != null)
+        {
+            float volume = 0.3f;
+            audioSource.PlayOneShot(cabinetSound, volume);
+        }
         prize.SetActive(true);
     }
 

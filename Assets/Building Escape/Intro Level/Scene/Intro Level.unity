@@ -47169,7 +47169,7 @@ GameObject:
   - component: {fileID: 8111622549991479531}
   m_Layer: 12
   m_Name: Bllue-Green
-  m_TagString: Untagged
+  m_TagString: Book
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -63863,6 +63863,7 @@ GameObject:
   - component: {fileID: 1191118393925917818}
   - component: {fileID: 8849922040753856061}
   - component: {fileID: 5200534431627283591}
+  - component: {fileID: 8849922040753856062}
   m_Layer: 0
   m_Name: Puzzle
   m_TagString: Untagged
@@ -67350,7 +67351,7 @@ GameObject:
   - component: {fileID: 85380188018940424}
   m_Layer: 12
   m_Name: Blue-Red
-  m_TagString: Untagged
+  m_TagString: Book
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -72273,7 +72274,7 @@ GameObject:
   - component: {fileID: 288154338195162251}
   m_Layer: 12
   m_Name: Blue
-  m_TagString: Untagged
+  m_TagString: Book
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -83610,6 +83611,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aaf030309aabd2246bc5d547a892fa53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cabinetSound: {fileID: 8300000, guid: 67a4f71a6c3344a4fa51c6410b86cc87, type: 3}
+  bookSound: {fileID: 8300000, guid: 6160372572d1a564ba76596914004c8b, type: 3}
   showedText: Press F to interat
   target: {fileID: 1193005093604749666}
   bookLayer:
@@ -87581,7 +87584,7 @@ GameObject:
   - component: {fileID: 1673034154420866879}
   m_Layer: 12
   m_Name: Green
-  m_TagString: Untagged
+  m_TagString: Book
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -90159,7 +90162,7 @@ GameObject:
   - component: {fileID: 4662599423969103389}
   m_Layer: 12
   m_Name: Red-Green
-  m_TagString: Untagged
+  m_TagString: Book
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -90529,7 +90532,7 @@ GameObject:
   - component: {fileID: 6602593801579529907}
   m_Layer: 12
   m_Name: Red-Green
-  m_TagString: Untagged
+  m_TagString: Book
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -91807,7 +91810,7 @@ GameObject:
   - component: {fileID: 7677022930045263010}
   m_Layer: 12
   m_Name: Red
-  m_TagString: Untagged
+  m_TagString: Book
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -100054,7 +100057,7 @@ GameObject:
   - component: {fileID: 5478686609772780561}
   m_Layer: 12
   m_Name: Green-Red
-  m_TagString: Untagged
+  m_TagString: Book
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -105177,7 +105180,7 @@ GameObject:
   - component: {fileID: 6493938013735478900}
   m_Layer: 12
   m_Name: Green-Blue
-  m_TagString: Untagged
+  m_TagString: Book
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -106316,6 +106319,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eed43199f9ac2da4fba7a2baf4d05df8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  finishSound: {fileID: 8300000, guid: f26857423bf16844daf67fb21271e986, type: 3}
   finishMaterial: {fileID: 2100000, guid: 5a7849720f9fbb640b769fbea929b89a, type: 2}
 --- !u!54 &8282832682132025346
 Rigidbody:
@@ -110283,6 +110287,102 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 4.01, y: 4.714248, z: 2.5}
   m_Center: {x: 0, y: 2.34, z: 0.62}
+--- !u!82 &8849922040753856062
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2683049620573782806}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!64 &8854226057348488649
 MeshCollider:
   m_ObjectHideFlags: 0
