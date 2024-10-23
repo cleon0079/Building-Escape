@@ -47214,6 +47214,7 @@ GameObject:
   - component: {fileID: 4177899944713862095}
   - component: {fileID: 2170196898938081029}
   - component: {fileID: 8111622549991479531}
+  - component: {fileID: 8111622549991479532}
   m_Layer: 12
   m_Name: Bllue-Green
   m_TagString: Book
@@ -67415,6 +67416,7 @@ GameObject:
   - component: {fileID: 1722355607327524837}
   - component: {fileID: 3459888237482881839}
   - component: {fileID: 85380188018940424}
+  - component: {fileID: 3459888237482881840}
   m_Layer: 12
   m_Name: Blue-Red
   m_TagString: Book
@@ -69884,6 +69886,18 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &3459888237482881840
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3099323672160604922}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: faaf19fe5c0f1e54793867f67b5cc1aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3464348518700602733
 GameObject:
   m_ObjectHideFlags: 0
@@ -72338,6 +72352,7 @@ GameObject:
   - component: {fileID: 1101040213716120702}
   - component: {fileID: 2928282538812686516}
   - component: {fileID: 288154338195162251}
+  - component: {fileID: 4100656828960422876}
   m_Layer: 12
   m_Name: Blue
   m_TagString: Book
@@ -75360,6 +75375,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1221584686134865634}
   m_LocalEulerAnglesHint: {x: -90, y: -90, z: 0}
+--- !u!114 &4100656828960422876
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3720999155771335009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: faaf19fe5c0f1e54793867f67b5cc1aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4103260107971296594
 GameObject:
   m_ObjectHideFlags: 0
@@ -87658,6 +87685,7 @@ GameObject:
   - component: {fileID: 8317320438827423675}
   - component: {fileID: 6091674397217088369}
   - component: {fileID: 1673034154420866879}
+  - component: {fileID: 8317320438827423676}
   m_Layer: 12
   m_Name: Green
   m_TagString: Book
@@ -90257,6 +90285,7 @@ GameObject:
   - component: {fileID: 7602164537877356680}
   - component: {fileID: 5648823551706305602}
   - component: {fileID: 4662599423969103389}
+  - component: {fileID: 7602164537877356681}
   m_Layer: 12
   m_Name: Red-Green
   m_TagString: Book
@@ -90627,6 +90656,7 @@ GameObject:
   - component: {fileID: 7674829840251421946}
   - component: {fileID: 5577301706981634096}
   - component: {fileID: 6602593801579529907}
+  - component: {fileID: 7674829840251421947}
   m_Layer: 12
   m_Name: Red-Green
   m_TagString: Book
@@ -91908,6 +91938,7 @@ GameObject:
   - component: {fileID: 7238485167746840297}
   - component: {fileID: 4868589801934881315}
   - component: {fileID: 7677022930045263010}
+  - component: {fileID: 7677022930045263011}
   m_Layer: 12
   m_Name: Red
   m_TagString: Book
@@ -100176,6 +100207,7 @@ GameObject:
   - component: {fileID: 6585682571231787772}
   - component: {fileID: 8971729207731195446}
   - component: {fileID: 5478686609772780561}
+  - component: {fileID: 8971729207731195447}
   m_Layer: 12
   m_Name: Green-Red
   m_TagString: Book
@@ -101528,6 +101560,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6153143490327819671}
   m_Mesh: {fileID: -391784210025893897, guid: dd8cbd11cef48ea449da3b2e3e499215, type: 3}
+--- !u!114 &7602164537877356681
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6153143490327819671}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: faaf19fe5c0f1e54793867f67b5cc1aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &7605037469593248785
 Transform:
   m_ObjectHideFlags: 0
@@ -102210,6 +102254,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6225789061739467237}
   m_Mesh: {fileID: -391784210025893897, guid: dd8cbd11cef48ea449da3b2e3e499215, type: 3}
+--- !u!114 &7674829840251421947
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6225789061739467237}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: faaf19fe5c0f1e54793867f67b5cc1aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!54 &7675401274007469992
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -102286,6 +102342,18 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -5356692022393081633, guid: 07b3a46841fb0664c9f789dffb5d5e95, type: 3}
+--- !u!114 &7677022930045263011
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6381680736411624438}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: faaf19fe5c0f1e54793867f67b5cc1aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &7681876455395931060
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -105343,6 +105411,7 @@ GameObject:
   - component: {fileID: 5981870997521876427}
   - component: {fileID: 8423746379189334273}
   - component: {fileID: 6493938013735478900}
+  - component: {fileID: 8423746379189334274}
   m_Layer: 12
   m_Name: Green-Blue
   m_TagString: Book
@@ -105743,6 +105812,18 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 7553599472071667350, guid: d6625875334cf3d4f864dd59cf583621, type: 3}
+--- !u!114 &8111622549991479532
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 368990488280461008}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: faaf19fe5c0f1e54793867f67b5cc1aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8111698372279316949
 GameObject:
   m_ObjectHideFlags: 0
@@ -106650,6 +106731,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5731118490028917412}
   m_Mesh: {fileID: -3185671756129913950, guid: 4000f64d60e33f7459f16ed53be26fec, type: 3}
+--- !u!114 &8317320438827423676
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5731118490028917412}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: faaf19fe5c0f1e54793867f67b5cc1aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &8317416759415294294
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -107780,6 +107873,18 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &8423746379189334274
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8063647593009221844}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: faaf19fe5c0f1e54793867f67b5cc1aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!23 &8423863925504570867
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -111493,6 +111598,18 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &8971729207731195447
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7458242862325379043}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: faaf19fe5c0f1e54793867f67b5cc1aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!64 &8977899604901090631
 MeshCollider:
   m_ObjectHideFlags: 0
