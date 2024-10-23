@@ -14546,6 +14546,7 @@ MonoBehaviour:
   postProcessing:
   - {fileID: 0}
   - {fileID: 0}
+  Animator: {fileID: 0}
 --- !u!1001 &676082061
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -30609,6 +30610,7 @@ MonoBehaviour:
   postProcessing:
   - {fileID: 0}
   - {fileID: 0}
+  Animator: {fileID: 0}
 --- !u!65 &1506142720
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -33305,6 +33307,7 @@ MonoBehaviour:
   postProcessing:
   - {fileID: 0}
   - {fileID: 0}
+  Animator: {fileID: 0}
 --- !u!65 &1643789116
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -43226,6 +43229,7 @@ MonoBehaviour:
   postProcessing:
   - {fileID: 0}
   - {fileID: 0}
+  Animator: {fileID: 0}
 --- !u!65 &2061138177
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -48319,6 +48323,7 @@ GameObject:
   - component: {fileID: 7244559319003755547}
   - component: {fileID: 3426193879418583226}
   - component: {fileID: 8983946724825861543}
+  - component: {fileID: 8983946724825861544}
   m_Layer: 11
   m_Name: Blackboard_Broken.001
   m_TagString: BlackBoard
@@ -50033,6 +50038,7 @@ GameObject:
   - component: {fileID: 4041040752690598026}
   - component: {fileID: 4889354895405652459}
   - component: {fileID: 2929760267642815320}
+  - component: {fileID: 8955274212630166533}
   m_Layer: 11
   m_Name: Blackboard_Broken.021
   m_TagString: BlackBoard
@@ -55365,6 +55371,7 @@ GameObject:
   - component: {fileID: 6141636608303032759}
   - component: {fileID: 2221375796886890755}
   - component: {fileID: 8393884997006223216}
+  - component: {fileID: 8393884997006223217}
   m_Layer: 11
   m_Name: Blackboard_Broken.003
   m_TagString: BlackBoard
@@ -57443,6 +57450,7 @@ GameObject:
   - component: {fileID: 8790451554379983312}
   - component: {fileID: 4252264935247555383}
   - component: {fileID: 2743888154113253041}
+  - component: {fileID: 8790451554379983313}
   m_Layer: 11
   m_Name: Blackboard_Broken.011
   m_TagString: BlackBoard
@@ -57762,6 +57770,7 @@ GameObject:
   - component: {fileID: 3714179303640766667}
   - component: {fileID: 4272750774719746563}
   - component: {fileID: 635657051795410782}
+  - component: {fileID: 9134713778047006006}
   m_Layer: 11
   m_Name: Blackboard_Broken.020
   m_TagString: BlackBoard
@@ -63426,6 +63435,7 @@ GameObject:
   - component: {fileID: 5053882861185081229}
   - component: {fileID: 8569683197425779275}
   - component: {fileID: 8767389066607117791}
+  - component: {fileID: 8767389066607117792}
   m_Layer: 11
   m_Name: Blackboard_Broken.014
   m_TagString: BlackBoard
@@ -65002,6 +65012,7 @@ GameObject:
   - component: {fileID: 7556336469699298214}
   - component: {fileID: 7264796021483014267}
   - component: {fileID: 6745227174881309489}
+  - component: {fileID: 7556336469699298215}
   m_Layer: 11
   m_Name: Blackboard_Broken.008
   m_TagString: BlackBoard
@@ -77803,6 +77814,7 @@ GameObject:
   - component: {fileID: 919817397388261434}
   - component: {fileID: 2735040962287774853}
   - component: {fileID: 6144964170824546774}
+  - component: {fileID: 6144964170824546775}
   m_Layer: 11
   m_Name: Blackboard_Broken.009
   m_TagString: BlackBoard
@@ -78447,6 +78459,7 @@ GameObject:
   - component: {fileID: 93249922879846054}
   - component: {fileID: 548361154977703822}
   - component: {fileID: 2072604239735861404}
+  - component: {fileID: 8290325031482079902}
   m_Layer: 11
   m_Name: Blackboard_Broken.006
   m_TagString: BlackBoard
@@ -82700,6 +82713,7 @@ GameObject:
   - component: {fileID: 3910288954113935407}
   - component: {fileID: 4934893007172570935}
   - component: {fileID: 4814207891268172323}
+  - component: {fileID: 8630489756887840044}
   m_Layer: 11
   m_Name: Blackboard_Broken.012
   m_TagString: BlackBoard
@@ -83562,6 +83576,7 @@ GameObject:
   - component: {fileID: 5478358718395032183}
   - component: {fileID: 5489404478295925431}
   - component: {fileID: 7923582155179106777}
+  - component: {fileID: 7923582155179106778}
   m_Layer: 11
   m_Name: Blackboard_Broken.017
   m_TagString: BlackBoard
@@ -84909,6 +84924,7 @@ GameObject:
   - component: {fileID: 2954276180539365605}
   - component: {fileID: 5397201164443219773}
   - component: {fileID: 3663722530934022146}
+  - component: {fileID: 6929191733883089488}
   m_Layer: 11
   m_Name: Blackboard_Broken.019
   m_TagString: BlackBoard
@@ -85276,6 +85292,7 @@ GameObject:
   - component: {fileID: 7133495080830274701}
   - component: {fileID: 8591582749748696625}
   - component: {fileID: 6146778486423215424}
+  - component: {fileID: 8591582749748696626}
   m_Layer: 11
   m_Name: Blackboard_Broken.013
   m_TagString: BlackBoard
@@ -90138,6 +90155,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: 8
+--- !u!114 &6144964170824546775
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4422266657752230255}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: faaf19fe5c0f1e54793867f67b5cc1aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!23 &6146747881028052052
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -95246,6 +95275,7 @@ GameObject:
   - component: {fileID: 6849541669879315502}
   - component: {fileID: 7013909861091804491}
   - component: {fileID: 4386577093707552233}
+  - component: {fileID: 8638599035658893643}
   m_Layer: 11
   m_Name: Blackboard_Broken.002
   m_TagString: BlackBoard
@@ -95833,6 +95863,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5390522117429555057}
   m_Mesh: {fileID: 2953012959144674242, guid: 2edf86c5ab6ef4b4eb35092e94b1a1d1, type: 3}
+--- !u!114 &6929191733883089488
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5390522117429555057}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: faaf19fe5c0f1e54793867f67b5cc1aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!64 &6929642538364625069
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -101046,6 +101088,18 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 2248230317583828072, guid: 2edf86c5ab6ef4b4eb35092e94b1a1d1, type: 3}
+--- !u!114 &7556336469699298215
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2835606439947533389}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: faaf19fe5c0f1e54793867f67b5cc1aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7562351996949496329
 GameObject:
   m_ObjectHideFlags: 0
@@ -102128,6 +102182,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   canInterat: 0
+  isPlayerExit: 0
 --- !u!1 &7671381422348804610
 GameObject:
   m_ObjectHideFlags: 0
@@ -103931,6 +103986,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: 16
+--- !u!114 &7923582155179106778
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5185722598206572691}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: faaf19fe5c0f1e54793867f67b5cc1aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &7924134897712083634
 Transform:
   m_ObjectHideFlags: 0
@@ -104200,6 +104267,7 @@ GameObject:
   - component: {fileID: 7507436039904500348}
   - component: {fileID: 7774217664343949776}
   - component: {fileID: 5461379856887773699}
+  - component: {fileID: 7949289920204767297}
   m_Layer: 11
   m_Name: Blackboard_Broken.018
   m_TagString: BlackBoard
@@ -104207,6 +104275,18 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &7949289920204767297
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7949289920204767296}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: faaf19fe5c0f1e54793867f67b5cc1aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!23 &7954792153237065153
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -105677,6 +105757,7 @@ GameObject:
   - component: {fileID: 89297770099490383}
   - component: {fileID: 5053448212210179474}
   - component: {fileID: 8008864470966407767}
+  - component: {fileID: 8350366420757628665}
   m_Layer: 11
   m_Name: Blackboard_Broken.010
   m_TagString: BlackBoard
@@ -105773,6 +105854,7 @@ GameObject:
   - component: {fileID: 6511009011090344644}
   - component: {fileID: 3961119877438599902}
   - component: {fileID: 5708782364366663150}
+  - component: {fileID: 8144731056784887452}
   m_Layer: 11
   m_Name: Blackboard_Broken.004
   m_TagString: BlackBoard
@@ -105780,6 +105862,18 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &8144731056784887452
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8144731056784887451}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: faaf19fe5c0f1e54793867f67b5cc1aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8145123765647827757
 GameObject:
   m_ObjectHideFlags: 0
@@ -106479,6 +106573,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 8281848186338302927}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8290325031482079902
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4496736423347863371}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: faaf19fe5c0f1e54793867f67b5cc1aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!33 &8295301485322023032
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -106719,6 +106825,7 @@ GameObject:
   - component: {fileID: 5228795581127545497}
   - component: {fileID: 8728595979876699742}
   - component: {fileID: 1688983845043655617}
+  - component: {fileID: 8728595979876699743}
   m_Layer: 11
   m_Name: Blackboard_Broken.016
   m_TagString: BlackBoard
@@ -106873,6 +106980,18 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &8350366420757628665
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8111698372279316949}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: faaf19fe5c0f1e54793867f67b5cc1aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &8350437470452246418
 Transform:
   m_ObjectHideFlags: 0
@@ -107449,6 +107568,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: 3
+--- !u!114 &8393884997006223217
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1447835573621996587}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: faaf19fe5c0f1e54793867f67b5cc1aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!64 &8394457906356694379
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -108988,6 +109119,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 1
+--- !u!114 &8591582749748696626
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5456465046483311244}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: faaf19fe5c0f1e54793867f67b5cc1aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &8611255013809400867
 Transform:
   m_ObjectHideFlags: 0
@@ -109093,6 +109236,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5062473176480389779}
   m_Mesh: {fileID: -1538435541285581006, guid: 2edf86c5ab6ef4b4eb35092e94b1a1d1, type: 3}
+--- !u!114 &8630489756887840044
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5062473176480389779}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: faaf19fe5c0f1e54793867f67b5cc1aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8634730901300922153
 GameObject:
   m_ObjectHideFlags: 0
@@ -109117,6 +109272,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6872415490273794228}
   m_Mesh: {fileID: 7302680542478320029, guid: 2edf86c5ab6ef4b4eb35092e94b1a1d1, type: 3}
+--- !u!114 &8638599035658893643
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6872415490273794228}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: faaf19fe5c0f1e54793867f67b5cc1aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!64 &8643246932333995000
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -109763,6 +109930,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 1
+--- !u!114 &8728595979876699743
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8337376126403064837}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: faaf19fe5c0f1e54793867f67b5cc1aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8729382593827412563
 GameObject:
   m_ObjectHideFlags: 0
@@ -109984,6 +110163,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: 13
+--- !u!114 &8767389066607117792
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2608952739666450799}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: faaf19fe5c0f1e54793867f67b5cc1aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &8770296296122727389
 Transform:
   m_ObjectHideFlags: 0
@@ -110098,6 +110289,18 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 9213325167668152709, guid: 2edf86c5ab6ef4b4eb35092e94b1a1d1, type: 3}
+--- !u!114 &8790451554379983313
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1724258809820670613}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: faaf19fe5c0f1e54793867f67b5cc1aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!23 &8790887907056821262
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -111100,6 +111303,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 748695257028068588}
   m_Mesh: {fileID: -3478781866638194977, guid: 2edf86c5ab6ef4b4eb35092e94b1a1d1, type: 3}
+--- !u!114 &8955274212630166533
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 748695257028068588}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: faaf19fe5c0f1e54793867f67b5cc1aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!54 &8955400052741255707
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -111363,6 +111578,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: 1
+--- !u!114 &8983946724825861544
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 527606924287969700}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: faaf19fe5c0f1e54793867f67b5cc1aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!33 &8986871243396003857
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -111881,6 +112108,7 @@ GameObject:
   - component: {fileID: 4018219996344812107}
   - component: {fileID: 7084706107641790732}
   - component: {fileID: 7156741764302050363}
+  - component: {fileID: 9056709035573582386}
   m_Layer: 11
   m_Name: Blackboard_Broken.015
   m_TagString: BlackBoard
@@ -111888,6 +112116,18 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &9056709035573582386
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9056709035573582385}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: faaf19fe5c0f1e54793867f67b5cc1aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &9060903197078464498
 GameObject:
   m_ObjectHideFlags: 0
@@ -112299,6 +112539,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1787141791784037297}
   m_Mesh: {fileID: -1572909185549762599, guid: 2edf86c5ab6ef4b4eb35092e94b1a1d1, type: 3}
+--- !u!114 &9134713778047006006
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1787141791784037297}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: faaf19fe5c0f1e54793867f67b5cc1aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &9134782648461454189
 GameObject:
   m_ObjectHideFlags: 0
@@ -113001,6 +113253,7 @@ GameObject:
   - component: {fileID: 5945352032417620302}
   - component: {fileID: 325539977900170933}
   - component: {fileID: 4120118580147928009}
+  - component: {fileID: 9205915700316376287}
   m_Layer: 11
   m_Name: Blackboard_Broken.005
   m_TagString: BlackBoard
@@ -113008,6 +113261,18 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &9205915700316376287
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9205915700316376286}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: faaf19fe5c0f1e54793867f67b5cc1aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!64 &9210061037145780582
 MeshCollider:
   m_ObjectHideFlags: 0
