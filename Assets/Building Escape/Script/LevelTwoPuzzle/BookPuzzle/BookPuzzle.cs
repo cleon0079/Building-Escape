@@ -119,14 +119,14 @@ public class BookPuzzle : MonoBehaviour
 
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         if (isDragging)
         {
             float currentMousePosition = mousePosition.ReadValue<Vector2>().x;
             float deltaMousePosition = currentMousePosition - startMousePosition;
 
-            float moveAmount = deltaMousePosition * Time.deltaTime * .5f;
+            float moveAmount = deltaMousePosition * Time.fixedDeltaTime * .05f;
 
             if (book.localPosition.x <= -1.8f && moveAmount < 0)
             {
