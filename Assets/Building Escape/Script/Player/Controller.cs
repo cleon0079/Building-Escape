@@ -90,14 +90,14 @@ public class Controller : MonoBehaviour
         float horizontal = move.ReadValue<Vector2>().y;
         
         // Only play the walk sound if it's not already playing
-        if (!audioSource.isPlaying && (vertical != 0 || horizontal != 0))
+        if (isGrounded && !audioSource.isPlaying && (vertical != 0 || horizontal != 0))
         {
             audioSource.clip = walkSound;
             audioSource.Play();
         }
 
         // Stop the audio when the player is not moving
-        if (audioSource.isPlaying && vertical == 0 && horizontal == 0)
+        if (audioSource.isPlaying && (vertical == 0 && horizontal == 0 || !isGrounded))
         {
             audioSource.Stop();
         }
@@ -126,6 +126,7 @@ public class Controller : MonoBehaviour
 
     void Jump(InputAction.CallbackContext context)
     {
+        audioSource.Stop();
         if (isGrounded)
         {
             rb.AddForce(Vector3.up * jumpHight, ForceMode.Impulse);
