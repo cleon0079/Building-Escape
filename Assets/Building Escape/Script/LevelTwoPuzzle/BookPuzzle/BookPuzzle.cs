@@ -212,6 +212,7 @@ public class BookPuzzle : MonoBehaviour
         }
         prize.SetActive(true);
         uiManager.bookShelfFinish = true;
+         uIManager2.EnableEscKey(true);
     }
 
     private void OnTriggerStay(Collider other)
