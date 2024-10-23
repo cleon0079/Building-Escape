@@ -60,6 +60,7 @@ public class BlackBoardPuzzle : MonoBehaviour
                 other.transform.DOLocalRotate(Vector3.zero, 1f);
 
                 dragObject.StopDrag();
+                other.GetComponent<Rigidbody>().velocity = Vector3.zero;
 
                 Destroy(other.GetComponent<Rigidbody>());
                 other.transform.GetComponent<MeshCollider>().convex = false;
@@ -83,6 +84,7 @@ public class BlackBoardPuzzle : MonoBehaviour
                 other.transform.DOLocalRotate(Vector3.zero, 1f);
 
                 dragObject.StopDrag();
+                other.GetComponent<Rigidbody>().velocity = Vector3.zero;
 
                 Destroy(other.GetComponent<Rigidbody>());
                 other.transform.GetComponent<MeshCollider>().convex = false;

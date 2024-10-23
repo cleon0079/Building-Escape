@@ -23,6 +23,5 @@ public class BlackBoardItem : MonoBehaviour
         this.gameObject.layer = LayerMask.NameToLayer("Default");
         Destroy(this.GetComponent<Rigidbody>());
         Destroy(this.GetComponent<MeshCollider>());
-        Debug.Log("Cant Move This");
     }
 }

@@ -29,7 +29,10 @@ public class BlackBoardPuzzleCheck : MonoBehaviour
 
     private void Update()
     {
-        Check();
+        if (!isFinish)
+        {
+            Check();
+        }
     }
 
     public void Check() {
@@ -44,7 +47,6 @@ public class BlackBoardPuzzleCheck : MonoBehaviour
         if (index == blackboards.Length)
         {
             Finish();
-
         }
     }
    

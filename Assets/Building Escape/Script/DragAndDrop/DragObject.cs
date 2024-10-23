@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using DG.Tweening;
 
 public class DragObject : MonoBehaviour
 {
@@ -152,6 +153,7 @@ public class DragObject : MonoBehaviour
                 {
                     hit.transform.parent = null;
                     hit.transform.GetComponent<BlackBoardItem>().SetPuzzleIn(false);
+                    hit.transform.DOKill();
                     GameObject[] blackboards = FindObjectOfType<BlackBoardPuzzleCheck>().GetTriggerList();
                     FindObjectOfType<BlackBoardPuzzleCheck>().SetTrigger(false);
                     for (int i = 0; i < blackboards.Length; i++)
