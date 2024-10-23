@@ -9,6 +9,7 @@ public class Teleport : MonoBehaviour
     [SerializeField] Transform[] levels = new Transform[3];
     [SerializeField] GameObject[] postProcessing = new GameObject[2];
 
+    [SerializeField] Animator Animator;
     private void Start()
     {
         for (int i = 0; i < postProcessing.Length; i++)
@@ -20,6 +21,7 @@ public class Teleport : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        Animator.SetBool("FadeInOut", true);
         if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
             switch (level)
