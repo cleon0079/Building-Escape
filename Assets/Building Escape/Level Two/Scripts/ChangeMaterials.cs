@@ -6,20 +6,29 @@ public class ChangeMaterials : MonoBehaviour
 {   
     [SerializeField] private AudioClip finishSound;
     private AudioSource audioSource;
+    BlackBoardPuzzleCheck blackBroad;
+    GameObject[] blackBroads;
     [SerializeField] private Material finishMaterial;
+    bool isMaterialDone = false;
     // Start is called before the first frame update
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
+        blackBroad = FindObjectOfType<BlackBoardPuzzleCheck>();
+        blackBroads = GameObject.FindGameObjectsWithTag("BlackBoard");
     }
 
     // Update is called once per frame
     void Update()
     {
-        BlackBoardPuzzleCheck blackBroad = FindObjectOfType<BlackBoardPuzzleCheck>();
-        if(blackBroad.isFinish)
+
+        ChangeMaterial();
+        
+    }
+    void ChangeMaterial()
+    {
+        if(blackBroad.isFinish && !isMaterialDone)
         {
-            GameObject[] blackBroads = GameObject.FindGameObjectsWithTag("BlackBoard");
             foreach(GameObject obj in blackBroads)
             {
                 Renderer renderer = obj.GetComponent<Renderer>();
@@ -29,7 +38,7 @@ public class ChangeMaterials : MonoBehaviour
                 audioSource.PlayOneShot(finishSound);
             }
                 
-            
+            isMaterialDone = true;
         }
 
     }
