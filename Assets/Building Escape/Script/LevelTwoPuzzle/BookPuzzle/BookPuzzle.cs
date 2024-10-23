@@ -220,6 +220,7 @@ public class BookPuzzle : MonoBehaviour
             uIManager2.EnableEscKey(false);
             if (!isPuzzling)
             {
+                Debug.Log("IF player is inside");
                 uiManager.UpdateText(showedText);
             }
             interatAction.Enable();

@@ -17,6 +17,7 @@ public class Inventories : MonoBehaviour
     public float rayDistance = 10f;
     public LayerMask collectableLayer;
     private string showedText = "Press F to collect";
+    private DegreePuzzle degreePuzzle;
 
     GameInput input;
     InputAction inventoryAction;
@@ -44,6 +45,7 @@ public class Inventories : MonoBehaviour
     {
         uIManager = FindObjectOfType<Manager>();
         uIManager2 = FindObjectOfType<UIManager>();
+        degreePuzzle = FindObjectOfType<DegreePuzzle>();
     }
 
     private void OnEnable()
@@ -90,8 +92,7 @@ public class Inventories : MonoBehaviour
         RaycastHit hit;
         Debug.DrawRay(ray.origin, ray.direction * rayDistance, Color.red);
             if (Physics.Raycast(ray, out hit, rayDistance, collectableLayer))
-            {   
-                DegreePuzzle degreePuzzle = FindObjectOfType<DegreePuzzle>();
+            { 
                 
                 if (hit.transform.CompareTag("PickableItem"))
                 {
@@ -106,6 +107,7 @@ public class Inventories : MonoBehaviour
                             {
                                 AddItem(itemObject.item);
                                 itemObject.PickUp(); 
+                                
                                 return;
                             } 
                         }
@@ -116,9 +118,11 @@ public class Inventories : MonoBehaviour
                     }
                     
                 }
-            }
-            else{
-                uIManager.UpdateText("");
+            }else{
+                if(degreePuzzle.isPlayerExit)
+                {
+                    uIManager.UpdateText("");
+                }
             }
     }
     public void AddItem(Item _item)

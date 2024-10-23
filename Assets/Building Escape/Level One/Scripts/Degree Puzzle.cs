@@ -18,6 +18,7 @@ public class DegreePuzzle : MonoBehaviour
     private UIManager uIManager2;
     bool isAnimationPlayed = false;
     public bool canInterat = false;
+    public bool isPlayerExit =false;
     void Awake()
     {
         input = new GameInput();
@@ -47,6 +48,7 @@ public class DegreePuzzle : MonoBehaviour
     {
         uiManager = FindObjectOfType<Manager>();
         puzzleAni = GetComponent<Animator>();
+        uIManager2 = FindObjectOfType<UIManager>();
     }
 
     // Update is called once per frame
@@ -85,6 +87,9 @@ public class DegreePuzzle : MonoBehaviour
         {
             interatAction.Disable();
             uIManager2.EnableEscKey(true);
+            isPlayerExit = true;
+            uiManager.UpdateText("");
+            
         }
     }
 }

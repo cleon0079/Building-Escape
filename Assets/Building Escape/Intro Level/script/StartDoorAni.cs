@@ -19,7 +19,7 @@ public class StartDoorAni : MonoBehaviour
     {
         if(playerEnter){
             animator.SetBool("DoorOpen" , true);
-            doorOpen.Play();
+            // doorOpen.Play();
         }
         if(!playerEnter){
             animator.SetBool("DoorOpen" , false);
