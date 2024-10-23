@@ -5,6 +5,10 @@ using UnityEngine.InputSystem;
 
 public class DragObject : MonoBehaviour
 {
+
+    [SerializeField] private AudioClip tableSound;
+    private AudioSource audioSource;
+
     public float rayDistance = 10f;
     public LayerMask draggableLayer;
     [SerializeField] float minHeight = 0.5f;
@@ -54,6 +58,8 @@ public class DragObject : MonoBehaviour
 
         grabTransform = new GameObject("Grab Point").transform;
         grabTransform.gameObject.AddComponent<Rigidbody>().isKinematic = true;
+
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void OnEnable()
@@ -72,7 +78,8 @@ public class DragObject : MonoBehaviour
         deltaAction.Disable();
     }
 
-    void OnRightClick(InputAction.CallbackContext context) {
+    void OnRightClick(InputAction.CallbackContext context)
+    {
         if (canRotate)
         {
             isRightClicking = !isRightClicking;
@@ -85,7 +92,7 @@ public class DragObject : MonoBehaviour
         {
             player.CanMove(true);
         }
-    }    
+    }
 
     private void OnDrag(InputAction.CallbackContext context)
     {
@@ -120,7 +127,8 @@ public class DragObject : MonoBehaviour
         }
     }
 
-    public void CanDrag(bool drag) {
+    public void CanDrag(bool drag)
+    {
         if (drag)
         {
             OnEnable();
@@ -172,6 +180,14 @@ public class DragObject : MonoBehaviour
                 isDragging = true;
                 canRotate = false;
             }
+            if ((hit.transform.CompareTag("Table")||hit.transform.CompareTag("Chair") )&& tableSound != null)
+            {
+                audioSource.clip = tableSound;
+                float volume = 0.05f;
+                audioSource.volume = volume;
+                audioSource.Play();
+                audioSource.loop = true;
+            }
         }
     }
 
@@ -214,6 +230,12 @@ public class DragObject : MonoBehaviour
             canRotate = false;
             isRightClicking = false;
             player.CanMove(true);
+
+            if (audioSource.isPlaying && audioSource.clip == tableSound)
+            {
+                audioSource.Stop();
+                audioSource.loop = false;
+            }
         }
     }
 
