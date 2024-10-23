@@ -25,7 +25,10 @@ public class ChangeMaterials : MonoBehaviour
                 Renderer renderer = obj.GetComponent<Renderer>();
                 renderer.material = finishMaterial;
             }
-            audioSource.PlayOneShot(finishSound);
+            if(!audioSource.isPlaying){
+                audioSource.PlayOneShot(finishSound);
+            }
+                
             
         }
 
