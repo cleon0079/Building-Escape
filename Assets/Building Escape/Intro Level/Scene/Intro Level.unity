@@ -45555,7 +45555,7 @@ GameObject:
   - component: {fileID: 5854702217486426823}
   m_Layer: 6
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -107062,6 +107062,8 @@ GameObject:
   - component: {fileID: 5228497007015640908}
   - component: {fileID: 5100405139947838925}
   - component: {fileID: 8372717902806314437}
+  - component: {fileID: 8372717902806314439}
+  - component: {fileID: 8372717902806314438}
   m_Layer: 0
   m_Name: Clock (1)
   m_TagString: Untagged
@@ -107079,7 +107081,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: e33fcb0da0ecfb643b67a16a00bc7d41, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 0.1
   m_Pitch: 1
@@ -107089,7 +107091,7 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 1
+  MinDistance: 42.533745
   MaxDistance: 500
   Pan2D: 0
   rolloffMode: 0
@@ -107165,6 +107167,42 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &8372717902806314438
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8372717902806314436}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f2514b6c3d704247963dae7cacdccac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clockSound: {fileID: 8300000, guid: e33fcb0da0ecfb643b67a16a00bc7d41, type: 3}
+--- !u!136 &8372717902806314439
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8372717902806314436}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 17.260504
+  m_Height: 39.497295
+  m_Direction: 1
+  m_Center: {x: -2.112566, y: -18.733946, z: 4.9034744e-14}
 --- !u!64 &8376796795117133379
 MeshCollider:
   m_ObjectHideFlags: 0
