@@ -28,8 +28,6 @@ public class ChangeMaterials : MonoBehaviour
             if(!audioSource.isPlaying){
                 audioSource.PlayOneShot(finishSound);
             }
-                
-            
         }
 
     }
