@@ -20,6 +20,7 @@ TagManager:
   - PickableItem
   - Book
   - Container
+  - Block
   layers:
   - Default
   - TransparentFX
@@ -37,7 +38,7 @@ TagManager:
   - Prize
   - PaperPuzzlePiece
   - Degree Layer
-  - 
+  - LevelThree
   - 
   - 
   - 

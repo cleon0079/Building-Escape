@@ -198,7 +198,8 @@ public class DragObject : MonoBehaviour
         Ray ray = Camera.main.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2));
         Vector3 targetPoint;
         RaycastHit hit;
-        if (Physics.Raycast(ray, out hit, rayDistance))
+        int layerMask = ~LayerMask.GetMask("LevelThree");
+        if (Physics.Raycast(ray, out hit, rayDistance, layerMask))
         {
             if (((1 << hit.collider.gameObject.layer) & draggableLayer) != 0)
             {
