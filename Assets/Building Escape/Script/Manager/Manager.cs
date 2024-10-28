@@ -24,7 +24,6 @@ public class Manager : MonoBehaviour
     }
     void Update()
     {
-        Debug.Log(level2Completed);
         CheckLevelCompleted();
     }
 
