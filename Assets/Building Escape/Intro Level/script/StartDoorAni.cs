@@ -17,6 +17,10 @@ public class StartDoorAni : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        PlayAnimation();
+    }
+    private void PlayAnimation()
+    {
         if(playerEnter){
             animator.SetBool("DoorOpen" , true);
             // doorOpen.Play();
@@ -33,6 +37,7 @@ public class StartDoorAni : MonoBehaviour
     }
 
     void OnTriggerEnter (Collider collider){
+        
         if(collider.gameObject.layer ==6 ){
             playerEnter = true;
         }

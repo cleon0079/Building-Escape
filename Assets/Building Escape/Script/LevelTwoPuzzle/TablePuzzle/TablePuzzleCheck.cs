@@ -44,6 +44,5 @@ public class TablePuzzleCheck : MonoBehaviour
         prizeGB.SetActive(true);
         prizeGB.transform.DOMove(targetPosition.position, 2f);
         prizeGB.transform.DORotate(Vector3.zero, 2f);
-        uimanager.tablesFinish = true;
     }
 }

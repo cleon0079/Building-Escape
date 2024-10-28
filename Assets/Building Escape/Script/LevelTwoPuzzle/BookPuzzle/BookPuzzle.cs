@@ -210,8 +210,7 @@ public class BookPuzzle : MonoBehaviour
             float volume = 0.3f;
             audioSource.PlayOneShot(cabinetSound, volume);
         }
-        prize.SetActive(true);
-        uiManager.bookShelfFinish = true;
+        prize.SetActive(true);uiManager.bookShelfFinish = true;
          uIManager2.EnableEscKey(true);
     }
 

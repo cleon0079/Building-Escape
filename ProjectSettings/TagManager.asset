@@ -21,6 +21,7 @@ TagManager:
   - Book
   - Container
   - Block
+  - BrokenDegree
   layers:
   - Default
   - TransparentFX

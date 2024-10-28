@@ -65,6 +65,8 @@ public class Inventories : MonoBehaviour
     }
     void Update(){
         checkItem();
+        Debug.Log("book" + uIManager.bookShelfFinish);
+        Debug.Log("table" + uIManager.tablesFinish);
     }
     void OnInventoryOpen(InputAction.CallbackContext callbackContext) {
         
@@ -93,8 +95,9 @@ public class Inventories : MonoBehaviour
         Debug.DrawRay(ray.origin, ray.direction * rayDistance, Color.red);
             if (Physics.Raycast(ray, out hit, rayDistance, collectableLayer))
             { 
+                 
                 
-                if (hit.transform.CompareTag("PickableItem"))
+                if (hit.transform.CompareTag("BrokenDegree"))
                 {
                     
                     if(degreePuzzle.canInterat){
@@ -107,6 +110,29 @@ public class Inventories : MonoBehaviour
                             {
                                 AddItem(itemObject.item);
                                 itemObject.PickUp(); 
+                                return;
+                            } 
+                        }
+                    }
+                    else
+                    {
+                        interartAction.Disable();
+                    }
+                    
+                }else if (hit.transform.CompareTag("PickableItem"))
+                {
+                    
+                    if(hit.collider != null){
+                        uIManager.UpdateText(showedText);
+                        interartAction.Enable();
+                        ItemObject itemObject = hit.transform.GetComponent<ItemObject>();
+                        if (itemObject != null)
+                        {   
+                            if(canPick)
+                            {
+                                AddItem(itemObject.item);
+                                itemObject.PickUp(); 
+                                uIManager.UpdateText("");
                                 
                                 return;
                             } 
@@ -161,7 +187,14 @@ public class Inventories : MonoBehaviour
         {
             Image imageGO = Instantiate<Image>(prize, inventoryContent.transform);
             Item item = Inventory[i];
-            imageGO.sprite = item.Image;    
+            imageGO.sprite = item.Image;
+            if(item.Type == Item.Index.BookPuzzlePrize)
+            {
+                uIManager.bookShelfFinish = true;
+            }
+            if(item.Type == Item.Index.TablePuzzlePrize){
+                uIManager.tablesFinish = true;
+            }
         }
     }
 

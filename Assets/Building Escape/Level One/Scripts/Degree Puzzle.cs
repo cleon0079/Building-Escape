@@ -19,6 +19,7 @@ public class DegreePuzzle : MonoBehaviour
     bool isAnimationPlayed = false;
     public bool canInterat = false;
     public bool isPlayerExit =false;
+    bool isAnimationCompleted = false;
     void Awake()
     {
         input = new GameInput();
@@ -54,11 +55,18 @@ public class DegreePuzzle : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        CheckAnimation();
+    }
+    private void CheckAnimation()
+    {
+        if (isAnimationCompleted) return;
+
         AnimatorStateInfo stateInfo = puzzleAni.GetCurrentAnimatorStateInfo(0); 
         if (stateInfo.IsName("Fly pos") && stateInfo.normalizedTime >= 1.0f)
         {
             puzzleAni.enabled = false; 
             canInterat = true;
+            isAnimationCompleted = true;
             foreach (Transform child in transform)
             {
                 if (child.GetComponent<Rigidbody>() == null)
@@ -67,19 +75,24 @@ public class DegreePuzzle : MonoBehaviour
                     }   
             }
         }
-        // Debug.Log(canInterat);
     }
     private void OnTriggerStay(Collider other)
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
             interatAction.Enable();
+            if (uiManager == null || uIManager2 == null)
+            {
+                Debug.LogError("uiManager or uIManager2 are null?");
+                return;
+            }
             if (!isAnimationPlayed)
             {
                 uiManager.UpdateText(showedText);
             }
             uIManager2.EnableEscKey(false);
         }
+        
     }
     private void OnTriggerExit(Collider other)
     {

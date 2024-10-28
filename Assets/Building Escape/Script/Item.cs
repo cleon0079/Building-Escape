@@ -11,7 +11,9 @@ public class Item
         TablePuzzle,
         BookPuzzle,
         Prize,
-        DegreePuzzle
+        DegreePuzzle,
+        TablePuzzlePrize,
+        BookPuzzlePrize
 
     }
 
