@@ -83,6 +83,8 @@ public class Teleport : MonoBehaviour
                 postProcessing[0].SetActive(true);
                 postProcessing[1].SetActive(false);
 
+                break;
+            case Level.Final:
                 SceneManager.LoadScene(1);
                 break;
             default:
@@ -98,6 +100,7 @@ public class Teleport : MonoBehaviour
     { 
         LevelOne,
         LevelTwo,
-        LevelThree
+        LevelThree,
+        Final
     }
 }
