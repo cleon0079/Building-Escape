@@ -5,6 +5,7 @@ using UnityEngine;
 public class ItemObject : MonoBehaviour
 {
     public Item item;
+    public int ID;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,4 +21,5 @@ public class ItemObject : MonoBehaviour
     {
         gameObject.SetActive(false); 
     }
+
 }

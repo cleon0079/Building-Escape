@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
@@ -13,6 +14,9 @@ public class Inventories : MonoBehaviour
     [SerializeField] Image prize;
     [SerializeField] GameObject inventoryGameObject;
     [SerializeField] GameObject inventoryContent;
+    [SerializeField] Button exitButton;
+    [SerializeField] private Transform targetPosition;
+    
     private bool isOnInventory = false;
     public float rayDistance = 10f;
     public LayerMask collectableLayer;
@@ -39,6 +43,8 @@ public class Inventories : MonoBehaviour
         interartAction.canceled += Release;
 
         escAction.started += OnCloseInventory;
+        exitButton.onClick.AddListener(CloseInventory);
+        
     }
 
     private void Start()
@@ -63,7 +69,7 @@ public class Inventories : MonoBehaviour
         ActiveMode(false);
         
     }
-
+    
     void Update(){
         checkItem();
     }
@@ -179,7 +185,29 @@ public class Inventories : MonoBehaviour
             Destroy(child.gameObject);
         }
     }
-
+    void RespawnPuzzles(ItemObject itemObject)
+    {
+        if (itemObject != null)
+        {
+            itemObject.transform.position = targetPosition.position; 
+            itemObject.gameObject.SetActive(true); 
+            RemoveItem(itemObject.item);
+            DisplayItemsCanvas(); 
+        }
+    }
+    ItemObject FindItemObject(Item item)
+    {
+    ItemObject[] allItems = FindObjectsOfType<ItemObject>();
+        foreach (var obj in allItems)
+        {
+            if (obj.item == item)
+            {
+                Debug.Log($"Matching ItemObject ID: {obj.ID} with Item Type: {item.Type}");
+                return obj;
+            }
+        }
+        return null;
+    }
     void DisplayItemsCanvas()
     {
         DestroyAllChildren(inventoryContent.transform);
@@ -188,6 +216,21 @@ public class Inventories : MonoBehaviour
             Image imageGO = Instantiate<Image>(prize, inventoryContent.transform);
             Item item = Inventory[i];
             imageGO.sprite = item.Image;
+
+            Button itemButton = imageGO.gameObject.AddComponent<Button>();
+            ColorBlock colors = itemButton.colors;
+            colors.normalColor = Color.white; 
+            colors.highlightedColor = Color.gray;
+            colors.pressedColor = Color.gray;
+            itemButton.colors = colors;
+
+            ItemObject itemObject = FindItemObject(item);
+            if (itemObject != null)
+            {
+                Debug.Log($"Found ItemObject for Item at index {i} (ID: {itemObject.ID}, Type: {item.Type})"); 
+                AddItemButton(itemButton, itemObject);
+            }
+            
             if(item.Type == Item.Index.BookPuzzlePrize)
             {
                 uIManager.bookShelfFinish = true;
@@ -197,7 +240,12 @@ public class Inventories : MonoBehaviour
             }
         }
     }
+    void AddItemButton(Button itemButton, ItemObject itemObject)
+    {
+        Debug.Log("Adding listener for itemObject with ID: " + itemObject.ID);
 
+        itemButton.onClick.AddListener(() => RespawnPuzzles(itemObject));
+    }
     public void CanInventory(bool canOpen) {
         if (canOpen)
         {
@@ -210,6 +258,7 @@ public class Inventories : MonoBehaviour
     }
 
     public void CloseInventory() {
+        uIManager2.EnableEscKey(true);
         ActiveMode(false);
     }
 

@@ -81,7 +81,7 @@ public class Controller : MonoBehaviour
             RotateCamera();
         }
         //check the player is ground
-        isGrounded = Physics.Raycast(transform.position, Vector3.down, this.transform.localScale.y * 1.1f);
+        isGrounded = Physics.Raycast(transform.position, Vector3.down, this.transform.localScale.y * 2f);
     }
 
     void Movement()
