@@ -11,7 +11,7 @@ public class PhotoPuzzleItem : MonoBehaviour
     private void Start()
     {
         rigidbody = GetComponent<Rigidbody>();
-        power = 3f;
+        power = 4f;
     }
 
     private void Update()
