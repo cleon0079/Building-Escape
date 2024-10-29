@@ -166,7 +166,7 @@ public class Inventories : MonoBehaviour
         else
         {
             Inventory.Add(_item);
-            DisplayItemsCanvas();
+            //DisplayItemsCanvas();
         }
     }
 
@@ -189,15 +189,17 @@ public class Inventories : MonoBehaviour
     {
         if (itemObject != null)
         {
-            itemObject.transform.position = targetPosition.position; 
-            itemObject.gameObject.SetActive(true); 
+            itemObject.transform.position = targetPosition.position;
+            //itemObject.gameObject.SetActive(true); 
+            itemObject.transform.gameObject.GetComponent<Collider>().enabled = true;
+            itemObject.transform.gameObject.GetComponent<Renderer>().enabled = true;
             RemoveItem(itemObject.item);
             DisplayItemsCanvas(); 
         }
     }
     ItemObject FindItemObject(Item item)
     {
-    ItemObject[] allItems = FindObjectsOfType<ItemObject>();
+        ItemObject[] allItems = FindObjectsOfType<ItemObject>();
         foreach (var obj in allItems)
         {
             if (obj.item == item)
@@ -223,6 +225,8 @@ public class Inventories : MonoBehaviour
             colors.highlightedColor = Color.gray;
             colors.pressedColor = Color.gray;
             itemButton.colors = colors;
+
+            //itemButton.onClick.AddListener(() => RespawnPuzzles());
 
             ItemObject itemObject = FindItemObject(item);
             if (itemObject != null)
@@ -267,6 +271,7 @@ public class Inventories : MonoBehaviour
         if (active)
         {
             escAction.Enable();
+            DisplayItemsCanvas();
         }
         else
         {

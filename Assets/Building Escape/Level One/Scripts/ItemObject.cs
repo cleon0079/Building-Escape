@@ -19,7 +19,9 @@ public class ItemObject : MonoBehaviour
     }
     public void PickUp()
     {
-        gameObject.SetActive(false); 
+        //gameObject.SetActive(false);
+        GetComponent<Collider>().enabled = false;
+        GetComponent<Renderer>().enabled = false;
     }
 
 }
