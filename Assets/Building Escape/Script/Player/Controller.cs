@@ -121,7 +121,14 @@ public class Controller : MonoBehaviour
         yRotation -= mouse_y * lookSensitivity;
         yRotation = Mathf.Clamp(yRotation, -90f, 90f);
 
-        uiManager.mainCamera.transform.localRotation = Quaternion.Euler(yRotation, 0f, 0f);
+        if (uiManager == null)
+        {
+            Camera.main.transform.localRotation = Quaternion.Euler(yRotation, 0f, 0f);
+        }
+        else
+        {
+            uiManager.mainCamera.transform.localRotation = Quaternion.Euler(yRotation, 0f, 0f);
+        }
     }
 
     void Jump(InputAction.CallbackContext context)

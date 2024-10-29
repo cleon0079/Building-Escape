@@ -63,11 +63,11 @@ public class Inventories : MonoBehaviour
         ActiveMode(false);
         
     }
+
     void Update(){
         checkItem();
-        Debug.Log("book" + uIManager.bookShelfFinish);
-        Debug.Log("table" + uIManager.tablesFinish);
     }
+
     void OnInventoryOpen(InputAction.CallbackContext callbackContext) {
         
         if (inventoryGameObject.activeSelf)

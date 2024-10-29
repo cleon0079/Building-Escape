@@ -6,6 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Building Escape/Intro Level/Scene/Intro Level.unity
+    path: Assets/Building Escape/Scene/Intro Level.unity
     guid: e5c5559b955577c4bbf44d3ee19b4ab5
   m_configObjects: {}

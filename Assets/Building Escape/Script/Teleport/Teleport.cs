@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Teleport : MonoBehaviour
 {
@@ -81,6 +82,8 @@ public class Teleport : MonoBehaviour
                 other.transform.rotation = Quaternion.identity;
                 postProcessing[0].SetActive(true);
                 postProcessing[1].SetActive(false);
+
+                SceneManager.LoadScene(1);
                 break;
             default:
                 break;
