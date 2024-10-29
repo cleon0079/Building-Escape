@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
@@ -16,6 +17,7 @@ public class Inventories : MonoBehaviour
     [SerializeField] GameObject inventoryContent;
     [SerializeField] Button exitButton;
     [SerializeField] private Transform targetPosition;
+    private string dragItemLayer = "DragItem";
     
     private bool isOnInventory = false;
     public float rayDistance = 10f;
@@ -193,6 +195,8 @@ public class Inventories : MonoBehaviour
             //itemObject.gameObject.SetActive(true); 
             itemObject.transform.gameObject.GetComponent<Collider>().enabled = true;
             itemObject.transform.gameObject.GetComponent<Renderer>().enabled = true;
+            itemObject.transform.gameObject.GetComponent<Outline>();
+            itemObject.transform.gameObject.layer = LayerMask.NameToLayer(dragItemLayer);
             RemoveItem(itemObject.item);
             DisplayItemsCanvas(); 
         }
