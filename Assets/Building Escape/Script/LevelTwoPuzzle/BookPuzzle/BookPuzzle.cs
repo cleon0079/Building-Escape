@@ -35,6 +35,8 @@ public class BookPuzzle : MonoBehaviour
     bool isDone = false;
     private UIManager uIManager2;
 
+
+
     private void Awake()
     {
         input = new GameInput();
@@ -210,8 +212,15 @@ public class BookPuzzle : MonoBehaviour
             float volume = 0.3f;
             audioSource.PlayOneShot(cabinetSound, volume);
         }
-        prize.SetActive(true);uiManager.bookShelfFinish = true;
-         uIManager2.EnableEscKey(true);
+        prize.SetActive(true);
+        prize.transform.parent = FindObjectOfType<Controller>().transform.GetChild(0).transform;
+        prize.transform.DOLocalMove(Vector3.zero + new Vector3(0, 0, 1), 1f);
+
+        prize.transform.DOLocalRotate(Vector3.zero + new Vector3(180, 0, 0), 1f);
+        uiManager.bookShelfFinish = true;
+        uIManager2.EnableEscKey(true);
+
+        uiManager.StartPuzzle();
     }
 
     private void OnTriggerStay(Collider other)

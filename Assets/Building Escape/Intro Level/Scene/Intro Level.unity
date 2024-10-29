@@ -43989,7 +43989,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 0.01935646, y: 0.016408952, z: 0.00056953455}
   m_Center: {x: -0.008970222, y: 0.008246607, z: -0.00006092337}
@@ -49402,7 +49402,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 0.020210605, y: 0.016727703, z: 0.00056953455}
   m_Center: {x: 0.009612939, y: 0.008159374, z: -1.4210857e-16}
@@ -70161,8 +70161,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 543450652168263496}
   - {fileID: 2118312894834783609}
+  - {fileID: 543450652168263496}
   m_Father: {fileID: 2092005568176828301}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3702592855297271623
@@ -75144,9 +75144,9 @@ Transform:
   - {fileID: 7549356731640167409}
   - {fileID: 4416365443963237979}
   - {fileID: 3446177710357758422}
-  - {fileID: 4352381895699568531}
   - {fileID: 755728642}
   - {fileID: 1504324790}
+  - {fileID: 4352381895699568531}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &4304245383308162688
@@ -78515,7 +78515,7 @@ Transform:
   m_GameObject: {fileID: 109874362210401261}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 57.690002, y: 17.829998, z: -145.65}
+  m_LocalPosition: {x: -49.03, y: 2.27, z: 106.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -107525,7 +107525,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4352381895699568531}
   m_Layer: 0
-  m_Name: Puzzle
+  m_Name: --------Puzzle--------
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
