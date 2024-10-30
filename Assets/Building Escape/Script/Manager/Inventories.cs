@@ -225,6 +225,14 @@ public class Inventories : MonoBehaviour
             Item item = Inventory[i];
             imageGO.sprite = item.Image;
 
+            if(item.Type == Item.Index.BookPuzzlePrize)
+            {
+                uIManager.bookShelfFinish = true;
+            }
+            
+            if(item.Type == Item.Index.TablePuzzlePrize){
+                uIManager.tablesFinish = true;
+            }
             Button itemButton = imageGO.gameObject.AddComponent<Button>();
             ColorBlock colors = itemButton.colors;
             colors.normalColor = Color.white; 
@@ -241,13 +249,7 @@ public class Inventories : MonoBehaviour
                 AddItemButton(itemButton, itemObject);
             }
             
-            if(item.Type == Item.Index.BookPuzzlePrize)
-            {
-                uIManager.bookShelfFinish = true;
-            }
-            if(item.Type == Item.Index.TablePuzzlePrize){
-                uIManager.tablesFinish = true;
-            }
+            
         }
     }
     void AddItemButton(Button itemButton, ItemObject itemObject)
