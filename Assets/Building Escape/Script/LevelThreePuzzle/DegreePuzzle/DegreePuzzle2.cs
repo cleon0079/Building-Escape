@@ -58,7 +58,7 @@ public class DegreePuzzle2 : MonoBehaviour
             if (this.transform.parent.childCount > 1)
             {
                 other.transform.DOLocalMove(Vector3.zero, 1f);
-                other.transform.DOLocalRotate(Vector3.zero, 1f);
+                other.transform.DOLocalRotate(Vector3.zero + new Vector3(-90, 0, -180), 1f);
 
                 dragObject.StopDrag();
                 other.GetComponent<Rigidbody>().velocity = Vector3.zero;
@@ -81,7 +81,7 @@ public class DegreePuzzle2 : MonoBehaviour
             if (this.transform.parent.childCount > 1)
             {
                 other.transform.DOLocalMove(Vector3.zero, 1f);
-                other.transform.DOLocalRotate(Vector3.zero, 1f);
+                other.transform.DOLocalRotate(Vector3.zero + new Vector3(-90, 0, -180), 1f);
 
                 dragObject.StopDrag();
                 other.GetComponent<Rigidbody>().velocity = Vector3.zero;
