@@ -5,7 +5,6 @@ using DG.Tweening;
 
 public class Degreepuzzlechecker : MonoBehaviour
 {
-    [SerializeField] Transform targetPosition;
     GameObject[] degreeBoards;
     // Manager uimanager;
     int index = 0;
