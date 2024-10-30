@@ -215,6 +215,7 @@ public class CloudRenderPipeline : ScriptableRendererFeature
 
     private void LoadAssets()
     {
+#if UNITY_EDITOR
         settings.material = AssetDatabase.LoadAssetAtPath<Material>("Assets/URPCloud/Shader/Unlit_Cloud.mat");
         settings.CloudNoiseTexure = AssetDatabase.LoadAssetAtPath<Texture2D>("Assets/URPCloud/Noise/CloudNoiseTexture.png");
         settings.DetailCloudNoiseTexure = AssetDatabase.LoadAssetAtPath<Texture3D>("Assets/URPCloud/Noise/CloudsDetailNoise.asset");
@@ -226,6 +227,7 @@ public class CloudRenderPipeline : ScriptableRendererFeature
             string cloudTypeName = CloudType.GetName(typeof(CloudType), i);
             settings.cloudTypeData[i] = AssetDatabase.LoadAssetAtPath<CloudTypeScriptableObject>($"Assets/URPCloud/Clouds/{cloudTypeName}.asset");
         }
+#endif
     }
 }
 
