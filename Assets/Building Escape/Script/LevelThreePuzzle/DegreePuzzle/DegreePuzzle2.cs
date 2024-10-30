@@ -7,7 +7,7 @@ public class DegreePuzzle2 : MonoBehaviour
 {
     DragObject dragObject;
     Degreepuzzlechecker puzzleCheck;
-    bool isPuzzleIn = false;
+    public bool isPuzzleIn = false;
 
     bool startCount = false;
     float timer = 0;
@@ -51,6 +51,7 @@ public class DegreePuzzle2 : MonoBehaviour
     {
         if (other.transform.CompareTag("BrokenDegree") && !isPuzzleIn && puzzleCheck.GetTrigger() && !isRight)
         {
+            Debug.Log("Is any object in ");
             other.transform.SetParent(this.transform.parent);  
 
 
@@ -75,7 +76,7 @@ public class DegreePuzzle2 : MonoBehaviour
         if (other.transform.CompareTag("BrokenDegree") && !isPuzzleIn && puzzleCheck.GetTrigger() && !isRight)
         {
             other.transform.SetParent(this.transform.parent);
-
+            Debug.Log("Is any object Stay");
 
             if (this.transform.parent.childCount > 1)
             {

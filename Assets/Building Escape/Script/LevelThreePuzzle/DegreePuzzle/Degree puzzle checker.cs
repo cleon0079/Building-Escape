@@ -20,7 +20,7 @@ public class Degreepuzzlechecker : MonoBehaviour
         for (int i = 0; i < this.transform.childCount; i++)
         {
             degreeBoards[i] = this.transform.GetChild(i).GetChild(0).gameObject;
-            degreeBoards[i].GetComponent<BlackBoardPuzzle>().SetIndex(i + 1);
+            degreeBoards[i].GetComponent<DegreePuzzle2>().SetIndex(i + 1);
         }
     }
 
@@ -33,7 +33,7 @@ public class Degreepuzzlechecker : MonoBehaviour
         index = 0;
         for (int i = 0; i < degreeBoards.Length; i++)
         {
-            if (degreeBoards[i].GetComponent<BlackBoardPuzzle>().GetPuzzle())
+            if (degreeBoards[i].GetComponent<DegreePuzzle2>().GetPuzzle())
             {
                 index++;
             }
@@ -45,6 +45,7 @@ public class Degreepuzzlechecker : MonoBehaviour
     }
     void Finish()
     {
+        Debug.Log("is finished");
         isFinish = true;
     }
     public bool GetTrigger() {

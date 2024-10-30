@@ -162,6 +162,21 @@ public class DragObject : MonoBehaviour
                     }
                 }
             }
+            if (hit.transform.CompareTag("BrokenDegree"))
+            {
+                if (hit.transform.GetComponent<DegreeItem>().GetPuzzleIn())
+                {
+                    hit.transform.parent = null;
+                    hit.transform.GetComponent<DegreeItem>().SetPuzzleIn(false);
+                    hit.transform.DOKill();
+                    GameObject[] blackboards = FindObjectOfType<Degreepuzzlechecker>().GetTriggerList();
+                    FindObjectOfType<Degreepuzzlechecker>().SetTrigger(false);
+                    for (int i = 0; i < blackboards.Length; i++)
+                    {
+                        blackboards[i].GetComponent<DegreePuzzle2>().SetCount(true);
+                    }
+                }
+            }
 
             if (hit.rigidbody == null)
             {
