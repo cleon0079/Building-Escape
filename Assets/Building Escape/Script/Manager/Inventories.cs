@@ -195,7 +195,9 @@ public class Inventories : MonoBehaviour
             //itemObject.gameObject.SetActive(true); 
             itemObject.transform.gameObject.GetComponent<Collider>().enabled = true;
             itemObject.transform.gameObject.GetComponent<Renderer>().enabled = true;
-            itemObject.transform.gameObject.GetComponent<Outline>();
+            itemObject.transform.gameObject.AddComponent<Outline>();
+            itemObject.transform.gameObject.AddComponent<DegreeItem>();
+            itemObject.transform.gameObject.GetComponentInParent<DegreePuzzle>().enabled = false;
             itemObject.transform.gameObject.layer = LayerMask.NameToLayer(dragItemLayer);
             RemoveItem(itemObject.item);
             DisplayItemsCanvas(); 
