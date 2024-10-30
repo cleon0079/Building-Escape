@@ -137,8 +137,8 @@ public class PaperPuzzlePlayerIn : MonoBehaviour
                 float deltaMousePositionX = currentMousePosition.x - startMousePosition.x;
                 float deltaMousePositionY = currentMousePosition.y - startMousePosition.y;
 
-                float moveAmountX = deltaMousePositionX * Time.fixedDeltaTime * .08f;
-                float moveAmountY = deltaMousePositionY * Time.fixedDeltaTime * .08f;
+                float moveAmountX = deltaMousePositionX * Time.fixedDeltaTime * .3f;
+                float moveAmountY = deltaMousePositionY * Time.fixedDeltaTime * .3f;
 
                 Vector3 moveAmount = new Vector3(moveAmountX, 0, moveAmountY);
 
