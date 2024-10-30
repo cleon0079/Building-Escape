@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.InputSystem;
 
 
-public class UIManager : MonoBehaviour
+public class UIManagerFinal : MonoBehaviour
 {
     // Singleton
     // static private UIManager instance;
@@ -22,17 +22,17 @@ public class UIManager : MonoBehaviour
     //         return instance;
     //     }
     // }
-    Manager manager;
+    // Manager manager;
     [SerializeField] private GameObject startPanel;
-    [SerializeField] private GameObject controlPanel;
+    // [SerializeField] private GameObject controlPanel;
     [SerializeField] private TMP_Text startText;
     [SerializeField] private Button startButton;
     [SerializeField] private Button exitButton;
     private GameInput inputs;
     private InputAction exitKey;
 
-    PaperPuzzlePlayerIn paperPuzzlePlayerIn;
-    Inventories inventories;
+    // PaperPuzzlePlayerIn paperPuzzlePlayerIn;
+    // Inventories inventories;
     void Awake() 
     {
 
@@ -64,14 +64,14 @@ public class UIManager : MonoBehaviour
     void Start()
     {
         exitKey.Enable();
-        manager = FindObjectOfType<Manager>();
-        manager.StartGame(true);
-        startPanel.SetActive(true);
-        controlPanel.SetActive(false);
+        // manager = FindObjectOfType<Manager>();
+        // manager.StartGame(true);
+        // startPanel.SetActive(true);
+        // controlPanel.SetActive(false);
         startButton.onClick.AddListener(SetStartpanelOff);
-        exitButton.onClick.AddListener(manager.ExitGame);
-        paperPuzzlePlayerIn = FindAnyObjectByType<PaperPuzzlePlayerIn>();
-        inventories = FindAnyObjectByType<Inventories>();
+        exitButton.onClick.AddListener(ExitGame);
+        // paperPuzzlePlayerIn = FindAnyObjectByType<PaperPuzzlePlayerIn>();
+        // inventories = FindAnyObjectByType<Inventories>();
     }
 
     // Update is called once per frame
@@ -81,11 +81,13 @@ public class UIManager : MonoBehaviour
     }
     void SetStartpanelOff()
     {   
+        Debug.Log("sadasdas");
+        startPanel.SetActive(false);
         // exitKey.Enable();
         Time.timeScale = 1f;
-        startPanel.SetActive(false);
-        controlPanel.SetActive(true);
-        manager.StartGame(false);
+        
+        // controlPanel.SetActive(true);
+        // manager.StartGame(false);
     }
 
     void SetMenuPanelOn(InputAction.CallbackContext context)
@@ -94,11 +96,12 @@ public class UIManager : MonoBehaviour
         startText.text = "Resume"; 
         if(startPanel.activeSelf){
             SetStartpanelOff();
+            Cursor.lockState = CursorLockMode.Locked;
         }else{
-
+            Cursor.lockState = CursorLockMode.None;
             startPanel.SetActive(true);
-            controlPanel.SetActive(false);
-            manager.StartGame(true);
+            // controlPanel.SetActive(false);
+            // manager.StartGame(true);
         }
         
     }
@@ -109,6 +112,14 @@ public class UIManager : MonoBehaviour
             exitKey.Disable();  
         }
         
+    }
+    public void ExitGame()
+    {
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
+        Application.Quit();
+#endif
     }
 
 }
