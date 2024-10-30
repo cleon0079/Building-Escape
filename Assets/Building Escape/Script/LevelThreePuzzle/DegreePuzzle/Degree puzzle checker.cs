@@ -5,7 +5,7 @@ using DG.Tweening;
 
 public class Degreepuzzlechecker : MonoBehaviour
 {
-    [SerializeField] Transform targetPosition;
+    // [SerializeField] Transform targetPosition;
     [SerializeField] GameObject prizeGB;
     GameObject[] degreeBoards;
     // Manager uimanager;
@@ -51,8 +51,10 @@ public class Degreepuzzlechecker : MonoBehaviour
     {
         isFinish = true;
         prizeGB.SetActive(true);
-        prizeGB.transform.DOMove(targetPosition.position, 2f);
-        prizeGB.transform.DORotate(Vector3.zero, 2f);
+        prizeGB.transform.parent = FindObjectOfType<Controller>().transform.GetChild(0).transform;
+
+        prizeGB.transform.DOLocalMove(Vector3.zero + new Vector3(0, 0, 1), 1f);
+        prizeGB.transform.DOLocalRotate(Vector3.zero + new Vector3(-90, 0, 0), 1f);
         Debug.Log("is finished");
     }
     public bool GetTrigger() {
