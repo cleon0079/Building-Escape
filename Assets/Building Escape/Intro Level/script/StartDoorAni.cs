@@ -28,12 +28,12 @@ public class StartDoorAni : MonoBehaviour
         if(!playerEnter){
             animator.SetBool("DoorOpen" , false);
         }
-        if(playerEnter){
-            animator.SetBool("Enter" , true);
-        }
-        if(!playerEnter){
-            animator.SetBool("Enter" , false);
-        }
+        // if(playerEnter){
+        //     animator.SetBool("Enter" , true);
+        // }
+        // if(!playerEnter){
+        //     animator.SetBool("Enter" , false);
+        // }
     }
 
     void OnTriggerEnter (Collider collider){

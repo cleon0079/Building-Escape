@@ -5,6 +5,8 @@ using DG.Tweening;
 
 public class Degreepuzzlechecker : MonoBehaviour
 {
+    [SerializeField] Transform targetPosition;
+    [SerializeField] GameObject prizeGB;
     GameObject[] degreeBoards;
     // Manager uimanager;
     int index = 0;
@@ -38,6 +40,8 @@ public class Degreepuzzlechecker : MonoBehaviour
                 index++;
             }
         }
+        Debug.Log("index: "+index);
+        Debug.Log("Degree length: "+degreeBoards.Length);
         if (index == degreeBoards.Length)
         {
             Finish();
@@ -45,8 +49,11 @@ public class Degreepuzzlechecker : MonoBehaviour
     }
     void Finish()
     {
-        Debug.Log("is finished");
         isFinish = true;
+        prizeGB.SetActive(true);
+        prizeGB.transform.DOMove(targetPosition.position, 2f);
+        prizeGB.transform.DORotate(Vector3.zero, 2f);
+        Debug.Log("is finished");
     }
     public bool GetTrigger() {
         return canTrigger;

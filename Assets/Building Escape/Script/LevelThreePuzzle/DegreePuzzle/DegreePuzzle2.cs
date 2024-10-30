@@ -36,22 +36,13 @@ public class DegreePuzzle2 : MonoBehaviour
             }
         }
 
-        if (this.transform.parent.childCount > 1)
-        {
-            isPuzzleIn = true;
-            if (this.transform.parent.GetChild(1).GetComponent<DegreeItem>().GetIndex() == index)
-            {
-                isRight = true;
-                this.transform.parent.GetChild(1).GetComponent<DegreeItem>().CantMove();
-                this.gameObject.SetActive(false);
-            }
-        }
+       
     }
     private void OnTriggerEnter(Collider other)
     {
         if (other.transform.CompareTag("BrokenDegree") && !isPuzzleIn && puzzleCheck.GetTrigger() && !isRight)
         {
-            Debug.Log("Is any object in ");
+            
             other.transform.SetParent(this.transform.parent);  
 
 
@@ -68,6 +59,18 @@ public class DegreePuzzle2 : MonoBehaviour
 
                 other.GetComponent<DegreeItem>().SetPuzzleIn(true);
             }
+        if (this.transform.parent.childCount > 1)
+        {
+            isPuzzleIn = true;
+            if (this.transform.parent.GetChild(1).GetComponent<DegreeItem>().GetIndex() == index)
+            {
+                isRight = true;
+                Debug.Log("dsasd");
+                this.transform.parent.GetChild(1).GetComponent<DegreeItem>().CantMove();
+                this.gameObject.SetActive(false);
+            }
+        }
+            Debug.Log("Check1");
             puzzleCheck.Check();
         }
     }
@@ -76,7 +79,6 @@ public class DegreePuzzle2 : MonoBehaviour
         if (other.transform.CompareTag("BrokenDegree") && !isPuzzleIn && puzzleCheck.GetTrigger() && !isRight)
         {
             other.transform.SetParent(this.transform.parent);
-            Debug.Log("Is any object Stay");
 
             if (this.transform.parent.childCount > 1)
             {
@@ -91,6 +93,18 @@ public class DegreePuzzle2 : MonoBehaviour
 
                 other.GetComponent<DegreeItem>().SetPuzzleIn(true);
             }
+             if (this.transform.parent.childCount > 1)
+        {
+            isPuzzleIn = true;
+            if (this.transform.parent.GetChild(1).GetComponent<DegreeItem>().GetIndex() == index)
+            {
+                isRight = true;
+                Debug.Log("dsasd");
+                this.transform.parent.GetChild(1).GetComponent<DegreeItem>().CantMove();
+                this.gameObject.SetActive(false);
+            }
+        }
+            Debug.Log("Check2");
             puzzleCheck.Check();
         }
     }
