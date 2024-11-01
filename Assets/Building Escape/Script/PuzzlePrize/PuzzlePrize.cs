@@ -10,6 +10,7 @@ public class PuzzlePrize : MonoBehaviour
     bool isDone = false;
     Manager uiManager;
     // Update is called once per frame
+
     void Update()
     {
         this.transform.Rotate(0, rotateSpeed * Time.deltaTime, 0);
@@ -17,9 +18,6 @@ public class PuzzlePrize : MonoBehaviour
         timer += Time.deltaTime;
         if (timer >= 6f && !isDone)
         {
-            uiManager.CanOpenInventory(false);
-
-
             timer = 0;
             Tween move = this.transform.DOLocalMove(Vector3.zero + new Vector3(1, -1, 1), 1f);
             move.OnComplete(() => DoneMove());
@@ -32,6 +30,5 @@ public class PuzzlePrize : MonoBehaviour
         this.gameObject.SetActive(false);
         FindObjectOfType<Manager>().EndPuzzle();
         isDone = true;
-        uiManager.CanOpenInventory(true);
     }
 }

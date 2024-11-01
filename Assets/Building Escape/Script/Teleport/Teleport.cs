@@ -12,7 +12,7 @@ public class Teleport : MonoBehaviour
 
    
     [SerializeField] Animator animator;
-    Manager manager;
+
     private void Start()
     {
         for (int i = 0; i < postProcessing.Length; i++)
@@ -58,8 +58,7 @@ public class Teleport : MonoBehaviour
             }
             */
 
-            //enter telepor CanOpenInventory = fale 
-            manager.CanOpenInventory(false);
+
         }
     }
 
@@ -100,7 +99,6 @@ public class Teleport : MonoBehaviour
         animator.SetBool("FadeIn", false);
         animator.SetBool("FadeOut", true);
 
-        manager.CanOpenInventory(true);
     }
 
     public enum Level
