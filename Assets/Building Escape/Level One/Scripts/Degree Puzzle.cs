@@ -7,7 +7,7 @@ using UnityEngine.InputSystem;
 public class DegreePuzzle : MonoBehaviour
 {
     Animator puzzleAni;
-    [SerializeField] string showedText = "Press F to interat";
+    [SerializeField] string showedText = "Press F to interact";
     private GameInput input;
     private InputAction interatAction;
     private InputAction mousePosition;

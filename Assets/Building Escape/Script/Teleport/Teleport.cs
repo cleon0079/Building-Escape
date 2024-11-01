@@ -12,6 +12,7 @@ public class Teleport : MonoBehaviour
 
    
     [SerializeField] Animator animator;
+    Manager manager;
     private void Start()
     {
         for (int i = 0; i < postProcessing.Length; i++)
@@ -28,8 +29,7 @@ public class Teleport : MonoBehaviour
         {
             animator.SetBool("FadeIn", true);
             animator.SetBool("FadeOut", false);
-
-            Debug.Log("Change to black");
+            
 
             StartCoroutine(WaitForComplete(other));
             /*
@@ -57,10 +57,14 @@ public class Teleport : MonoBehaviour
             
             }
             */
+
+            //enter telepor CanOpenInventory = fale 
+            manager.CanOpenInventory(false);
         }
     }
 
-    private IEnumerator WaitForComplete(Collider other)
+
+        private IEnumerator WaitForComplete(Collider other)
     {
         yield return new WaitForSeconds(1);
 
@@ -71,6 +75,7 @@ public class Teleport : MonoBehaviour
                 other.transform.rotation = levels[0].transform.rotation;
                 postProcessing[0].SetActive(false);
                 postProcessing[1].SetActive(true);
+
                 break;
             case Level.LevelTwo:
                 other.transform.position = levels[1].transform.position;
@@ -82,9 +87,10 @@ public class Teleport : MonoBehaviour
                 other.transform.rotation = Quaternion.identity;
                 postProcessing[0].SetActive(true);
                 postProcessing[1].SetActive(false);
-
+  
                 break;
             case Level.Final:
+
                 SceneManager.LoadScene(1);
                 break;
             default:
@@ -93,7 +99,8 @@ public class Teleport : MonoBehaviour
         }
         animator.SetBool("FadeIn", false);
         animator.SetBool("FadeOut", true);
-        Debug.Log("Change to back to normal");
+
+        manager.CanOpenInventory(true);
     }
 
     public enum Level

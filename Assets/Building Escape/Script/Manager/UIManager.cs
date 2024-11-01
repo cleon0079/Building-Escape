@@ -1,4 +1,4 @@
-using System.Collections;
+ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
@@ -86,6 +86,9 @@ public class UIManager : MonoBehaviour
         startPanel.SetActive(false);
         controlPanel.SetActive(true);
         manager.StartGame(false);
+
+
+        manager.CanOpenInventory(true);
     }
 
     void SetMenuPanelOn(InputAction.CallbackContext context)
@@ -95,7 +98,7 @@ public class UIManager : MonoBehaviour
         if(startPanel.activeSelf){
             SetStartpanelOff();
         }else{
-
+            manager.CanOpenInventory(false);
             startPanel.SetActive(true);
             controlPanel.SetActive(false);
             manager.StartGame(true);

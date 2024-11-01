@@ -56,13 +56,32 @@ public class Inventories : MonoBehaviour
         degreePuzzle = FindObjectOfType<DegreePuzzle>();
     }
 
-    private void OnEnable()
+    public void BagEnable()
     {
+        /*1 游戏开始的时候 
+          2 关闭暂停的时候
+          3 不在puzzle 之内
+         */
         inventoryAction.Enable();
     }
 
-    private void OnDisable()
+    public void BagDisable()
     {
+        /* 
+        1 在puzzle 之内 
+        2 游戏暂停 (x)
+        3 在intro 传送 level 2 (x)
+        4 在获得桌子奖品动画播放的时候
+        5 在加入书架puzzle的时候  (x)
+        6 在获得书架奖品动画播放的时候
+        7 level 2 传送level 3   (x)
+        8 在level 3 相框的puzzle的时候  
+        9 在拼degree 奖品动画播放的时候
+        10 在传送结束场景的时候  (x)
+
+
+        发现问题 => 分析代码 = 
+ */
         inventoryAction.Disable();
     }
 

@@ -11,7 +11,7 @@ public class BookPuzzle : MonoBehaviour
     private AudioSource audioSource;
 
     Manager uiManager;
-    [SerializeField] string showedText = "Press F to interat";
+    [SerializeField] string showedText = "Press F to interact";
     [SerializeField] GameObject target;
 
     private GameInput input;
@@ -67,8 +67,9 @@ public class BookPuzzle : MonoBehaviour
 
         mousePosition.Enable();
         escAction.Enable();
-
+        
         isPuzzling = true;
+
     }
 
     void OnClick(InputAction.CallbackContext context)
@@ -195,6 +196,8 @@ public class BookPuzzle : MonoBehaviour
         mousePosition.Disable();
 
         isPuzzling = false;
+
+        
     }
 
     private void PuzzleCompleted()
@@ -241,6 +244,7 @@ public class BookPuzzle : MonoBehaviour
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("Player") && !isDone)
         {
+            
             uIManager2.EnableEscKey(true);
             uiManager.UpdateText("");
             interatAction.Disable();

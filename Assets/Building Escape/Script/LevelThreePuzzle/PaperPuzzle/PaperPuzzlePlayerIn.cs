@@ -10,7 +10,7 @@ public class PaperPuzzlePlayerIn : MonoBehaviour
     bool isDragging = false;
     int finishIndex = 0;
 
-    [SerializeField] string showedText = "Press F to interat";
+    [SerializeField] string showedText = "Press F to interact";
     [SerializeField] GameObject target;
     [SerializeField] GameObject puzzleTarget;
     [SerializeField] Transform playerTarget;
@@ -63,6 +63,8 @@ public class PaperPuzzlePlayerIn : MonoBehaviour
         isPuzzling = true;
         Transform player = FindObjectOfType<Controller>().transform;
         player.transform.position = playerTarget.transform.position;
+
+        uiManager.CanOpenInventory(false);
     }
 
     void OnClick(InputAction.CallbackContext context)
@@ -219,6 +221,8 @@ public class PaperPuzzlePlayerIn : MonoBehaviour
         mousePosition.Disable();
 
         isPuzzling = false;
+
+        uiManager.CanOpenInventory(true);
     }
 
     private void OnTriggerStay(Collider other)

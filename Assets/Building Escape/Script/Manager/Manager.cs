@@ -11,6 +11,7 @@ public class Manager : MonoBehaviour
     public Camera mainCamera;
     DragObject dragObject;
     Controller player;
+    Inventories inventories;
     public bool blackboardFinish = false;
     public bool tablesFinish = false;
     public bool bookShelfFinish = false;
@@ -18,7 +19,7 @@ public class Manager : MonoBehaviour
 
     private void Start()
     {
-
+        inventories = FindObjectOfType<Inventories>();
         dragObject = FindObjectOfType<DragObject>();
         player = FindObjectOfType<Controller>();
     }
@@ -26,7 +27,18 @@ public class Manager : MonoBehaviour
     {
         CheckLevelCompleted();
     }
-
+    
+    public void CanOpenInventory(bool open)
+    {
+        if (open)
+        {
+            inventories.BagEnable();
+        }
+        else
+        {
+            inventories.BagDisable();
+        }
+    }
     public void CheckLevelCompleted()
     {
         if(blackboardFinish && tablesFinish && bookShelfFinish){
@@ -38,12 +50,16 @@ public class Manager : MonoBehaviour
     {
         dragObject.CanDrag(false);
         player.CanMove(false);
+
+        CanOpenInventory(false);
     }
 
     public void EndPuzzle() 
     {
         dragObject.CanDrag(true);
         player.CanMove(true);
+
+        CanOpenInventory(true);
     }
 
     public void ShowDot(bool dot) 
@@ -81,6 +97,8 @@ public class Manager : MonoBehaviour
             player = FindObjectOfType<Controller>();
             dragObject.CanDrag(false);
             player.CanMove(false);
+
+            
         }
         else
         {
@@ -89,6 +107,8 @@ public class Manager : MonoBehaviour
             player = FindObjectOfType<Controller>();
             dragObject.CanDrag(true);
             player.CanMove(true);
+
+    
         }
     }
 

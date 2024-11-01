@@ -46,7 +46,7 @@ public class Controller : MonoBehaviour
         rb.collisionDetectionMode = CollisionDetectionMode.Continuous;
     }
 
-    private void OnEnable()
+    private void MoveEnable()
     {
         move.Enable();
         look.Enable();
@@ -55,7 +55,7 @@ public class Controller : MonoBehaviour
         canRotate = true;
     }
 
-    private void OnDisable()
+    private void MoveDisable()
     {
         move.Disable();
         look.Disable();
@@ -75,6 +75,10 @@ public class Controller : MonoBehaviour
         if (canMove)
         {
             Movement();
+        }
+        else
+        {
+            rb.velocity = Vector3.zero;
         }
         if (canRotate)
         {
@@ -103,8 +107,13 @@ public class Controller : MonoBehaviour
         }
 
         //Walk
-        Vector3 moveDirection = (transform.forward * horizontal + transform.right * vertical).normalized;
-        rb.velocity = new Vector3(moveDirection.x * moveSpeed, rb.velocity.y, moveDirection.z * moveSpeed);
+        if (canMove)
+        {
+            Vector3 moveDirection = (transform.forward * horizontal + transform.right * vertical).normalized;
+            rb.velocity = new Vector3(moveDirection.x * moveSpeed, rb.velocity.y, moveDirection.z * moveSpeed);
+        }
+
+        
 
         //transform.Translate(Vector3.forward * hirzontal * Time.deltaTime * moveSpeed);
         //Translate(Vector3.right * vertcal * Time.deltaTime * moveSpeed);
@@ -146,11 +155,11 @@ public class Controller : MonoBehaviour
     {
         if (move)
         {
-            OnEnable();
+            MoveEnable();
         }
         else
         {
-            OnDisable();
+            MoveDisable();
         }
     }
 
