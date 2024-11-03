@@ -278,6 +278,15 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Tab"",
+                    ""type"": ""Button"",
+                    ""id"": ""c6341541-8e22-48c8-a947-ad943972dc9b"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -289,6 +298,17 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""ESC"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a250f684-1116-41c3-b39f-52a9dde90371"",
+                    ""path"": ""<Keyboard>/tab"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Tab"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -311,6 +331,7 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
         // UiAction
         m_UiAction = asset.FindActionMap("UiAction", throwIfNotFound: true);
         m_UiAction_ESC = m_UiAction.FindAction("ESC", throwIfNotFound: true);
+        m_UiAction_Tab = m_UiAction.FindAction("Tab", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -483,11 +504,13 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_UiAction;
     private List<IUiActionActions> m_UiActionActionsCallbackInterfaces = new List<IUiActionActions>();
     private readonly InputAction m_UiAction_ESC;
+    private readonly InputAction m_UiAction_Tab;
     public struct UiActionActions
     {
         private @GameInput m_Wrapper;
         public UiActionActions(@GameInput wrapper) { m_Wrapper = wrapper; }
         public InputAction @ESC => m_Wrapper.m_UiAction_ESC;
+        public InputAction @Tab => m_Wrapper.m_UiAction_Tab;
         public InputActionMap Get() { return m_Wrapper.m_UiAction; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -500,6 +523,9 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
             @ESC.started += instance.OnESC;
             @ESC.performed += instance.OnESC;
             @ESC.canceled += instance.OnESC;
+            @Tab.started += instance.OnTab;
+            @Tab.performed += instance.OnTab;
+            @Tab.canceled += instance.OnTab;
         }
 
         private void UnregisterCallbacks(IUiActionActions instance)
@@ -507,6 +533,9 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
             @ESC.started -= instance.OnESC;
             @ESC.performed -= instance.OnESC;
             @ESC.canceled -= instance.OnESC;
+            @Tab.started -= instance.OnTab;
+            @Tab.performed -= instance.OnTab;
+            @Tab.canceled -= instance.OnTab;
         }
 
         public void RemoveCallbacks(IUiActionActions instance)
@@ -539,5 +568,6 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
     public interface IUiActionActions
     {
         void OnESC(InputAction.CallbackContext context);
+        void OnTab(InputAction.CallbackContext context);
     }
 }

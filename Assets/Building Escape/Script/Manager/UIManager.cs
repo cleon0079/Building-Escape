@@ -30,7 +30,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Button exitButton;
     private GameInput inputs;
     private InputAction exitKey;
-
+    private InputAction tabKey;
     PaperPuzzlePlayerIn paperPuzzlePlayerIn;
     Inventories inventories;
     void Awake() 
@@ -49,6 +49,8 @@ public class UIManager : MonoBehaviour
        inputs = new GameInput();
        exitKey = inputs.UiAction.ESC;
        exitKey.started += SetMenuPanelOn;
+       tabKey = inputs.UiAction.Tab;
+       tabKey.started += SetControlpanelOff;
     //    exitKey.canceled += SetStartpanelOff();
     }
     // private void OnEnable()
@@ -86,11 +88,18 @@ public class UIManager : MonoBehaviour
         startPanel.SetActive(false);
         controlPanel.SetActive(true);
         manager.StartGame(false);
-
+        tabKey.Enable();
 
         manager.CanOpenInventory(true);
     }
-
+    void SetControlpanelOff(InputAction.CallbackContext context){
+        Debug.Log("sdad");
+        if(controlPanel.activeSelf){
+            controlPanel.SetActive(false);
+        }else{
+            controlPanel.SetActive(true);
+        }
+    }
     void SetMenuPanelOn(InputAction.CallbackContext context)
     {
         Time.timeScale = 0f;

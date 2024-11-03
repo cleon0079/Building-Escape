@@ -58,9 +58,9 @@ public class Inventories : MonoBehaviour
 
     public void BagEnable()
     {
-        /*1 ÓÎÏ·¿ªÊ¼µÄÊ±ºò 
-          2 ¹Ø±ÕÔÝÍ£µÄÊ±ºò
-          3 ²»ÔÚpuzzle Ö®ÄÚ
+        /*1 ï¿½ï¿½Ï·ï¿½ï¿½Ê¼ï¿½ï¿½Ê±ï¿½ï¿½ 
+          2 ï¿½Ø±ï¿½ï¿½ï¿½Í£ï¿½ï¿½Ê±ï¿½ï¿½
+          3 ï¿½ï¿½ï¿½ï¿½puzzle Ö®ï¿½ï¿½
          */
         inventoryAction.Enable();
     }
@@ -68,19 +68,19 @@ public class Inventories : MonoBehaviour
     public void BagDisable()
     {
         /* 
-        1 ÔÚpuzzle Ö®ÄÚ 
-        2 ÓÎÏ·ÔÝÍ£ (x)
-        3 ÔÚintro ´«ËÍ level 2 (x)
-        4 ÔÚ»ñµÃ×À×Ó½±Æ·¶¯»­²¥·ÅµÄÊ±ºò
-        5 ÔÚ¼ÓÈëÊé¼ÜpuzzleµÄÊ±ºò  (x)
-        6 ÔÚ»ñµÃÊé¼Ü½±Æ·¶¯»­²¥·ÅµÄÊ±ºò
-        7 level 2 ´«ËÍlevel 3   (x)
-        8 ÔÚlevel 3 Ïà¿òµÄpuzzleµÄÊ±ºò  
-        9 ÔÚÆ´degree ½±Æ·¶¯»­²¥·ÅµÄÊ±ºò
-        10 ÔÚ´«ËÍ½áÊø³¡¾°µÄÊ±ºò  (x)
+        1 ï¿½ï¿½puzzle Ö®ï¿½ï¿½ 
+        2 ï¿½ï¿½Ï·ï¿½ï¿½Í£ (x)
+        3 ï¿½ï¿½intro ï¿½ï¿½ï¿½ï¿½ level 2 (x)
+        4 ï¿½Ú»ï¿½ï¿½ï¿½ï¿½ï¿½Ó½ï¿½Æ·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Åµï¿½Ê±ï¿½ï¿½
+        5 ï¿½Ú¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½puzzleï¿½ï¿½Ê±ï¿½ï¿½  (x)
+        6 ï¿½Ú»ï¿½ï¿½ï¿½ï¿½Ü½ï¿½Æ·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Åµï¿½Ê±ï¿½ï¿½
+        7 level 2 ï¿½ï¿½ï¿½ï¿½level 3   (x)
+        8 ï¿½ï¿½level 3 ï¿½ï¿½ï¿½ï¿½puzzleï¿½ï¿½Ê±ï¿½ï¿½  
+        9 ï¿½ï¿½Æ´degree ï¿½ï¿½Æ·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Åµï¿½Ê±ï¿½ï¿½
+        10 ï¿½Ú´ï¿½ï¿½Í½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½  (x)
 
 
-        ·¢ÏÖÎÊÌâ => ·ÖÎö´úÂë = 
+        ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ => ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ = 
  */
         inventoryAction.Disable();
     }
@@ -210,7 +210,8 @@ public class Inventories : MonoBehaviour
     {
         if (itemObject != null)
         {
-            itemObject.transform.position = targetPosition.position;
+            Vector3 offset = new Vector3(3f,0f,0f);
+            itemObject.transform.position = targetPosition.position + offset;
             //itemObject.gameObject.SetActive(true); 
             itemObject.transform.gameObject.GetComponent<Collider>().enabled = true;
             itemObject.transform.gameObject.GetComponent<Renderer>().enabled = true;
@@ -220,6 +221,7 @@ public class Inventories : MonoBehaviour
             itemObject.transform.gameObject.layer = LayerMask.NameToLayer(dragItemLayer);
             RemoveItem(itemObject.item);
             DisplayItemsCanvas(); 
+            
         }
     }
     ItemObject FindItemObject(Item item)
@@ -229,7 +231,6 @@ public class Inventories : MonoBehaviour
         {
             if (obj.item == item)
             {
-                Debug.Log($"Matching ItemObject ID: {obj.ID} with Item Type: {item.Type}");
                 return obj;
             }
         }
