@@ -17,6 +17,7 @@ public class LevelCheck : MonoBehaviour
     {
         door.gameObject.SetActive(false);
 
+        finalDoor.GetComponent<MeshRenderer>().enabled=false;
         finalDoor.gameObject.GetComponent<BoxCollider>().isTrigger=false;
         uiManager = FindObjectOfType<Manager>();
     }
@@ -32,6 +33,7 @@ public class LevelCheck : MonoBehaviour
 
         if(uiManager.level3Completed && Finalopen == false)
         {
+            finalDoor.GetComponent<MeshRenderer>().enabled = true;
             finalDoor.gameObject.GetComponent<BoxCollider>().isTrigger = true;
             Finalopen = true;
         }
