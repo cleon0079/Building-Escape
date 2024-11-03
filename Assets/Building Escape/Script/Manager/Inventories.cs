@@ -210,8 +210,7 @@ public class Inventories : MonoBehaviour
     {
         if (itemObject != null)
         {
-            Vector3 offset = new Vector3(3f,0f,0f);
-            itemObject.transform.position = targetPosition.position + offset;
+            itemObject.transform.position = targetPosition.position;
             //itemObject.gameObject.SetActive(true); 
             itemObject.transform.gameObject.GetComponent<Collider>().enabled = true;
             itemObject.transform.gameObject.GetComponent<Renderer>().enabled = true;
@@ -265,7 +264,6 @@ public class Inventories : MonoBehaviour
             ItemObject itemObject = FindItemObject(item);
             if (itemObject != null)
             {
-                Debug.Log($"Found ItemObject for Item at index {i} (ID: {itemObject.ID}, Type: {item.Type})"); 
                 AddItemButton(itemButton, itemObject);
             }
             
@@ -274,7 +272,6 @@ public class Inventories : MonoBehaviour
     }
     void AddItemButton(Button itemButton, ItemObject itemObject)
     {
-        Debug.Log("Adding listener for itemObject with ID: " + itemObject.ID);
 
         itemButton.onClick.AddListener(() => RespawnPuzzles(itemObject));
     }

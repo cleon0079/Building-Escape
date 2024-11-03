@@ -93,7 +93,7 @@ public class UIManager : MonoBehaviour
         manager.CanOpenInventory(true);
     }
     void SetControlpanelOff(InputAction.CallbackContext context){
-        Debug.Log("sdad");
+        
         if(controlPanel.activeSelf){
             controlPanel.SetActive(false);
         }else{
