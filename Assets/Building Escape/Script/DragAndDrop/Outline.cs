@@ -47,6 +47,15 @@ public class Outline : MonoBehaviour
                 RemoveOutline();
             }
         }
+
+        if (!FindObjectOfType<DragObject>().isDragging)
+        {
+            if (GetComponent<ConfigurableJoint>() != null)
+            {
+                Destroy(this.GetComponent<ConfigurableJoint>());
+                FindObjectOfType<DragObject>().configurableJoint = null;
+            }
+        }
     }
 
     private void AddOuline()

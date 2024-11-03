@@ -25,9 +25,9 @@ public class DragObject : MonoBehaviour
     [SerializeField] float rotationSpeed = 100f;
 
     private Rigidbody draggedRigidbody;
-    private ConfigurableJoint configurableJoint;
+    public ConfigurableJoint configurableJoint;
     private Transform grabTransform;
-    private bool isDragging = false;
+    public bool isDragging = false;
     private bool isRotating = false;
     private bool canRotate = false;
     private float currentDistance;
@@ -63,20 +63,14 @@ public class DragObject : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
     }
 
-    private void OnEnable()
+    private void DragEnable()
     {
         interatAction.Enable();
-        scrollAction.Enable();
-        rotateAction.Enable();
-        deltaAction.Enable();
     }
 
-    private void OnDisable()
+    private void DragDisable()
     {
         interatAction.Disable();
-        scrollAction.Disable();
-        rotateAction.Disable();
-        deltaAction.Disable();
     }
 
     void OnRightClick(InputAction.CallbackContext context)
@@ -88,10 +82,19 @@ public class DragObject : MonoBehaviour
         if (isRightClicking)
         {
             player.CanMove(false);
+            interatAction.Disable();
         }
         else
         {
             player.CanMove(true);
+            scrollAction.Disable();
+            rotateAction.Disable();
+            deltaAction.Disable();
+            interatAction.Enable();
+            if (draggedRigidbody.gameObject.GetComponent<ConfigurableJoint>() == null)
+            {
+                AddConfigurableJoint();
+            }
         }
     }
 
@@ -120,7 +123,7 @@ public class DragObject : MonoBehaviour
         {
             DragTheObject();
 
-            if (canRotate && isRightClicking)
+            if (isRightClicking)
             {
                 Vector2 mouseDelta = deltaAction.ReadValue<Vector2>();
                 RotateObject(mouseDelta);
@@ -132,11 +135,11 @@ public class DragObject : MonoBehaviour
     {
         if (drag)
         {
-            OnEnable();
+            DragEnable();
         }
         else
         {
-            OnDisable();
+            DragDisable();
         }
     }
 
@@ -184,7 +187,9 @@ public class DragObject : MonoBehaviour
                 hit.transform.gameObject.AddComponent<Rigidbody>();
                 hit.rigidbody.collisionDetectionMode = CollisionDetectionMode.Continuous;
             }
+
             draggedRigidbody = hit.rigidbody;
+
             if (draggedRigidbody != null)
             {
                 grabTransform.position = hit.point;
@@ -197,6 +202,7 @@ public class DragObject : MonoBehaviour
                 isDragging = true;
                 canRotate = false;
             }
+
             if ((hit.transform.CompareTag("Table")||hit.transform.CompareTag("Chair") )&& tableSound != null)
             {
                 audioSource.clip = tableSound;
@@ -231,9 +237,15 @@ public class DragObject : MonoBehaviour
 
         grabTransform.position = targetPoint;
 
-        if (Vector3.Distance(grabTransform.position, draggedRigidbody.position) < 1)
+        if (Vector3.Distance(grabTransform.position, draggedRigidbody.position) < draggedRigidbody.gameObject.GetComponent<Collider>().bounds.extents.magnitude)
         {
             canRotate = true;
+            if (!isRightClicking)
+            {
+                scrollAction.Enable();
+                rotateAction.Enable();
+                deltaAction.Enable();
+            }
         }
     }
 
@@ -241,12 +253,16 @@ public class DragObject : MonoBehaviour
     {
         if (draggedRigidbody != null)
         {
-            Destroy(configurableJoint);
+            isDragging = false;
+            isRightClicking = false;
+            Destroy(draggedRigidbody.gameObject.GetComponent<ConfigurableJoint>());
+
+            configurableJoint = null;
             draggedRigidbody.useGravity = true;
             draggedRigidbody = null;
-            isDragging = false;
+
             canRotate = false;
-            isRightClicking = false;
+            
             player.CanMove(true);
 
             if (audioSource.isPlaying && audioSource.clip == tableSound)
@@ -273,7 +289,6 @@ public class DragObject : MonoBehaviour
         if (draggedRigidbody == null) return;
 
         Vector3 rotationAxis = Camera.main.transform.up * -mouseDelta.x + Camera.main.transform.right * mouseDelta.y;
-        Debug.Log(rotationAxis.normalized);
 
         if (rotationAxis != Vector3.zero)
         {
@@ -287,8 +302,11 @@ public class DragObject : MonoBehaviour
         }
         else if (isRotating)
         {
-            AddConfigurableJoint();
             isRotating = false;
+            if (isDragging)
+            {
+                AddConfigurableJoint();
+            }
         }
     }
 
