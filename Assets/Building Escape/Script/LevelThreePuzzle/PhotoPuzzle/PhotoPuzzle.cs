@@ -126,7 +126,7 @@ public class PhotoPuzzle : MonoBehaviour
 
             Debug.Log("lv3PhotoFameFinish");
             uimanager.lv3PhotoFameFinish=true;
-            uimanager.CheckLevelCompleted();
+            // uimanager.CheckLevelCompleted();
         }
 
 
