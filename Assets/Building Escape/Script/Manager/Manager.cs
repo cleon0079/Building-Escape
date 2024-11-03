@@ -31,6 +31,7 @@ public class Manager : MonoBehaviour
     void Update()
     {
         CheckLevelCompleted();
+        CheckLev3Complete();
     }
     
     public void CanOpenInventory(bool open)
@@ -44,13 +45,19 @@ public class Manager : MonoBehaviour
             inventories.BagDisable();
         }
     }
-    public void CheckLevelCompleted()
+    public void CheckLevelCompleted()   
     {
         if (blackboardFinish && tablesFinish && bookShelfFinish)
         {
             level2Completed = true;
         }
 
+        
+    }
+
+    public void CheckLev3Complete()
+    {
+        Debug.Log("76");
         if (lv3DegreeFinish && lv3PhotoFameFinish && lv3TableFinish)
         {
             Debug.Log("876");

@@ -57,6 +57,8 @@ public class Degreepuzzlechecker : MonoBehaviour
         prizeGB.transform.DOLocalRotate(Vector3.zero + new Vector3(-90, 0, 0), 1f);
         Debug.Log("is finished");
 
+
+        
         uimanager.lv3DegreeFinish = true;
     }
     public bool GetTrigger() {

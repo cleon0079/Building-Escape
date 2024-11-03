@@ -19,7 +19,6 @@ public class Inventories : MonoBehaviour
     [SerializeField] private  Transform targetPosition;
     private string dragItemLayer = "DragItem";
     
-    private bool isOnInventory = false;
     public float rayDistance = 10f;
     public LayerMask collectableLayer;
     private string showedText = "Press F to collect";
