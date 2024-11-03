@@ -16,7 +16,7 @@ public class Inventories : MonoBehaviour
     [SerializeField] GameObject inventoryGameObject;
     [SerializeField] GameObject inventoryContent;
     [SerializeField] Button exitButton;
-    [SerializeField] private Transform targetPosition;
+    [SerializeField] private  Transform targetPosition;
     private string dragItemLayer = "DragItem";
     
     private bool isOnInventory = false;
@@ -206,23 +206,54 @@ public class Inventories : MonoBehaviour
             Destroy(child.gameObject);
         }
     }
-    void RespawnPuzzles(ItemObject itemObject)
+    private IEnumerator EnableColliderAndGravityWithDelay(Collider collider, Rigidbody rb, float delay)
     {
-        if (itemObject != null)
+        yield return new WaitForSeconds(delay);
+        
+        if (collider != null)
         {
-            itemObject.transform.position = targetPosition.position;
-            //itemObject.gameObject.SetActive(true); 
-            itemObject.transform.gameObject.GetComponent<Collider>().enabled = true;
-            itemObject.transform.gameObject.GetComponent<Renderer>().enabled = true;
-            itemObject.transform.gameObject.AddComponent<Outline>();
-            itemObject.transform.gameObject.AddComponent<DegreeItem>();
-            itemObject.transform.gameObject.GetComponentInParent<DegreePuzzle>().enabled = false;
-            itemObject.transform.gameObject.layer = LayerMask.NameToLayer(dragItemLayer);
-            RemoveItem(itemObject.item);
-            DisplayItemsCanvas(); 
-            
+            collider.enabled = true;  
+        }
+
+        if (rb != null)
+        {
+            rb.isKinematic = false; 
         }
     }
+    void RespawnPuzzles(ItemObject itemObject)
+{
+    if (itemObject != null)
+    {
+        // 将物体位置重置到固定位置
+        itemObject.transform.position = targetPosition.position;
+
+        // 启用渲染器并禁用碰撞器
+        itemObject.GetComponent<Renderer>().enabled = true;
+        Collider collider = itemObject.GetComponent<Collider>();
+        Rigidbody rb = itemObject.GetComponent<Rigidbody>();
+        
+        if (collider != null)
+        {
+            collider.enabled = false;  // 先禁用碰撞器
+        }
+
+        if (rb != null)
+        {
+            rb.isKinematic = true;  // 设置为 kinematic，这样物体不会受重力影响
+        }
+        
+        // 启动协程，在延迟后启用碰撞器和重力
+        StartCoroutine(EnableColliderAndGravityWithDelay(collider, rb, 0.5f));
+
+        itemObject.gameObject.AddComponent<Outline>();
+        itemObject.gameObject.AddComponent<DegreeItem>();
+        itemObject.GetComponentInParent<DegreePuzzle>().enabled = false;
+        itemObject.gameObject.layer = LayerMask.NameToLayer(dragItemLayer);
+
+        RemoveItem(itemObject.item);
+        DisplayItemsCanvas();
+    }
+}
     ItemObject FindItemObject(Item item)
     {
         ItemObject[] allItems = FindObjectsOfType<ItemObject>();

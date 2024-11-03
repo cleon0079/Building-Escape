@@ -50,6 +50,18 @@ public class DegreePuzzle : MonoBehaviour
         uiManager = FindObjectOfType<Manager>();
         puzzleAni = GetComponent<Animator>();
         uIManager2 = FindObjectOfType<UIManager>();
+        if (uiManager == null)
+        {
+            Debug.LogError("Manager not found in the scene.");
+        }
+        if (uIManager2 == null)
+        {
+            Debug.LogError("UIManager not found in the scene.");
+        }
+        if(puzzleAni == null)
+        {
+            Debug.LogError("puzzleAni not found in the scene.");
+        }
     }
 
     // Update is called once per frame
@@ -81,7 +93,7 @@ public class DegreePuzzle : MonoBehaviour
         if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
             interatAction.Enable();
-            if (uiManager == null || uIManager2 == null)
+            if (uiManager == null || uIManager2 == null||interatAction == null)
             {
                 Debug.LogError("uiManager or uIManager2 are null?");
                 return;
