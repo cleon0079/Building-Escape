@@ -51,7 +51,7 @@ public class Manager : MonoBehaviour
             level2Completed = true;
         }
 
-        if (lv3DegreeFinish && lv3PhotoFameFinish && lv3TableFinish)
+        else if (lv3DegreeFinish && lv3PhotoFameFinish && lv3TableFinish)
         {
             level3Completed = true;
         }
