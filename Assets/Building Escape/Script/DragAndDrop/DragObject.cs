@@ -91,10 +91,14 @@ public class DragObject : MonoBehaviour
             rotateAction.Disable();
             deltaAction.Disable();
             interatAction.Enable();
-            if (draggedRigidbody.gameObject.GetComponent<ConfigurableJoint>() == null)
+            if (draggedRigidbody!=null)
             {
-                AddConfigurableJoint();
+                if (draggedRigidbody.gameObject.GetComponent<ConfigurableJoint>() == null)
+                {
+                    AddConfigurableJoint();
+                }
             }
+            
         }
     }
 

@@ -33,6 +33,7 @@ public class LevelCheck : MonoBehaviour
 
         if(uiManager.level3Completed && Finalopen == false)
         {
+            Debug.Log('1');
             finalDoor.GetComponent<MeshRenderer>().enabled = true;
             finalDoor.gameObject.GetComponent<BoxCollider>().isTrigger = true;
             Finalopen = true;

@@ -124,6 +124,7 @@ public class PhotoPuzzle : MonoBehaviour
             Physics.IgnoreCollision(colliders[this.transform.childCount - 2], player);
             Physics.IgnoreCollision(colliders[this.transform.childCount - 3], player);
 
+            Debug.Log("lv3PhotoFameFinish");
             uimanager.lv3PhotoFameFinish=true;
         }
 

@@ -194,7 +194,7 @@ public class PaperPuzzlePlayerIn : MonoBehaviour
             escAction.Disable();
             mousePosition.Disable();
 
-
+            Debug.Log("lv3PhotoFameFinish");
             uiManager.lv3PhotoFameFinish =true;
         }
     }
