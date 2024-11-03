@@ -11,9 +11,12 @@ public class PhotoPuzzle : MonoBehaviour
     private bool isDone = false;
     private int puzzleNum = 0;
 
+    Manager uimanager;
     // Start is called before the first frame update
     void Start()
     {
+        uimanager = uimanager = FindObjectOfType<Manager>();
+
         player = FindObjectOfType<Controller>().gameObject.GetComponent<Collider>();
 
         puzzleNum = this.transform.childCount - 5;
@@ -120,7 +123,11 @@ public class PhotoPuzzle : MonoBehaviour
             Physics.IgnoreCollision(colliders[this.transform.childCount - 1], player);
             Physics.IgnoreCollision(colliders[this.transform.childCount - 2], player);
             Physics.IgnoreCollision(colliders[this.transform.childCount - 3], player);
+
+            uimanager.lv3PhotoFameFinish=true;
         }
+
+
     }
 
     private void OnTriggerEnter(Collider other)

@@ -8,7 +8,7 @@ public class Degreepuzzlechecker : MonoBehaviour
     // [SerializeField] Transform targetPosition;
     [SerializeField] GameObject prizeGB;
     GameObject[] degreeBoards;
-    // Manager uimanager;
+    Manager uimanager;
     int index = 0;
     public bool isFinish;
     bool canTrigger = true;
@@ -16,7 +16,7 @@ public class Degreepuzzlechecker : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        // uimanager = FindObjectOfType<Manager>();
+        uimanager = FindObjectOfType<Manager>();
         isFinish = false;
         degreeBoards = new GameObject[this.transform.childCount];
         for (int i = 0; i < this.transform.childCount; i++)
@@ -56,6 +56,8 @@ public class Degreepuzzlechecker : MonoBehaviour
         prizeGB.transform.DOLocalMove(Vector3.zero + new Vector3(0, 0, 1), 1f);
         prizeGB.transform.DOLocalRotate(Vector3.zero + new Vector3(-90, 0, 0), 1f);
         Debug.Log("is finished");
+
+        uimanager.lv3DegreeFinish = true;
     }
     public bool GetTrigger() {
         return canTrigger;

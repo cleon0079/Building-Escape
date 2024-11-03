@@ -17,6 +17,11 @@ public class Manager : MonoBehaviour
     public bool bookShelfFinish = false;
     public bool level2Completed = false;
 
+    public bool lv3DegreeFinish = false;
+    public bool lv3PhotoFameFinish = false;
+    public bool lv3TableFinish = false;
+    public bool level3Completed = false;
+
     private void Start()
     {
         inventories = FindObjectOfType<Inventories>();
@@ -41,10 +46,15 @@ public class Manager : MonoBehaviour
     }
     public void CheckLevelCompleted()
     {
-        if(blackboardFinish && tablesFinish && bookShelfFinish){
+        if (blackboardFinish && tablesFinish && bookShelfFinish)
+        {
             level2Completed = true;
         }
-        
+
+        if (lv3DegreeFinish && lv3PhotoFameFinish && lv3TableFinish)
+        {
+            level3Completed = true;
+        }
     }
     public void StartPuzzle()
     {
